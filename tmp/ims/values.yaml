@@ -1,0 +1,3 @@
+# Overwrite the HSS-IMS Helm values here
+eric-ccsm-hssims:
+  enabled: true

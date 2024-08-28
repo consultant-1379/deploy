@@ -1,0 +1,228 @@
+eric-ausf-engine:
+  Scaling-Parameter-Name: eric-ccsm-ausf.eric-ausf-engine.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-ausf.eric-ausf-engine.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-ccsm-smsengine:
+  Scaling-Parameter-Name: eric-ccsm-smsengine.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-smsengine.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-diametereireic:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-diametereireic.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-diametereireic.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-eireic:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-eireic.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-eireic.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-httpnotifier:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-httpnotifier.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-httpnotifier.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-infocollector:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-infocollector.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-infocollector.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-infocollectorunsucc:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-infocollectorunsucc.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-infocollectorunsucc.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-mapeireic:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-mapeireic.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-mapeireic.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-eir-s13diameter:
+  Scaling-Parameter-Name: eric-ccsm-eir.eric-eir-s13diameter.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-eir.eric-eir-s13diameter.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-amfeenotifications:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-amfeenotifications.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-amfeenotifications.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-amfeesubscriptions:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-amfeesubscriptions.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-amfeesubscriptions.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eapauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eapauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eapauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eapprimeauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eapprimeauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eapprimeauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-epsauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-epsauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-epsauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-gbaauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-gbaauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-gbaauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-imsauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-imsauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-imsauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-iratamfdereg:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-iratamfdereg.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-iratamfdereg.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-iratsndereg:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-iratsndereg.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-iratsndereg.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-iwk5g2g:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-iwk5g2g.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-iwk5g2g.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtsmsdeliverystatus:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtsmsdeliverystatus.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtsmsdeliverystatus.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtsmsreadystatus:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtsmsreadystatus.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtsmsreadystatus.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtsmsroutinginfo:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtsmsroutinginfo.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtsmsroutinginfo.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtsmswaitingdata:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtsmswaitingdata.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtsmswaitingdata.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtueinfo:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtueinfo.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtueinfo.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-mtlocation:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-mtlocation.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-mtlocation.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-pcscfrestnotif:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-pcscfrestnotif.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-pcscfrestnotif.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmamdata:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmamdata.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmamdata.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmimplicitunsub:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmimplicitunsub.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmimplicitunsub.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmmultipledataset:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmmultipledataset.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmmultipledataset.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmnotif:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmnotif.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmnotif.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmnssai:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmnssai.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmnssai.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmsmdata:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmsmdata.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmsmdata.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmsmfselect:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmsmfselect.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmsmfselect.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmsmsdata:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmsmsdata.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmsmsdata.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmsmsmngdata:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmsmsmngdata.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmsmsmngdata.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmsubscriptions:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmsubscriptions.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmsubscriptions.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmuectxtsmf:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmuectxtsmf.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmuectxtsmf.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-sdmuectxtsmsf:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-sdmuectxtsmsf.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-sdmuectxtsmsf.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-ueauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-ueauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-ueauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmamfderegnotifier:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmamfderegnotifier.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmamfderegnotifier.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmamfget:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmamfget.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmamfget.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmamfregupdate:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmamfregupdate.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmamfregupdate.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmreg:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmreg.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmreg.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmsmfregistration:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmsmfregistration.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmsmfregistration.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmsmfderegistration:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmsmfderegistration.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmsmfderegistration.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmsmsfdereg:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmsmsfdereg.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmsmsfdereg.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmsmsfregget:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmsmsfregget.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmsmsfregget.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-uecmsmsfregistration:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-uecmsmsfregistration.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-uecmsmsfregistration.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-umtsauth:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-umtsauth.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-umtsauth.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eesubscribe:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eesubscribe.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eesubscribe.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeunsubscribe:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeunsubscribe.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeunsubscribe.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eesubsidchangenotif:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eesubsidchangenotif.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eesubsidchangenotif.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeamfingressnotif:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeamfingressnotif.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeamfingressnotif.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeegressnotif-reach-for-sms:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeegressnotif-reach-for-sms.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeegressnotif-reach-for-sms.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeegressnotif-roaming-status:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeegressnotif-roaming-status.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeegressnotif-roaming-status.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeegressnotif-supi-pei-indiv:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeegressnotif-supi-pei-indiv.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeegressnotif-supi-pei-indiv.autoscaling.enabled
+  Mciop-Name: helm_package3
+eric-udm-eeegressnotif-supi-pei-anyue:
+  Scaling-Parameter-Name: eric-ccsm-udm.eric-udm-eeegressnotif-supi-pei-anyue.replicaCount
+  Auto-Scaling-Enabled: eric-ccsm-udm.eric-udm-eeegressnotif-supi-pei-anyue.autoscaling.enabled
+  Mciop-Name: helm_package3

@@ -1,0 +1,83 @@
+{
+  "dashboards": [
+    {
+      "_id": "ausf",
+      "title": "AUSF",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "widget": "ausf_kpi"
+        },
+        {
+          "xSize": 2,
+          "widget": "ausf_tps_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "ausf_auth_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "ausf_nudm_timeline"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "ausf_kpi",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+          { "source": "eric_ausf_nausf_auth_tps", "heading": "AUSF as provider TPS" },
+          { "source": "eric_ausf_nausf_auth", "heading": "AUSF as provider FR" },
+          { "source": "eric_ausf_nudm_ueau", "heading": "AUSF as consumer FR" }
+      ]
+    },
+    {
+      "_id": "ausf_auth_timeline",
+      "widgetType": "timeline",
+      "title": "AUSF as provider FR",
+      "sources": [
+          { "source": "eric_ausf_nausf_auth", "heading": "AUSF as provider FR" }
+      ]
+    },
+    {
+      "_id": "ausf_nudm_timeline",
+      "widgetType": "timeline",
+      "title": "AUSF as consumer FR",
+      "sources": [
+          { "source": "eric_ausf_nudm_ueau", "heading": "AUSF as consumer FR" }
+      ]
+    },
+    {
+      "_id": "ausf_tps_timeline",
+      "widgetType": "timeline",
+      "title": "AUSF as provider TPS",
+      "sources": [
+          { "source": "eric_ausf_nausf_auth_tps", "heading": "AUSF as provider TPS" }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "_id": "eric_ausf_nausf_auth",
+      "sourceType": "prometheus",
+      "query": "sum:eric_ausf_nausf_auth_failure_ratio:rate1m",
+      "label": "AUSF AUTH FR"
+    },
+    {
+      "_id": "eric_ausf_nudm_ueau",
+      "sourceType": "prometheus",
+      "query": "sum(delta(eric_ausf_nudm_ueau_unsuccessful_responses_recv[1m])) / sum(delta(eric_ausf_nudm_ueau_requests_sent[1m])> 0 ) * 100 or vector(0)",
+      "label": "AUSF UDM FR"
+    },
+    {
+      "_id": "eric_ausf_nausf_auth_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_ausf_nausf_auth_tps:rate1m",
+      "label": "AUSF TPS"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+tosca_definitions_version: tosca_simple_yaml_1_2
+
+description: VNF Descriptor for ericsson CCSM (PDU UDM & Policy)
+
+imports:
+  - etsi_nfv_sol001_vnfd_2_5_1_types.yaml
+
+node_types:
+  Ericsson.CCSM.0_1_0.0_0_1:
+    derived_from: tosca.nodes.nfv.VNF
+    properties:
+      descriptor_id:
+        type: string
+        constraints: [ valid_values: [ UUID ] ]
+        default: UUID
+      descriptor_version:
+        type: string
+        constraints: [ valid_values: [ DESCRIPTOR_VERSION ] ]
+        default: DESCRIPTOR_VERSION
+      provider:
+        type: string
+        constraints: [ valid_values: [ Ericsson ] ]
+        default: Ericsson
+      product_name:
+        type: string
+        constraints: [ valid_values: [ CCSM ] ]
+        default: CCSM
+      software_version:
+        type: string
+        constraints: [ valid_values: [ 'SOFTWARE_VERSION' ] ]
+        default: 'SOFTWARE_VERSION'
+      vnfm_info:
+        type: list
+        entry_schema:
+          type: string
+          constraints: [ valid_values: [ '3881:E-VNFM' ] ]
+        default: [ '3881:E-VNFM' ]
+      flavour_id:
+        type: string
+        constraints: [ valid_values: [ default ] ]
+        default: default
+      flavour_description:
+        type: string
+        default: ''

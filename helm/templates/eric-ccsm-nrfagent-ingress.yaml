@@ -1,0 +1,122 @@
+{{- if index .Values "global" "nrfagent" "enabled" }}
+
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: VirtualService
+metadata:
+  name: eric-nrf-discovery-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  hosts:
+  - "*"
+  exportTo:
+  - "."
+  gateways:
+  - "eric-ccsm-nrfagent-gateway"
+  http:
+  - match:
+    - uri:
+        regex: "^/nrf-discovery-agent/v1/.*$"
+      method:
+        exact: "GET"
+    timeout: {{ .Values.global.istio.timeout }}
+    route:
+    - destination:
+        port:
+          number: 3202
+        host: eric-nrf-discovery-agent
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: VirtualService
+metadata:
+  name: eric-nrf-register-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  hosts:
+  - "*"
+  exportTo:
+  - "."
+  gateways:
+  - "eric-ccsm-nrfagent-gateway"
+  http:
+  - match:
+    - uri:
+        regex: "^/nrf-register-agent/v1/.*$"
+      method:
+        exact: "PUT"
+    timeout: {{ .Values.global.istio.timeout }}
+    route:
+    - destination:
+        port:
+          number: 3002
+        host: eric-nrf-register-agent
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: VirtualService
+metadata:
+  name: eric-nrf-accesstoken-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  hosts:
+  - "*"
+  exportTo:
+  - "."
+  gateways:
+  - "eric-ccsm-nrfagent-gateway"
+  http:
+  - match:
+    - uri:
+        regex: "^/nrf-accesstoken-agent/v1/.*$"
+      method:
+        exact: "POST"
+    timeout: {{ .Values.global.istio.timeout }}
+    route:
+    - destination:
+        port:
+          number: 3302
+        host: eric-nrf-accesstoken-agent
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: VirtualService
+metadata:
+  name: eric-svc-routing-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  hosts:
+  - "*"
+  exportTo:
+  - "."
+  gateways:
+  - "eric-ccsm-nrfagent-gateway"
+  http:
+  - match:
+    - uri:
+        regex: "^/service-routing-agent/v1/.*$"
+      method:
+        exact: "GET"
+    timeout: {{ .Values.global.istio.timeout }}
+    route:
+    - destination:
+        port:
+          number: 3401
+        host: eric-svc-routing-agent
+{{- end }}

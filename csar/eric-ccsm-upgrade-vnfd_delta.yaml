@@ -1,0 +1,43 @@
+##
+# Delta to be added on CCSM descriptor file to support upgrade
+# Every upgrade path needs an operation interface_type and a topology_template
+# upgrade policy
+# Input parameters:
+# - UUID: This CSAR package UUID, it is also input param in the main thread
+# - SOFTWARE_VERSION: This CSAR package SW Version, it is also input param in the main thread
+# - UPGRADE_DESCRIPTOR_ID: uuid to upgrade after upgrade (get from loop list)
+# - UPGRADE_SW_VERSION: Version to upgrade after upgrade (get from loop list)
+##
+
+##
+# Upgrade additional parameter are common to all policies, they are defined in the
+# main descriptor in data type ericsson.datatypes.nfv.UpgradeVnfOperationAdditionalParameters
+##
+
+interface_types:
+  ericsson.interfaces.nfv.EricssonChangeCurrentVnfPackage:
+    derived_from: tosca.interfaces.nfv.ChangeCurrentVnfPackage
+    operations:
+      # UPGRADE OPERATIONS INTERFACE_TYPES
+      upgrade_from_ccsm_UPGRADE_SW_VERSION_SUBST:
+        description: Operation for change from CCSM version UPGRADE_SW_VERSION to SOFTWARE_VERSION
+        inputs:
+          additional_parameters:
+            type: ericsson.datatypes.nfv.UpgradeVnfOperationAdditionalParameters
+            required: false
+      # END UPGRADE OPERATIONS INTERFACE_TYPES
+
+topology_template:
+  policies:
+    # UPGRADE POLICY TOPOLOGY_TEMPLATE
+    - upgrade_from_ccsm_UPGRADE_SW_VERSION_SUBST:
+        type: tosca.policies.nfv.VnfPackageChange
+        properties:
+          selector:
+            source_descriptor_id: UPGRADE_DESCRIPTOR_ID
+            destination_descriptor_id: UUID
+            source_flavour_id: default
+          modification_qualifier: up
+          additional_modification_description: ..
+          destination_flavour_id: default
+    # END UPGRADE POLICY TOPOLOGY_TEMPLATE

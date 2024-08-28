@@ -1,0 +1,17 @@
+---
+modelVersion: "2.0"
+flavor: "Generic"
+service:
+  # name of the service:
+  name: "eric-ccsm-hssepc"
+  design_countries:
+    - SE
+  # Compilation Country (Set on the derivative products)
+  sw_compilation_country: SE
+  release_responsible: BCSSGQMA
+  design_responsible: BCSSGQMA
+  # Details of the APR product structure:
+  top_product:
+    number: CSH 109 719
+    description: "HSSEPC NF"
+    designation: "Drop XX"  #Include drop number

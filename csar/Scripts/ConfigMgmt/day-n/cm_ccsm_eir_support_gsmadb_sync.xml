@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Notice that it is a configuration template in XML format
+  compliant with NF YANG model.  This XML template provides
+  a configuration skeleton that shall be modified before
+  loading into the yang service.  Some parts of the document
+  must be deleted or added depending on the network configuration
+  where the VNF will be deployed.
+-->
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <eir xmlns="urn:rdns:com:ericsson:oammodel:ericsson-eir">
+        <features>
+          <gsma-db-synchronization>
+            <oam-activated>true</oam-activated>
+            <oam-exposed>true</oam-exposed>
+          </gsma-db-synchronization>
+        </features>
+        <gsma-db-synchronization>
+            <gsma>
+                <addresses>
+                    <id>{GSMA_GSMADB_ID}</id>
+                    <fqdn>{GSMA_GSMADB_ADDRESS_FQDN}</fqdn>
+                    <port>{GSMA_GSMADB_PORT}</port>
+                    <host-public-keys>{GSMA_GSMADB_HOST_PUBLIC_KEYS}</host-public-keys>
+                </addresses>
+                <user>{GSMA_GSMADB_USER}</user>
+                <password>{GSMA_GSMADB_PASSWORD}</password>
+                <!-- It is not required if you declare EXTERNAL_SFTP_USER and EXTERNAL_SFTP_PASSWORD
+                     GSMADB can be authenticated by user and password or by public, private keys pair
+                <private-rsa-key>{GSMA_PRIVATE_RSA_KEY}</private-rsa-key>
+                <private-rsa-key-passphrase>{GSMA_PRIVATE_RSA_KEY_PASSPHRASE}</private-rsa-key-passphrase>
+                --->
+                <operator-country-code>{GSMA_OPERATOR_COUNTRY_CODE}</operator-country-code>
+                <operator-network-code>{GSMA_OPERATOR_NETWORK_CODE}</operator-network-code>
+                <operator-abbreviation>{GSMA_OPERATOR_ABBREVIATION}</operator-abbreviation>
+                <organization-id>{GSMA_ORGANIZATION_ID}</organization-id>
+                <upload-sleep-time>{GSMA_UPLOAD_SLEEP_TIME}</upload-sleep-time>
+                <upload-filename-prefix>{GSMA_UPLOAD_FILENAME_PREFIX}</upload-filename-prefix>
+                <upload-process-mode>{GSMA_UPLOAD_PROCESS_MODE}</upload-process-mode>
+                <download-process-mode>{GSMA_DOWNLOAD_PROCESS_MODE}</download-process-mode>
+                <download-sleep-time>{GSMA_DOWNLOAD_SLEEP_TIME}</download-sleep-time>
+                <download-record-format>{GSMA_DOWNLOAD_RECORD_FORMAT}</download-record-format>
+            </gsma>
+            <external-sftp>
+                <automatic-data-export>{EXTERNAL_SFTP_AUTOMATIC_DATA_EXPORT}</automatic-data-export>
+                <addresses>
+                    <id>{EXTERNAL_SFTP_ID}</id>
+                    <fqdn>{EXTERNAL_SFTP_FQDN}</fqdn>
+                    <port>{EXTERNAL_SFTP_PORT}</port>
+                    <host-public-keys>{EXTERNAL_SFTP_HOST_PUBLIC_KEYS}</host-public-keys>
+                </addresses>
+                <user>{EXTERNAL_SFTP_USER}</user>
+                <password>{EXTERNAL_SFTP_PASSWORD}</password>
+                <!-- It is not required if you declare EXTERNAL_SFTP_USER and EXTERNAL_SFTP_PASSWORD
+                     External SFTP server can be authenticated by user and password or by public, private keys pair
+                <private-rsa-key>{EXTERNAL_SFTP_PRIVATE_RSA_KEY}</private-rsa-key>
+                <private-rsa-key-passphrase>{EXTERNAL_SFTP_PRIVATE_RSA_KEY_PASSPHRASE}</private-rsa-key-passphrase>
+                --->
+                <remote-path>{EXTERNAL_SFTP_REMOTE_PATH}</remote-path>
+            </external-sftp>
+            <provisioning-system>
+                <endpoints>
+                    <id>{PROVISIONING_SYSTEM_ID}</id>
+                    <fqdn>{PROVISIONING_SYSTEM_FQDN}</fqdn>
+                    <port>{PROVISIONING_SYSTEM_PORT}</port>
+                    <user>{PROVISIONING_SYSTEM_USER}</user>
+                    <password>{PROVISIONING_SYSTEM_PASSWORD}</password>
+                </endpoints>
+                <tls>{PROVISIONING_SYSTEM_TLS}</tls>
+            </provisioning-system>
+        </gsma-db-synchronization>
+      </eir>
+    </config>
+  </edit-config>
+  </rpc>
+  <close-session/>

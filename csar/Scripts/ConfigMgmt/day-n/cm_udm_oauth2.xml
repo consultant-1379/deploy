@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>]]>]]>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+        <nf-profile>
+          <service>
+            <instance-id>{SERVICE_INSTANCE_ID}</instance-id>
+            <scheme>{SERVICE_SCHEME}</scheme>
+            <requested-status>{SERVICE_REQUESTED_STATUS}</requested-status>
+            <name>{SERVICE_NAME}</name>
+            <!-- Oauth2 feature status for producer in service. true or false. Not set: if the NF consumer sends the OAuth2 Token this is used for authorization, if doesn't, then it won't be required.-->
+            <oauth2-required>{OAUTH2_PRODUCER_SERVICE_ENABLED}</oauth2-required>
+            <!-- List of plmn definition for Oauth2 producer in service. Repeat per specifical plmn-->
+            <oauth2-per-plmn>
+              <mcc>{SERVICE_PLMN_ID_MCC}</mcc>
+              <mnc>{SERVICE_PLMN_ID_MCC}</mnc>
+              <!-- Oauth2 feature status for plmn. True or false -->
+              <oauth2-required>{OAUTH2_PRODUCER_PLMN_SERVICE_ENABLED}</oauth2-required>
+            </oauth2-per-plmn>
+          </service>
+        </nf-profile>
+        <sbi-oauth2>
+          <producer>
+            <allowed-token-issuer>{NRF_ISSUER_ID}</allowed-token-issuer>
+            <!-- List of registered keys. Repeat per specifical key-->
+            <registered-key>
+              <key-id>{KEY_ID}</key-id>
+              <public-key>{PUBLIC_KEY}</public-key>
+            </registered-key>
+            <!-- List of services with specifical oauth2 producer configuration. Repeat per specifical service config-->
+            <service>
+              <service-name>{SERVICE_NAME}</service-name>
+              <!-- List of allowed-operations per instance id. Repeat per specific instance id-->
+              <allowed-operations>
+                <!-- NF instance id or all if it is not filtered by id-->
+                <instance-id>{NF_INSTANCE_ID}</instance-id>
+                <!-- List of access rights. Repeat per access right-->
+                <access-right>
+                  <resource-or-operation-name>{RESOURCE_OR_OPERATION_NAME}</resource-or-operation-name>
+                  <!-- Actions allowed are read, write, modify and delete -->
+                  <actions-allowed>{ACTION}</actions-allowed>
+                </access-right>
+              </allowed-operations>
+            </service>
+          </producer>
+          <consumer>
+            <!-- Oauth2 feature status for consumer. enabled, disabled or auto -->
+            <general-authorization-enforcement>{OAUTH2_CONSUMER_ENABLED}</general-authorization-enforcement>
+            <!-- List of visited-plmn. Repeat per specifical visited plmn-->
+            <visited-plmn>
+              <mcc>{VISITED_PLMN_ID_MCC}</mcc>
+              <mnc>{VISITED_PLMN_ID_MNC}</mnc>
+              <!-- Oauth2 status for visited-plmn. enabled, disabled or auto -->
+              <authorization-enforcement>{OAUTH2_CONSUMER_VISITED_PLMN_ENABLED}</authorization-enforcement>
+            </visited-plmn>
+          </consumer>
+        </sbi-oauth2>
+      </udm>
+    </config>
+  </edit-config>
+</rpc>
+<close-session/>

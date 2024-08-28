@@ -1,0 +1,226 @@
+{
+  "dashboards": [
+    {
+      "_id": "udm",
+      "title": "UDM",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "ySize": 2,
+          "widget": "udm_kpi_1"
+        },
+        {
+          "xSize": 4,
+          "widget": "udm_tps_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "udm_tps_per_service_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "udm_fr_per_service_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "udm_fr_notification_consumer_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "udm_nudr_dr_timeline"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "udm_kpi_1",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+          { "source": "eric_udm_tps", "heading": "UDM as provider TPS" },
+          { "source": "eric_udm_nudm_ueau_tps", "heading": "UDM TPS per Service" },
+          { "source": "eric_udm_nudm_uecm_tps" },
+          { "source": "eric_udm_nudm_sdm_tps" },
+          { "source": "eric_udm_nudm_ee_tps" },
+          { "source": "eric_udm_nudm_mt_tps" },
+          { "source": "eric_udm_nudm_mtsms_tps" },
+          { "source": "eric_udm_umts_ueau_tps" },
+          { "source": "eric_udm_nudm_ueau", "heading": "UDM FR per Service" },
+          { "source": "eric_udm_nudm_uecm" },
+          { "source": "eric_udm_nudm_sdm" },
+          { "source": "eric_udm_nudm_ee" },
+          { "source": "eric_udm_nudm_mt" },
+          { "source": "eric_udm_nudm_mtsms" },
+          { "source": "eric_udm_umts_ueau" },
+          { "source": "eric_udm_namf_evts", "heading": "UDM as notification consumer FR" },
+          { "source": "eric_udm_udr_notify" },
+          { "source": "eric_udm_nudr_dr", "heading": "UDM as UDR consumer FR" }
+      ]
+    },
+    {
+      "_id": "udm_nudr_dr_timeline",
+      "widgetType": "timeline",
+      "title": "UDM as UDR consumer FR",
+      "sources": [
+          { "source": "eric_udm_nudr_dr", "heading": "UDM UDR FR" }
+      ]
+    },
+    {
+      "_id": "udm_tps_timeline",
+      "widgetType": "timeline",
+      "title": "UDM as provider TPS",
+      "sources": [
+          { "source": "eric_udm_tps", "heading": "UDM TPS" }
+      ]
+    },
+    {
+      "_id": "udm_tps_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "UDM TPS per Service",
+      "sources": [
+          { "source": "eric_udm_nudm_ueau_tps" },
+          { "source": "eric_udm_nudm_uecm_tps" },
+          { "source": "eric_udm_nudm_sdm_tps" },
+          { "source": "eric_udm_nudm_ee_tps" },
+          { "source": "eric_udm_nudm_mt_tps" },
+          { "source": "eric_udm_nudm_mtsms_tps" },
+          { "source": "eric_udm_umts_ueau_tps" }
+      ]
+    },
+    {
+      "_id": "udm_fr_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "UDM FR per Service",
+      "sources": [
+          { "source": "eric_udm_nudm_ueau" },
+          { "source": "eric_udm_nudm_uecm" },
+          { "source": "eric_udm_nudm_sdm" },
+          { "source": "eric_udm_nudm_ee" },
+          { "source": "eric_udm_nudm_mt" },
+          { "source": "eric_udm_nudm_mtsms" },
+          { "source": "eric_udm_umts_ueau" }
+      ]
+    },
+    {
+      "_id": "udm_fr_notification_consumer_timeline",
+      "widgetType": "timeline",
+      "title": "UDM as Notification consumer FR",
+      "sources": [
+          { "source": "eric_udm_namf_evts" },
+      { "source": "eric_udm_udr_notify" }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "_id": "eric_udm_nudm_ueau_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_ueau_tps:rate1m",
+      "label": "UDM AUTH TPS"
+    },
+    {
+      "_id": "eric_udm_nudm_uecm_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_uecm_tps:rate1m",
+      "label": "UDM UECM TPS"
+    },
+    {
+      "_id": "eric_udm_nudm_sdm_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_sdm_tps:rate1m",
+      "label": "UDM SDM TPS"
+    },
+    {
+      "_id": "eric_udm_nudm_ee_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_ee_tps:rate1m",
+      "label": "UDM EE TPS"
+    },
+    {
+      "_id": "eric_udm_nudm_mt_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_mt_tps:rate1m",
+      "label": "UDM MT TPS"
+    },
+    {
+      "_id": "eric_udm_nudm_mtsms_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_map_mtsms_tps:rate1m",
+      "label": "UDM MTSMS TPS"
+    },
+    {
+      "_id": "eric_udm_umts_ueau_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_map_umts_ueau_tps:rate1m",
+      "label": "UDM UMTS TPS"
+    },
+     {
+      "_id": "eric_udm_nudm_ueau",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_ueau_failure_ratio:rate1m",
+      "label": "UDM AUTH FR"
+    },
+    {
+      "_id": "eric_udm_nudm_uecm",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_uecm_failure_ratio:rate1m",
+      "label": "UDM UECM FR"
+    },
+    {
+      "_id": "eric_udm_nudm_sdm",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_sdm_failure_ratio:rate1m",
+      "label": "UDM SDM FR"
+    },
+    {
+      "_id": "eric_udm_nudm_ee",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_ee_failure_ratio:rate1m",
+      "label": "UDM EE FR"
+    },
+    {
+      "_id": "eric_udm_namf_evts",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_udm_namf_evts_unsuccessful_responses_sent[1m]))/sum(delta(eric_udm_namf_evts_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "UDM EVTS FR"
+    },
+    {
+      "_id": "eric_udm_nudm_mt",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_nudm_mt_failure_ratio:rate1m",
+      "label": "UDM MT FR"
+    },
+    {
+      "_id": "eric_udm_nudm_mtsms",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_map_mtsms_failure_ratio:rate1m",
+      "label": "UDM MTSMS FR"
+    },
+    {
+      "_id": "eric_udm_udr_notify",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_udm_udr_notify_unsuccessful_responses_sent[1m]))/sum(delta(eric_udm_udr_notify_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "UDM UDRNotif FR"
+    },
+    {
+      "_id": "eric_udm_umts_ueau",
+      "sourceType": "prometheus",
+      "query": "sum:eric_udm_map_umts_ueau_failure_ratio:rate1m",
+      "label": "UDM UMTS FR"
+    },
+    {
+      "_id": "eric_udm_nudr_dr",
+      "sourceType": "prometheus",
+      "query": "sum(delta(eric_udm_nudr_dr_unsuccessful_responses_recv[1m])) / sum(delta(eric_udm_nudr_dr_requests_sent[1m])> 0 ) * 100 or vector(0)",
+      "label": "UDM UDR as consumer FR"
+    },
+    {
+      "_id": "eric_udm_tps",
+      "sourceType": "prometheus",
+      "query": "(sum:eric_udm_nudm_ueau_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_uecm_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_sdm_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_mt_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_ee_tps:rate1m or vector(0)) + (sum:eric_udm_map_umts_ueau_tps:rate1m or vector(0)) + (sum:eric_udm_map_mtsms_tps:rate1m or vector(0))",
+      "label": "UDM TPS"
+    }
+  ]
+}

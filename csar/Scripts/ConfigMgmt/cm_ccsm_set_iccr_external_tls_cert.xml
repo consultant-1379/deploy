@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:writable-running:1.0</capability>
+    <capability>urn:ietf:params:netconf:capability:rollback-on-error:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc message-id="1"
+    xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <action
+      xmlns="urn:ietf:params:xml:ns:yang:1">
+      <keystore xmlns="urn:ietf:params:xml:ns:yang:ietf-keystore">
+        <asymmetric-keys>
+          <install-asymmetric-key-pkcs12 xmlns="urn:rdns:com:ericsson:oammodel:ericsson-keystore-ext">
+            <name>iccr-external-tls-key</name>
+            <certificate-name>iccr-external-tls-certificate</certificate-name>
+            <p12-password>{ICCR_PKCS12_PWD}</p12-password>
+            <p12>{ICCR_PKCS12}</p12>
+          </install-asymmetric-key-pkcs12>
+        </asymmetric-keys>
+      </keystore>
+    </action>
+  </rpc>
+  <close-session/>

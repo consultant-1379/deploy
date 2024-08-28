@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <!--
+        Configuration for the UDR as remote Network Function using FQDN common for all UDR isntance services
+        and port per service offered by this instance.
+        This will compose a Nudr servic URI like that {REMOTE_NUDR_SCHEME}://{REMOTE_UDR_FQDN}:{REMOTE_NUDR_PORT}/nudr-dr/v2
+        This will compose a Ngud servic URI like that {REMOTE_NGUD_SCHEME}://{REMOTE_UDR_FQDN}:{REMOTE_NGUD_PORT}/ncudr-gud-dr/v1
+      -->
+      <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+        <!--
+          Contains configuration parameters for remote-nf-profile.
+        -->
+        <remote-nf-profile>
+          <!-- List of remote-nf-profile. Repeat per UDR instance in the network-->
+          <remote-nf-profile>
+            <instance-id>{REMOTE_UDR_INSTANCEID}</instance-id>
+            <type>udr</type>
+            <!-- FQDN of the UDR Network Functioninstance for all services unless FQDN is defined as service level -->
+            <fqdn>{REMOTE_UDR_FQDN}</fqdn>
+            <priority>{REMOTE_UDR_PRIORITY}</priority>
+            <!-- locality should match consumer defined locality in own NF-Profile. -->
+            <locality>{REMOTE_UDR_LOCALITY}</locality>
+            <remote-nf-service>
+            <!-- Include Nudr service used by UDM if supported by remote UDR instance. -->
+               <instance-id>{REMOTE_NUDR_INSTANCEID}</instance-id>
+               <name>nudr-dr</name>
+                <ip-endpoint>
+                    <id>{REMOTE_NUDR_ID}</id>
+                    <transport>tcp</transport>
+                    <port>{REMOTE_NUDR_PORT}</port>
+                </ip-endpoint>
+                <version>
+                    <api-version-in-uri>v2</api-version-in-uri>
+                    <expiry>{REMOTE_NUDR_VERSION_EXPIRATION}</expiry>
+                </version>
+                <scheme>{REMOTE_NUDR_SCHEME}</scheme>
+            </remote-nf-service>
+            <!-- Include Ngud service used by HSS and EIR if supported by remote UDR instance. -->
+            <remote-nf-service>
+               <instance-id>{REMOTE_NGUD_INSTANCEID}</instance-id>
+               <name>ncudr-gud-dr</name>
+                <ip-endpoint>
+                    <id>{REMOTE_NGUD_ID}</id>
+                    <transport>tcp</transport>
+                    <port>{REMOTE_NGUD_PORT}</port>
+                </ip-endpoint>
+                <version>
+                  <api-version-in-uri>v1</api-version-in-uri>
+                </version>
+                <scheme>{REMOTE_NGUD_SCHEME}</scheme>
+            </remote-nf-service>
+          </remote-nf-profile>
+        </remote-nf-profile>
+      </ccsm-common>
+    </config>
+  </edit-config>
+  </rpc>
+  <close-session/>

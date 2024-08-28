@@ -1,0 +1,15 @@
+{{ if eq .Values.psp.enabled "on" }}
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ template "eric-ccsm.sa-def.role-binding.name" . }}
+roleRef:
+  kind: Role
+  name: {{ template "eric-ccsm.sa-psp.role.name" . }}
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: {{ .Release.Namespace }}
+{{end}}

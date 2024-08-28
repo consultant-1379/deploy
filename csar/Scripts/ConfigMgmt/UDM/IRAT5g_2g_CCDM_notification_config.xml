@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--version: 1.0.0 -->
+<!--
+####################################################################################
+# Doc Name:     SOAP Configuration for PSLOC attribute Set to KNOWN(0) notification
+# Number:       XX/XXX XX-AVA XXX XX/X
+# Prepared:     Barbara Martinez Garcia
+# Checked;
+# Approved:
+# Revision:     A
+# Date:         2021-12-29
+# Description:  This file contains a configuration example for PSLOC attribute Set to KNOWN(0) notification
+#
+# Rev: A        Add an example template for PSLOC attribute Set to KNOWN(0) notification
+#
+####################################################################################-->
+
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+	     <capability>urn:ietf:params:netconf:base:1.0</capability>
+    </capabilities>
+</hello>
+]]>]]>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:ns2="urn:ietf:params:xml:ns:netconf:notification:1.0" message-id="7">
+  <edit-config>
+
+    <target>
+      <running/>
+    </target>
+
+    <default-operation>merge</default-operation>
+    <test-option>test-then-set</test-option>
+    <error-option>stop-on-error</error-option>
+    <config>
+
+      <udr xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udr">
+<!--
+Title: SOAP Configuration for PSLOC attribute Set to KNOWN(0) notification
+Authors:   Barbara Martinez Garcia
+-->
+<soap-notifications>
+  <end-point-group>
+    <name>UDM_SERVERS</name>
+    <end-point>
+      <name>RRB1</name>
+<!--
+Comment: IP address below is only an example.
+ It shall be manually configured with a real IP address by operator.
+-->
+      <uri>http://UDM_TRAFFIC_VIP:82/UdmUdrWs/services/NotificationServices</uri>
+      <weight>1</weight>
+    </end-point>
+  </end-point-group>
+  <event-type>
+    <id>PS Location Update</id>
+    <enabled>true</enabled>
+    <ep-group>UDM_SERVERS</ep-group>
+<!--
+Comment: Event name shall not be changed, otherwise it will impact on EDA.
+-->
+    <name>PS Location Update</name>
+    <target-entry>
+      <id>1</id>
+      <entry-dn>serv=csps</entry-dn>
+      <target-attribute>
+        <id>1</id>
+        <attribute-name>PSLOC</attribute-name>
+        <attribute-type>monitor-all</attribute-type>
+      </target-attribute>
+      <target-attribute>
+        <id>2</id>
+        <check-value>0</check-value>
+        <attribute-name>PSLOC</attribute-name>
+        <attribute-type>check</attribute-type>
+      </target-attribute>
+      <target-attribute>
+        <id>3</id>
+        <attribute-name>IMSI</attribute-name>
+        <attribute-type>related</attribute-type>
+      </target-attribute>
+    </target-entry>
+  </event-type>
+</soap-notifications>
+      </udr>
+    </config>
+  </edit-config>
+</rpc>
+

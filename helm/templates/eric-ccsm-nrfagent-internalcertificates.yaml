@@ -1,0 +1,57 @@
+{{- if index .Values "global" "nrfagent" "enabled" }}
+
+{{- $intcert_v1       := .Capabilities.APIVersions.Has "siptls.sec.ericsson.com/v1/InternalCertificate" }}
+{{- $intcert_v1alpha1 := .Capabilities.APIVersions.Has "siptls.sec.ericsson.com/v1alpha1/InternalCertificate"}}
+{{- $gwName := "eric-ccsm-nrfagent-gateway" }}
+{{- $labels := include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- $annotations := include "eric-ccsm.helm-annotations" . | indent 2 }}
+
+{{- if or $intcert_v1 $intcert_v1alpha1 }}
+
+{{- range $key, $val := .Values.istio.ingress.nrfAgentInternalGateway.ports }}
+{{- if $val.settings }}
+{{- if $intcert_v1 }}
+apiVersion: siptls.sec.ericsson.com/v1
+{{- else }}
+apiVersion: siptls.sec.ericsson.com/v1alpha1
+{{- end }}
+kind: InternalCertificate
+metadata:
+  name: {{ $gwName }}
+{{ $labels }}
+{{ $annotations }}
+spec:
+  certificate:
+    extendedKeyUsage:
+      tlsClientAuth: false
+      tlsServerAuth: true
+    subject:
+      cn: eric-ingressgw-nrfagent-internal-traffic
+    subjectAlternativeName:
+      dns:
+      - eric-ingressgw-nrfagent-internal-traffic
+  kubernetes:
+    generatedSecretName: {{ $val.settings.secretName | default "eric-ccsm-nrfagent-server-certs" }}
+    secretType: tls
+---
+{{- if $intcert_v1 }}
+apiVersion: siptls.sec.ericsson.com/v1
+{{- else }}
+apiVersion: siptls.sec.ericsson.com/v1alpha1
+{{- end }}
+kind: InternalUserCA
+metadata:
+  name: {{ $gwName }}-client-ca
+{{ $labels }}
+{{ $annotations }}
+spec:
+  certificate:
+    subject:
+      cn: {{ $gwName }}-ICCA
+  kubernetes:
+    certificateName: ca.crt
+    generatedSecretName: {{ $val.settings.secretName | default "eric-ccsm-nrfagent-server-certs" }}-cacert
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

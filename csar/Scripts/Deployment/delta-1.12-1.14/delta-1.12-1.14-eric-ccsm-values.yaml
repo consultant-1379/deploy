@@ -1,0 +1,342 @@
+global:
+  profiles:
+    # Enables the UCC Profile
+    ucc-system:
+      enabled: {{false|true}}
+
+  # Determines if enable the Sencondary Network Provider (SENP)
+  # Enable set it "true" / Disable set it "false"
+  secondaryNetwork:
+    enabled: {{true|false}}
+
+eric-tm-senp-nvip:
+  config:
+    # Namespace of the SENP Infra installation on the cluster
+    nsmNamespace: {{senp-infra}}
+
+eric-stm-diameter:
+  secondaryNetwork:
+    sctp:
+      enabled: {{true|false}}
+  service:
+    annotations:
+      cloudProviderLBDiameterOverSCTP: {}
+      cloudProviderLBDiameterOverTCP: {}
+
+eric-ccsm-mapproxy:
+  global:
+    # This global configuration applies to all eric-ccsm-mapproxy instances
+    map:
+      secondaryNetwork:
+        enabled: {{true|false}}
+  # Overwrite the Mapproxy Helm values here
+  eric-ccsm-mapproxy-1:
+    configuration:
+      secondaryNetwork:
+        # SCTP Endpoints IP addresses
+        eric-ccsm-mapproxy-1-vip-a: {{ 10.10.10.10 }}
+        eric-ccsm-mapproxy-1-vip-b: {{ 10.10.10.20 }}
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+  eric-ccsm-mapproxy-2:
+    configuration:
+      secondaryNetwork:
+        # SCTP Endpoints IP addresses
+        eric-ccsm-mapproxy-2-vip-a: {{ 10.10.20.10 }}
+        eric-ccsm-mapproxy-2-vip-b: {{ 10.10.20.20 }}
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-ccsm-mapproxy-3:
+    configuration:
+      secondaryNetwork:
+        # SCTP Endpoints IP addresses
+        eric-ccsm-mapproxy-3-vip-a: {{ 10.10.30.10 }}
+        eric-ccsm-mapproxy-3-vip-b: {{ 10.10.30.20 }}
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-ccsm-mapproxy-4:
+    configuration:
+      secondaryNetwork:
+        # SCTP Endpoints IP addresses
+        eric-ccsm-mapproxy-4-vip-a: {{ 10.10.40.10 }}
+        eric-ccsm-mapproxy-4-vip-b: {{ 10.10.40.20 }}
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+# Overwrite the ADP Generic Services Helm values here
+eric-ccsm-adp:
+  eric-log-shipper:
+    tolerations:
+      logshipper: []
+      #  - key: node-role.kubernetes.io/control-plane
+      #    effect: NoSchedule
+      #    operator: Exists
+  eric-log-transformer:
+    egress:
+      lumberjack:
+        enabled: false
+        remoteHosts: []
+  eric-si-application-sys-info-handler:
+    applicationInfoService:
+      port: {{9099}}
+    egress:
+      applicationInfoSvr:
+        dscp: {{0}}
+  eric-pm-server:
+    config:
+      certm_tls: []
+#        - name: remotewrite1
+#          trustedCertName: remotewrite1-ca
+#          clientKeyName: remotewrite1-client-key
+#          clientCertName: remotewrite1-client-certificate
+#        - name: remotewrite2
+#          trustedCertName: remotewrite2-ca
+#          clientKeyName: remotewrite2-client-key
+#          clientCertName: remotewrite2-client-certificate
+    externalRemoteWrite: []
+#      - url: 'https://127.0.0.1:38443/metrics'
+#        tls_config:
+#          ca_file: /run/secrets/eric-pm-server-remotewrite1-trusted-cert-consumer-secret/cert1.pem
+#          cert_file: /run/secrets/eric-pm-server-remotewrite1-asymmetric-key-cert-consumer-secret/tls.crt
+#          key_file: /run/secrets/eric-pm-server-remotewrite1-asymmetric-key-cert-consumer-secret/tls.key
+#        queue_config:
+#          capacity: 2500
+#          max_shards: 200
+#          min_shards: 1
+#          max_samples_per_send: 500
+#          batch_send_deadline: 5s
+#          min_backoff: 30ms
+#          max_backoff: 100ms
+#        write_relabel_configs:
+#          - source_labels: [job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+#          - source_labels: [ddc_job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+#          - source_labels: [scrape_job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+#      - url: 'https://127.0.0.1:38444/metrics'
+#        tls_config:
+#          ca_file: /run/secrets/eric-pm-server-remotewrite2-trusted-cert-consumer-secret/cert1.pem
+#          cert_file: /run/secrets/eric-pm-server-remotewrite2-asymmetric-key-cert-consumer-secret/tls.crt
+#          key_file: /run/secrets/eric-pm-server-remotewrite2-asymmetric-key-cert-consumer-secret/tls.key
+#        queue_config:
+#          capacity: 2500
+#          max_shards: 200
+#          min_shards: 1
+#          max_samples_per_send: 500
+#          batch_send_deadline: 5s
+#          min_backoff: 30ms
+#          max_backoff: 100ms
+#        write_relabel_configs:
+#          - source_labels: [job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+#          - source_labels: [ddc_job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+#          - source_labels: [scrape_job]
+#            regex: 'kubernetes-.*'
+#            action: drop
+    server:
+        ##`server.extraArgs.storage.tsdb.retention.size` will be removed in the near future.
+        ## Note: if both server.tsdb.retention  and server.extraArgs.storage.tsdb.retention are set
+        ## then server.tsdb.retention will be preferred.
+      tsdb:
+        retention:
+          size: 75GB
+      persistentVolumeClaim:
+        size: 80Gi
+        storageClassName: {{pvc_storageClassName}}
+  eric-data-object-storage-mn:
+    persistence:
+      persistentVolumeClaim:
+        storageClassName: {{pvc_storageClassName}}
+
+  eric-cm-yang-provider:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-fh-snmp-alarm-provider:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-pm-bulk-reporter:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-tm-ingress-controller-cr:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+eric-ccsm-nrfagent:
+  global:
+    nrfagent:
+      preferredNFType: {{"UDM"|"AUSF"|"5G_EIR"|"HSS"}}
+
+eric-ccsm-senpco:
+  # DAY0 Parameters
+  configuration:
+    common:
+      eric-ccsm-trench:
+        ip_family: {{"ipv4"|"ipv6"}}
+
+      # Attractor A
+      eric-ccsm-attr-a:
+        replicas: 2
+        networkAttachment:
+          attach_name: {{ whereabouts-multus-sig1 }}
+          namespace: {{ default }}
+        # more gateways can be added for each attractor in the array
+        # any additional gateway added must to be included below
+        # in the gateways section of the configuration with its
+        # day0 parameters.
+        gateways: [eric-ccsm-gw-1, eric-ccsm-gw-3]
+
+      # Attractor B
+      eric-ccsm-attr-b:
+        replicas: 2
+        networkAttachment:
+          attach_name: {{ whereabouts-multus-sig2 }}
+          namespace: {{ default }}
+        # more gateways can be added for each attractor in the array
+        # any additional gateway added must to be included below
+        # in the gateways section of the configuration with its
+        # day0 parameters.
+        gateways: [eric-ccsm-gw-2, eric-ccsm-gw-4]
+
+      #gateways definition
+      gateways:
+        eric-ccsm-gw-1:
+            address: {{ 10.143.248.98 }}
+            localAsn: {{ "8171" }}
+            remoteAsn: {{ "4248830031" }}
+            holdTime: {{ 3s }}
+        eric-ccsm-gw-2:
+            address: {{ 10.143.248.99 }}
+            localAsn: {{ "8172" }}
+            remoteAsn: {{ "4248830032" }}
+            holdTime: {{ 3s }}
+        eric-ccsm-gw-3:
+            address: {{ 10.143.249.98 }}
+            localAsn: {{ "8173" }}
+            remoteAsn: {{ "4248830033" }}
+            holdTime: {{ 3s }}
+        eric-ccsm-gw-4:
+            address: {{ 10.143.249.99 }}
+            localAsn: {{ "8174" }}
+            remoteAsn: {{ "4248830034" }}
+            holdTime: {{ 3s }}
+
+    diameter:
+      enabled: {{true|false}}
+      # VIPs for SENP CO
+      eric-ccsm-dia-vip-a: {{ 10.15.10.10/32 }}
+      eric-ccsm-dia-vip-b: {{ 10.15.10.20/32 }}
+
+    mapproxy:
+      enabled: {{true|false}}
+      # VIPs for SENP CO
+      eric-ccsm-mapproxy-1-vip-a: {{ 10.10.10.10/32 }}
+      eric-ccsm-mapproxy-1-vip-b: {{ 10.10.10.20/32 }}
+      eric-ccsm-mapproxy-2-vip-a: {{ 10.10.20.10/32 }}
+      eric-ccsm-mapproxy-2-vip-b: {{ 10.10.20.20/32 }}
+      eric-ccsm-mapproxy-3-vip-a: {{ 10.10.30.10/32 }}
+      eric-ccsm-mapproxy-3-vip-b: {{ 10.10.30.20/32 }}
+      eric-ccsm-mapproxy-4-vip-a: {{ 10.10.40.10/32 }}
+      eric-ccsm-mapproxy-4-vip-b: {{ 10.10.40.20/32 }}
+
+eric-ccsm-hssepc:
+  eric-hssepc-slhdiameter:
+    tolerations: []
+    #  - key: node-role.kubernetes.io/control-plane
+    #    effect: NoSchedule
+    #    operator: Exists
+  eric-hssepc-slhlcsroutinginfo:
+    minReplicas: 2
+    maxReplicas: 20
+
+eric-ccsm-hssims:
+  eric-hssims-cxprovnotifpwdencr:
+    autoscaling:
+      minReplicas: 2
+      maxReplicas: 20
+  eric-hssims-cxupdatepwd:
+    autoscaling:
+      minReplicas: 2
+      maxReplicas: 20
+  eric-hssims-zhdiameter:
+    autoscaling:
+      minReplicas: 2
+      maxReplicas: 20
+    tolerations: []
+    #  - key: node-role.kubernetes.io/control-plane
+    #    effect: NoSchedule
+    #    operator: Exists
+  eric-hssims-zhmar:
+    autoscaling:
+      minReplicas: 2
+      maxReplicas: 20
+
+eric-ccsm-datainjector:
+  udmHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNudmUecm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmSdm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmMt: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmUeau: {{"off"|"on"}}
+  udrHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNudrDr: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNcudrGudDr: {{"off"|"on"}}
+  hssHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNhssUecm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNhssepcMt: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNhssepcUecm: {{"off"|"on"}}
+  scpHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNudmUecm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmSdm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmEe: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfMtLoc: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfEvts: {{"off"|"on"}}
+  seppHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNudmUecm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNudmSdm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfMtLoc: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfEvts: {{"off"|"on"}}
+  nfHandling:
+    failover:
+      errorHttpServiceUnavailableAsFailNudmUecm: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfLcs: {{"off"|"on"}}
+      errorHttpServiceUnavailableAsFailNamfEvts: {{"off"|"on"}}

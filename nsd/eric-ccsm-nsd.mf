@@ -1,0 +1,6 @@
+metadata:
+    nsd_designer: Ericsson
+    nsd_invariant_id: CCSM
+    nsd_name: CCSM_NSD
+    nsd_file_structure_version: NSD_PRODUCT_NUMBER_SOFTWARE_VERSION
+    nsd_release_date_time: 2020-01-01T10:00:00+03:00

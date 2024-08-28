@@ -1,0 +1,194 @@
+dependencies:
+- alias: small-system
+  condition: global.profiles.small-system.enabled
+  import-values:
+  - small-system
+  name: eric-ccsm-values-small-system
+  repository: file://subcharts/eric-ccsm-values-small-system
+  version: 1.7.0-0
+- alias: cleartext
+  condition: global.profiles.cleartext.enabled
+  import-values:
+  - cleartext
+  name: eric-ccsm-values-cleartext
+  repository: file://subcharts/eric-ccsm-values-cleartext
+  version: 1.7.0-0
+- alias: std-system
+  condition: global.profiles.std-system.enabled
+  import-values:
+  - std-system
+  name: eric-ccsm-values-std-system
+  repository: file://subcharts/eric-ccsm-values-std-system
+  version: 1.7.0-0
+- alias: ucc-system
+  condition: global.profiles.ucc-system.enabled
+  import-values:
+  - ucc-system
+  name: eric-ccsm-values-ucc-system
+  repository: file://subcharts/eric-ccsm-values-ucc-system
+  version: 1.7.0-0
+- alias: ipv4
+  condition: global.profiles.ipv4.enabled
+  import-values:
+  - ipv4
+  name: eric-ccsm-values-ipv4
+  repository: file://subcharts/eric-ccsm-values-ipv4
+  version: 1.7.0-0
+- alias: ipv6
+  condition: global.profiles.ipv6.enabled
+  import-values:
+  - ipv6
+  name: eric-ccsm-values-ipv6
+  repository: file://subcharts/eric-ccsm-values-ipv6
+  version: 1.7.0-0
+- alias: eric-ccsm-senpco
+  condition: global.secondaryNetwork.enabled
+  name: eric-ccsm-senpco
+  import-values:
+  - senpco_conduits
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  version: 1.12.0+1
+- alias: eric-ccsm-adp
+  condition: eric-ccsm-adp.enabled
+  name: eric-adp-5g-udm
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-adp
+  version: 1.104.3+1
+- alias: eric-ccsm-nrfagent
+  condition: global.nrfagent.enabled
+  name: eric-nrfagent
+  repository: https://arm.epk.ericsson.se/artifactory/proj-nrf-client-helm
+  version: 1.18.1+1
+- alias: eric-ccsm-ausf
+  condition: eric-ccsm-ausf.enabled
+  name: eric-ccsm-ausf
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-ausf
+  version: 1.71.0+1
+- alias: eric-ccsm-udm
+  condition: eric-ccsm-udm.enabled
+  name: eric-ccsm-udm
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-udm
+  version: 1.110.0+1
+- alias: eric-ccsm-eir
+  condition: eric-ccsm-eir.enabled
+  name: eric-ccsm-eir
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-eir
+  version: 1.115.0+1
+- alias: eric-ccsm-hssepc
+  condition: eric-ccsm-hssepc.enabled
+  name: eric-ccsm-hssepc
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-hssepc
+  version: 1.119.0+2
+- alias: eric-ccsm-hssims
+  condition: eric-ccsm-hssims.enabled
+  name: eric-ccsm-hssims
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-release-helm
+  tags:
+  - eric-ccsm-hssims
+  version: 1.133.0+1
+- condition: eric-ccsm-keymanager.enabled
+  name: eric-ccsm-keymanager
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-keymanager
+  version: 1.198.0+1
+- condition: eric-ccsm-cmagent.enabled
+  name: eric-ccsm-cmagent
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-cmagent
+  version: 1.181.0+1
+- condition: eric-ccsm-sracmagent.enabled
+  name: eric-ccsm-sracmagent
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-sracmagent
+  version: 1.68.0+1
+- condition: eric-ccsm-autonrf.enabled
+  name: eric-ccsm-autonrf
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-autonrf
+  version: 1.199.0+1
+- condition: eric-ccsm-lmagent.enabled
+  name: eric-ccsm-lmagent
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-lmagent
+  version: 1.181.0+1
+- condition: eric-ccsm-topicwatcher.enabled
+  name: eric-ccsm-topicwatcher
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-topicwatcher
+  version: 1.123.0+1
+- condition: eric-ccsm-nrfgw.enabled
+  name: eric-ccsm-nrfgw
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  version: 1.202.0+1
+- condition: eric-ccsm-nfcontroller.enabled
+  name: eric-ccsm-nfcontroller
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-nfcontroller
+  version: 1.199.0+1
+- condition: eric-ccsm-smsengine.enabled
+  name: eric-ccsm-smsengine
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-smsengine
+  version: 1.130.0+1
+- alias: eric-ccsm-mapproxy
+  condition: eric-ccsm-mapproxy.enabled
+  name: eric-ccsm-mapproxy
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  version: 1.206.0-1
+- condition: eric-ccsm-datainjector.enabled
+  name: eric-ccsm-datainjector
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-datainjector
+  version: 1.216.0-1
+- alias: eric-slt-dsl
+  condition: eric-slt-dsl.enabled
+  name: eric-slt-dsl
+  repository: https://arm.rnd.ki.sw.ericsson.se/artifactory/proj-adp-gs-all-helm
+  version: 1.46.0+19
+- alias: eric-stm-diameter
+  condition: eric-stm-diameter.enabled
+  name: eric-stm-diameter
+  repository: https://arm.rnd.ki.sw.ericsson.se/artifactory/proj-adp-gs-all-helm
+  version: 1.48.0+24
+- condition: eric-ccsm-diacmagent.enabled
+  name: eric-ccsm-diacmagent
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-diacmagent
+  version: 1.82.0+1
+- condition: eric-ccsm-cmvalidator.enabled
+  name: eric-ccsm-cmvalidator
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-cmvalidator
+  version: 1.100.0+1
+- condition: eric-ccsm-cmreconciler.enabled
+  name: eric-ccsm-cmreconciler
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-cmreconciler
+  version: 1.96.0+1
+- condition: eric-ccsm-issu.enabled
+  name: eric-ccsm-issu
+  repository: https://arm.seli.gic.ericsson.se/artifactory/proj-5g-udm-staging-helm/
+  tags:
+  - eric-ccsm-issu
+  version: 1.72.0+1

@@ -1,0 +1,2879 @@
+rollback: true
+CCSM:
+- '1.2':
+  - software_version: 1.2.2-14
+    descriptor_id: 00f83f1e-9994-4b95-869f-2c14d88f7753
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.2.2-15
+    descriptor_id: f061a072-6aed-11eb-a485-2f754f1127d2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.2.2-16
+    descriptor_id: f061cd18-6aed-11eb-a4fb-db2e570fe520
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.2.2-17
+    descriptor_id: f061f324-6aed-11eb-927c-07d03340e5c8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.2.2-18
+    descriptor_id: f06216ba-6aed-11eb-9713-9f95f4612d8d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.2.2-19
+    descriptor_id: f06239ec-6aed-11eb-a06b-ebf2f76c5bc1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.3':
+  - software_version: 1.3.2-9
+    descriptor_id: 3a2c8f57-6c2c-4cf0-add4-b9621010d26d
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.3.2-12
+    descriptor_id: d9ecbe18-34bb-44fe-8b27-bcd9992f27e1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.3.2-13
+    descriptor_id: 58268e65-cc85-48bc-9c1d-8787ff6cda06
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.3.2-14
+    descriptor_id: f0628e1a-6aed-11eb-ba65-4bce056412f8
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.3.2-15
+    descriptor_id: f062baac-6aed-11eb-8018-fbb532bc502e
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.3.2-16
+    descriptor_id: f062e5a4-6aed-11eb-88f1-8714fde9a0fd
+    status: IN_USE
+    rollback_additional_params: {}
+- '1.4':
+  - software_version: 1.4.4-9
+    descriptor_id: 5060cc66-01ed-4bfd-aeeb-df79e3e51f64
+    status: IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+  - software_version: 1.4.4-10
+    descriptor_id: 4e0b24c8-c907-4d66-b28b-acee9e802809
+    status: NOT_IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+  - software_version: 1.4.4-11
+    descriptor_id: e0c78320-0857-4ca1-b64b-9b3077896a84
+    status: NOT_IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+  - software_version: 1.4.4-12
+    descriptor_id: fa119fea-88eb-4b9c-98a7-23c972273a08
+    status: NOT_IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+  - software_version: 1.4.4-13
+    descriptor_id: 014c1610-0b12-4464-a9fb-f9c190f31f7b
+    status: NOT_IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+  - software_version: 1.4.4-14
+    descriptor_id: ff2a8374-2dcc-4e89-afb8-adf9a3c75014
+    status: NOT_IN_USE
+    rollback_additional_params:
+    - name: eric-ccsm-service-mesh.eric-ingressgw-ausf-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-ausf-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-eir-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-eir-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-epc-soap-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-epc-soap-traffic
+        PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udm-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udm-traffic PODs
+      value: false
+    - name: eric-ccsm-service-mesh.eric-ingressgw-udr-traffic.enabled
+      type: boolean
+      description: skipping the deployment of ingress eric-ingressgw-udr-traffic PODs
+      value: false
+- '1.5':
+  - software_version: 1.5.4-9
+    descriptor_id: ebc8bace-cdaf-4b5c-abe2-ba8e7f1f5d79
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-10
+    descriptor_id: a0303d07-4e68-4957-8a56-dd9aa0df7f84
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-15
+    descriptor_id: a17c1d76-ae94-40d6-8c55-d74b508a5f9c
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-16
+    descriptor_id: b5486c77-6566-4d9e-bd1d-04946eaf591e
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-17
+    descriptor_id: 61d55d38-ebf8-44e8-ba8c-def708c58d90
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-18
+    descriptor_id: 70657539-a5ef-43d4-9917-8b9846334c85
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-19
+    descriptor_id: ec3d234a-5608-468f-b44d-fb447c3e5491
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.5.4-20
+    descriptor_id: d532fac5-8066-44ab-9ed9-bc2c98e67149
+    status: IN_USE
+    rollback_additional_params: {}
+- '1.6':
+  - software_version: 1.6.3-5
+    descriptor_id: d9a7231c-c09d-458c-9834-1a2330111b3b
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-6
+    descriptor_id: a865bd7a-a6c8-4e90-86ed-f0d8aa6fe1c8
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-7
+    descriptor_id: c3734c02-7eb2-4471-ba6a-3eca6fbc033c
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-8
+    descriptor_id: 73277585-d0d8-49c3-880e-db81b53e6e55
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-9
+    descriptor_id: dfc39308-5802-46c3-b4a2-32a911b94e40
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-10
+    descriptor_id: 0c82b701-4232-41e5-bccc-5a319d394b6b
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-11
+    descriptor_id: 30138b76-3789-4a30-a508-665e163c7af4
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-12
+    descriptor_id: 71273121-2cb4-4b3c-8993-ac5ae66dc810
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-13
+    descriptor_id: f048fc62-961d-4e49-b76b-7959015c90ba
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-14
+    descriptor_id: 6c340244-9ad9-43bc-b454-8bdda80839f4
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-15
+    descriptor_id: 2f1c02ef-808f-423a-b646-1c8ec1209f1f
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-16
+    descriptor_id: 6ce25c2f-be1b-4896-a2f5-826f869d6141
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-17
+    descriptor_id: 1742f62a-7d8d-4b90-af55-954702c11c7d
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-18
+    descriptor_id: 64a916db-19ad-46f8-80c1-6eb44ece8ab6
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-19
+    descriptor_id: c3021710-1fc9-4d9c-90d4-bb98a1bc88cb
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-20
+    descriptor_id: 4b617ad8-cce7-40a5-ba22-8ca6dba826be
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-21
+    descriptor_id: 164a09b7-c9d6-40cf-a156-74f2fc898c58
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-22
+    descriptor_id: f690fffc-d6d7-44f1-b265-3ec4d48eb9af
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-23
+    descriptor_id: 844897bd-15c6-45d7-a798-74aeee435b3c
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.6.3-24
+    descriptor_id: 632a9c30-2f89-4a72-afc8-eafae0060606
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.7':
+  - software_version: 1.7.3-24
+    descriptor_id: 354a4e38-ad75-477f-bf48-b01c1739f024
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-25
+    descriptor_id: 2b2f5d69-5f88-4009-97fc-c6a3853a5d6e
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-26
+    descriptor_id: 770b0f3a-1872-46a9-a80b-c8aedd73f9de
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-27
+    descriptor_id: ddb275a2-cb83-48ed-afea-6eaceb2bcb0a
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-28
+    descriptor_id: a55e6120-9979-4064-bfc0-d58d75b50af1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-29
+    descriptor_id: fcb4da0c-4646-4bec-b2a6-cc258eebe488
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-30
+    descriptor_id: bc372510-f54b-4eaf-a848-4c023b1ec6a9
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-31
+    descriptor_id: 41fb6915-59de-4294-aba5-c88cd7863dd1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-32
+    descriptor_id: 9c037401-c810-45c6-bf34-3342ead4ddbc
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-33
+    descriptor_id: 499bc460-205f-4def-aaee-7cb61a180567
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-34
+    descriptor_id: 9a087075-93df-44c7-b866-22d5c6a92b72
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-35
+    descriptor_id: a0aa2c7e-d5f1-4c4c-b92d-f9b6ab7c222e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-36
+    descriptor_id: d744d100-265b-4a66-ab2b-5997fc4125bf
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-37
+    descriptor_id: 6cac1c17-7b23-4a59-aedd-fde0270f5972
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-38
+    descriptor_id: b143919b-0c33-4db7-a166-3b6f4e9ff070
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-39
+    descriptor_id: e851c37c-5baf-4433-8266-0f38ff9ed3f0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-40
+    descriptor_id: c188d8da-385f-43c1-b232-3cb9b8c573c4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-41
+    descriptor_id: c9ed8a42-166e-419c-bfe9-8edee36ec667
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-42
+    descriptor_id: c906081f-0d3a-4434-8c54-a3b65593b504
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.7.3-43
+    descriptor_id: ce721fd4-1606-4c41-9ef7-f5d1d6c3d91a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.9':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.9.4-10
+    descriptor_id: d07afd6d-747b-4e47-94be-80077895f0d1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-11
+    descriptor_id: bf3f08ff-92dc-4c7e-b8d9-4077133e2f0b
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-12
+    descriptor_id: ab25f642-ab10-440c-95b5-f749510013e0
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-13
+    descriptor_id: 6beebf14-cf32-44f6-81a2-69d75b51e72b
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-14
+    descriptor_id: 0ed6e478-ca2c-4c02-bffe-a5b3ad1d04bd
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-15
+    descriptor_id: 38b51435-f87b-4e0c-b26d-7e8d1aab6350
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-16
+    descriptor_id: 5f558c0e-b776-4641-b66e-c0f2790b9e93
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-17
+    descriptor_id: 3da161e5-5de4-4631-867a-bf66bf86587a
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-18
+    descriptor_id: 5d741b15-9db4-45e5-9481-f9f8a936828a
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-19
+    descriptor_id: 4c333a72-8fd0-409b-a1c4-131c67d7c500
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-20
+    descriptor_id: 442fe87b-0af0-4c79-8fb0-0583758bf310
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-21
+    descriptor_id: c5aaae4a-c268-4dd2-8454-3670272aa838
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-22
+    descriptor_id: a443a946-cfbc-4755-b2ab-bf62490504b7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-23
+    descriptor_id: ba84dc63-03f4-48ce-8551-ee4e0b1bc5e9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-24
+    descriptor_id: 53448cd3-84b1-4094-8c3d-c2404b532967
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-25
+    descriptor_id: 9a633ab3-e9a8-491d-9af2-f7f92df92985
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-26
+    descriptor_id: a20aadee-30c2-49b8-b89e-995f7542e960
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-27
+    descriptor_id: 3863b0d2-63d4-4661-8ffe-aa5e55dda99a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-28
+    descriptor_id: 209f8719-19e7-4526-b3e2-a940516c52f9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.9.4-29
+    descriptor_id: 62e781c5-0828-4015-999c-6249f1660ad2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.8':
+  - software_version: 1.8.3-13
+    descriptor_id: 75e01f26-5237-4ee9-bff2-1deb2f5d17c3
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-14
+    descriptor_id: 582ea243-fd8f-4410-af95-52de5e9f1fa6
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-15
+    descriptor_id: 73cd979b-13af-483d-8532-753c5b6a87f7
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-16
+    descriptor_id: 6d0fcdf6-2b02-457e-9015-7530c4e0d805
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-17
+    descriptor_id: c1238813-9012-4dc5-b53d-0f3e1ed68596
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-18
+    descriptor_id: 433be15c-0461-411f-8291-7a505d5ffdae
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-19
+    descriptor_id: 1a335dc7-8a7c-474d-9430-d703e6eff225
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-20
+    descriptor_id: e371933c-a0f9-4c36-9eca-34ef23856c2e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-21
+    descriptor_id: 45dbe0f8-b73d-4ded-88a0-30666cd6416b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-22
+    descriptor_id: d3f3d95c-303f-42aa-98a9-6d0406beb535
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-23
+    descriptor_id: 4c211003-f9ae-41e4-a512-d31b97136870
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-24
+    descriptor_id: 97f449bf-c638-4857-af04-683c3b68d5a9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-25
+    descriptor_id: 7756aa13-b78c-4851-a581-f07ba5af60a8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-26
+    descriptor_id: 15670baf-ee3b-4d89-a604-996a8357ee58
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-27
+    descriptor_id: 9244abc8-60c4-4f03-9958-928a4bde935c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-28
+    descriptor_id: 8c425b2c-0fc4-49a9-a277-f54a0504ca49
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-29
+    descriptor_id: 31fbfd16-eb21-4a0b-ae09-73f2073c4cb9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-30
+    descriptor_id: 51946f65-b573-43e1-a2a1-7a30e84b2fb2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-31
+    descriptor_id: b3a37ec4-9aed-4d91-bbcd-27a8104b4783
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.8.3-32
+    descriptor_id: ba29dfa8-413a-481e-9f39-e9ce5907efe7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.10':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.10.6-13
+    descriptor_id: 8724145e-d77b-4241-aee5-eae082e4ff13
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-14
+    descriptor_id: 81cb1dae-c9f6-438b-8c5e-fd2ad2c16335
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-15
+    descriptor_id: 795122e6-2fc9-47a6-a009-b58dca3f0f71
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-16
+    descriptor_id: e1b8fe3b-d978-4d20-94ce-401ead32f414
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-17
+    descriptor_id: f3217658-e8e5-4e48-b772-58c02156a280
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-18
+    descriptor_id: c6d03a0b-5098-4d95-a83d-e101a9daa226
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-19
+    descriptor_id: 9272f941-d2e7-4f7a-9054-2d0a5bd91be2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-20
+    descriptor_id: 22d66bb6-51e0-48cc-9f2d-cb603e85b432
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-21
+    descriptor_id: 2cffd61f-8c83-4318-bd24-5df31fa05cb5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-22
+    descriptor_id: a73df7fb-d232-4022-9efe-72fff355c638
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-23
+    descriptor_id: 5960fbc6-bc78-4b56-97a2-12dc9e750057
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-24
+    descriptor_id: 3522327d-be55-4df4-a48b-f52944c112d5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-25
+    descriptor_id: ec6269e8-4e4b-412d-9a38-2426983d97a7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-26
+    descriptor_id: 31952410-ef18-45c8-8a59-a40b55640d1e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-27
+    descriptor_id: 0a4a875b-971e-4cae-844d-1ed67ef0c06d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-28
+    descriptor_id: 43ad2b5b-3cb4-448c-8d08-79a97ab4bc10
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-29
+    descriptor_id: 9b1184a0-ef8b-4ac4-8ce9-6cf29ab11fa9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-30
+    descriptor_id: dda162d7-75aa-4686-b7fb-6cddd36846e0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-31
+    descriptor_id: 5fbfe8b6-ceac-4fd9-be17-81aa5b78230c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.10.6-32
+    descriptor_id: e33e14bb-3faa-4cd1-b03e-0189fb30c509
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.12':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.12.1+17
+    descriptor_id: f3fdae33-aacd-4f5a-9305-5602bf9fa309
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.2
+    descriptor_id: 321531c7-aee5-47fb-86b5-483e99c596d2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.3
+    descriptor_id: a07154c3-e0ab-4214-8b29-48c9c2aa2d00
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.4
+    descriptor_id: dc410809-7ef2-4ce6-a537-8692c2d6beb0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.5
+    descriptor_id: 47e0357a-c9e0-4bd3-bb62-083ddb049892
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.6
+    descriptor_id: a41e23c2-33d3-4d23-9f96-b31a24dca19a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.7
+    descriptor_id: a9a9876d-127a-439d-8c94-75109aa0f3c8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.8
+    descriptor_id: fb3ad2ef-27b7-4753-97ce-ca7859c1a72c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.9
+    descriptor_id: fca480e5-73dc-48a6-8279-50985583ec35
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.10
+    descriptor_id: 733eaae4-1427-4d3d-a2e7-0af712980382
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.11
+    descriptor_id: f40f322a-0e5b-4c2a-b7d0-8f0314e37576
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.12
+    descriptor_id: ce9b8203-5478-4935-8a75-2c1b173e690a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.13
+    descriptor_id: 3c21e6bf-0f82-4fd3-8324-614c6673ee3b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.14
+    descriptor_id: c0cced7e-f363-4b8b-a193-65d16bbaa727
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.15
+    descriptor_id: 6bb6f990-58b5-417d-a0e3-8d3e7677ace7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.16
+    descriptor_id: 3b7eec69-26e5-4603-b895-9787ed5f57bf
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.17
+    descriptor_id: c862d029-ca16-4746-bb5b-f7efdbce27ad
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.18
+    descriptor_id: e5cb6882-0c91-429d-b7a8-6dc7a6a9544a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.19
+    descriptor_id: 18fd7c68-4366-45aa-9a28-a2e853498a16
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.12.20
+    descriptor_id: c0f8048f-658b-4da5-8310-bc410dd8dc80
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.13':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.13.0+14
+    descriptor_id: ee7318db-6379-4e84-b51a-f153e9330ec7
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.1
+    descriptor_id: 1fab037c-f29d-42cb-8ecf-92bb92b7e167
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.2
+    descriptor_id: c9deb0c5-b283-4aa1-b30a-88a0fa676a00
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.3
+    descriptor_id: d983e45d-b624-4031-9788-f25e9c299418
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.4
+    descriptor_id: 04cb8730-1425-4031-b23b-eac096ff5fd0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.5
+    descriptor_id: 02c3a2bf-1e2e-4ea4-9ccd-4e6d441e4004
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.6
+    descriptor_id: abd945df-c2e8-4e86-ad4e-a6bcdf14fa7d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.7
+    descriptor_id: 21528cd5-5fb9-44f1-9d5c-c7863cc228cd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.8
+    descriptor_id: 91f9da66-bcad-4758-8933-f36f2bd9a38c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.9
+    descriptor_id: d1770b23-04d2-41d2-927b-f401d01b303c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.10
+    descriptor_id: 2e5fdf63-db2d-4fea-8609-98095ed6f20f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.11
+    descriptor_id: 8c694bbd-60f6-479a-801f-5fc166a91d75
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.12
+    descriptor_id: a2f2f852-4bec-49bf-8b4d-57cd0dd73e6a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.13
+    descriptor_id: 6b5bfcf6-9e5f-4da3-8983-755d2b7341d4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.14
+    descriptor_id: 78f13412-3941-45b6-8ad8-e40ec977fdc3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.15
+    descriptor_id: 2e3f92e5-110e-40ab-9438-87c71c31a386
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.16
+    descriptor_id: 39d69bc5-0cde-418c-b9f8-71459b9aa6a7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.17
+    descriptor_id: 273ea578-505e-4a77-935b-f15accb51f6f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.18
+    descriptor_id: b5f25a25-f530-4a3d-b81c-d9a5b3ec7c71
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.13.19
+    descriptor_id: b1702a98-4c6d-4702-8fd1-5e1966e6250a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.11':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.11.5-6
+    descriptor_id: 1af90f1c-ec00-4dd1-b06b-d9e40af00089
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-7
+    descriptor_id: c88ac812-64f7-4feb-82a1-fa5cd6a22004
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-8
+    descriptor_id: 01792ca5-5be3-40c2-a680-967c13f3012c
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-9
+    descriptor_id: df4ae19a-54e2-48ef-8152-a5cf46999fd8
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-10
+    descriptor_id: 0e0477c8-0eed-491a-9b61-7ff0cb5d1d87
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-11
+    descriptor_id: 827f9866-7fd5-47e9-8d15-a939e19e4fc7
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-12
+    descriptor_id: 5917718b-9f00-43de-b829-f93cb2159b46
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-13
+    descriptor_id: fe13221b-c19d-477b-b017-1b36f3a1f69d
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-14
+    descriptor_id: 23c8fdb5-c4d7-4be5-9141-e9c381ddb226
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-15
+    descriptor_id: faf03f8a-dd7c-4131-b2e1-837370c4a845
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-16
+    descriptor_id: 3fdae58d-a49b-4e9c-9699-9ad8cd4eaba1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-17
+    descriptor_id: fd9ab13d-9016-49bb-a32c-c0da2b93ae65
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-18
+    descriptor_id: 00e764ce-5dfe-4766-803d-c55425f256dd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-19
+    descriptor_id: f8b6f157-06c3-40df-a786-2be4730b2818
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-20
+    descriptor_id: 96ec5586-93f6-47af-b5c2-ee83e25d774c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-21
+    descriptor_id: 20cbe6c3-ac4d-4159-986a-0f0f0234d2ee
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-22
+    descriptor_id: 717901d8-1bad-4a32-86a5-a563a3156820
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-23
+    descriptor_id: 9540e2b4-1a9c-4141-aa94-22f23fb937fd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-24
+    descriptor_id: f4ea7bb3-a87a-4864-8ed0-07b5dd485d7b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.11.5-25
+    descriptor_id: fb56938b-3246-416d-890a-8533bc1eac3d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.14':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.14.3+1
+    descriptor_id: 9c01b3be-e51f-4fff-9848-1287a6553519
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.4
+    descriptor_id: 55174d41-c5fd-4f82-ac7d-9b0a19766e4b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.5
+    descriptor_id: aa041dbd-9c55-485a-9168-a0f4a64de9f6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.6
+    descriptor_id: b936a8b6-115e-4f8f-bf8e-4bdecab0c7dd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.7
+    descriptor_id: 5271cc6c-b52b-40f0-ab5d-84ee994d4a05
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.8
+    descriptor_id: cd7491f0-9e23-4156-9d40-70d093c34f18
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.9
+    descriptor_id: 9774bceb-f788-4ba0-9c54-26f3b7a815c3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.10
+    descriptor_id: 28eaa263-5285-4d9a-975e-e703d8360f61
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.11
+    descriptor_id: 8c932cc3-6f61-4b9d-86c4-d679608efb7f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.12
+    descriptor_id: 281ce7e4-c455-4371-ad33-3420781446e5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.13
+    descriptor_id: 9bc3bccf-7789-453c-bb6c-4376ec6d7d92
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.14
+    descriptor_id: bcd00a84-1d93-46f1-85f3-ac26ab38775e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.15
+    descriptor_id: 5584423d-5a3b-4187-9f12-6c3baefbd3ce
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.16
+    descriptor_id: 8b5f1788-255e-4873-87cd-945b2484f7fd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.17
+    descriptor_id: efbb2b38-1a04-4a01-8b8c-7673cd242048
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.18
+    descriptor_id: 9e0cc0ea-d624-4617-b341-ce9e0ec16907
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.19
+    descriptor_id: 804fae2e-6f55-4969-9968-a8fa75f1ec94
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.20
+    descriptor_id: 65e4cc94-d543-499a-bba9-31953b7f355d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.21
+    descriptor_id: 81c1e831-b186-4d53-9dbc-6a0925cb34bb
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.14.22
+    descriptor_id: 15037a13-fbbe-46fc-9a3b-ffdbd2a681f7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.15':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.15.4+5
+    descriptor_id: ec726cff-7385-4a19-98c0-f04d43d48746
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.5
+    descriptor_id: cf37df4f-b1fd-4b5e-bc2a-b55eca6028b6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.6
+    descriptor_id: ed0a829b-f0b0-41b4-9fc0-86a8f00d14a0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.7
+    descriptor_id: 01260a36-a9dd-416b-b37f-4302cd2e97e4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.8
+    descriptor_id: 7430d744-e3b3-4e07-9fcd-d335a1054aa7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.9
+    descriptor_id: ced9cfd6-1297-4e23-9466-2fc4d2602e0a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.10
+    descriptor_id: d4fe33e0-acb9-407d-bd61-8e24e60bdaee
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.11
+    descriptor_id: 8c7b5bc0-6570-4ee2-ac39-4ca6150cab3b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.12
+    descriptor_id: 3115e121-1931-4316-81e2-8dd4040242e7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.13
+    descriptor_id: 254629ec-34ef-477f-b43d-b745450b1496
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.14
+    descriptor_id: 76496e5e-db3f-4890-9244-50db8aff0d28
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.15
+    descriptor_id: 9c2b4947-15c4-4584-b167-7ff6b09c2efd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.16
+    descriptor_id: eec0f769-d48c-4cd3-8df4-976da1b8d03e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.17
+    descriptor_id: b16fafd6-1e35-4c0f-ac01-c68c607310bc
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.18
+    descriptor_id: 56bf9786-8874-4a40-9ea8-9d9601718795
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.19
+    descriptor_id: 22bf0c63-2901-46f9-b645-ebae66fed1fd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.20
+    descriptor_id: 21064d16-1c45-4930-8bc5-d9f702963db7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.21
+    descriptor_id: 9ec5166a-f3e2-4624-95d1-a9179495a2a3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.22
+    descriptor_id: c8bae049-9fea-44b7-89ea-fdcf6b9b8cd6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.15.23
+    descriptor_id: 51123434-d196-48b3-b4f2-4353b80bb248
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.16':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.16.3+4
+    descriptor_id: 965a5819-adb7-48a5-a0cb-c7d6d93c4ed1
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.4
+    descriptor_id: d1a37818-8a04-47a0-babe-ed54a4048422
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.5
+    descriptor_id: 6169b23d-d2f8-4b31-8ef5-700949a1e01b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.6
+    descriptor_id: 25929501-ee54-4932-bbb8-dce317b0e753
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.7
+    descriptor_id: a56acfc8-edda-468e-8f86-f826566ac877
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.8
+    descriptor_id: c7279dc7-cfa5-4efa-bc6b-5fa9555716e4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.9
+    descriptor_id: 6365a9d3-3432-466f-9c88-1888e2378b77
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.10
+    descriptor_id: 60abeee4-0263-4219-bbc2-b09daa7c6b7f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.11
+    descriptor_id: 9a064fce-56a1-4030-a643-e311304cec2d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.12
+    descriptor_id: f55ef519-b592-4e7d-8fec-ab8853fd3beb
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.13
+    descriptor_id: 32fa38b4-2719-4c7c-89c2-1b2ff636bd72
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.14
+    descriptor_id: ef6a84e0-e287-4937-b301-3309734d4a4c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.15
+    descriptor_id: d06308ff-8b60-43c4-b572-64ae496546e1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.16
+    descriptor_id: e09c3186-d9a0-4804-bcdc-12bae7df0a27
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.17
+    descriptor_id: c3ab02ae-8bf5-4654-b132-b9fba2a2778c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.18
+    descriptor_id: 3cd65182-10a5-4046-a5b7-8a1376d2dd9e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.19
+    descriptor_id: 55df4c1c-987b-467f-98f1-e6e968e757d4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.20
+    descriptor_id: 2a3af590-8c66-4754-ab5e-4feec9485d4e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.21
+    descriptor_id: 8eda9fa1-38cf-4168-b7e9-4279bc0195a4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.16.22
+    descriptor_id: cbc7cf27-06be-4b35-ba41-b73cf9e9f38d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.17':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.17.1+16
+    descriptor_id: fa5aaecd-95eb-4547-b115-521acd8d20af
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.2
+    descriptor_id: 03283b24-557f-4fc0-a55a-8c66a69d2926
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.3
+    descriptor_id: 486c11fe-c79f-421f-837c-d886906cbcb6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.4
+    descriptor_id: a8bb267b-4740-41e0-9bae-0ab2dd99c28a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.5
+    descriptor_id: 767c9393-e87c-4379-b513-627354518668
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.6
+    descriptor_id: 6f6db192-4d68-479a-8494-30851db9115b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.7
+    descriptor_id: 8fa82529-3f9f-4759-8bb1-2d6c001f468a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.8
+    descriptor_id: 305cff48-0165-4c4b-a3cc-a6573cc25324
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.9
+    descriptor_id: e1079c31-d094-4348-a1fa-ba57241d5193
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.10
+    descriptor_id: e30d9f9d-59d3-4964-a58b-dbad37acfbd3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.11
+    descriptor_id: cd25396a-0ad7-4e1b-8d39-20fbc91306a0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.12
+    descriptor_id: 3fee6886-a36b-4730-8232-bf72af05af48
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.13
+    descriptor_id: a0066671-c9a9-4953-8ac8-181fa670a651
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.14
+    descriptor_id: d4102465-5e38-4785-991f-6df60955b540
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.15
+    descriptor_id: 24b06d85-98b1-4179-b433-547a01dde11f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.16
+    descriptor_id: 8804ff6a-3ce6-4cde-8bd9-afda36e7dc55
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.17
+    descriptor_id: 62b3ee59-a8c8-4a1d-b85e-2e075e870816
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.18
+    descriptor_id: 719c09e9-376e-43d1-b00d-dcce1f9cec8e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.19
+    descriptor_id: c3565e72-a6bf-4a4b-9d2e-162bf39eddf3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.17.20
+    descriptor_id: e20021db-2d19-4d6c-a5ab-117f08121d37
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.18':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.18.1+1
+    descriptor_id: 4ebfdad7-7a3f-4357-96b8-81416b4c2b52
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.2
+    descriptor_id: 786e6557-d7c6-4183-a6bd-367a0b3c67f9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.3
+    descriptor_id: cf68b653-8eaf-4160-ac19-25612a2c3900
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.4
+    descriptor_id: a6b0643d-74b6-48a0-b816-def857fb6342
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.5
+    descriptor_id: eabd83a2-5ce3-476b-b01c-9832efa3954a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.6
+    descriptor_id: e1558295-d6f2-4897-90a2-a22ce61e5df8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.7
+    descriptor_id: d86a18d6-5c52-4498-8d99-b77e5e9bbdf9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.8
+    descriptor_id: 293a798b-6168-42ce-a48b-627343d822d1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.9
+    descriptor_id: c7219bf7-c199-41ba-8ca7-10460260475e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.10
+    descriptor_id: 8ce26c2c-c55e-4bad-a3f0-0b5067b621d5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.11
+    descriptor_id: 5f8dbc28-953d-4fcd-a0e7-444e1df9fd1d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.12
+    descriptor_id: 87e9b5c8-c369-483a-b746-a8809ce25084
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.13
+    descriptor_id: 9b9ebfa2-67d0-4fd1-b624-09a0f1f217a7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.14
+    descriptor_id: e4ecb1bc-0494-4fc1-afbe-13f711a289b2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.15
+    descriptor_id: 07e4985b-325f-49a1-a3fc-9c290dd90057
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.16
+    descriptor_id: fab0ec18-279a-4dc4-b172-d6193189acd5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.17
+    descriptor_id: 0438919e-d404-439f-b801-865c36044739
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.18
+    descriptor_id: 99cee156-6c40-4d38-a252-590f1f570650
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.19
+    descriptor_id: e0c7783b-151d-4e40-a413-30011162984a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.18.20
+    descriptor_id: 45732c41-220f-4ab4-afb7-ab8b50788b3a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.19':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.19.5+1
+    descriptor_id: d7d3cf05-5c2a-4ced-9f04-1172c9b7566f
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.6
+    descriptor_id: 6ccfd506-6c8e-4446-ab2c-c6f111090849
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.7
+    descriptor_id: 8993f7b4-9104-49e0-9a22-c3757ede844f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.8
+    descriptor_id: 66b12cf5-8873-477d-90f1-7cf2963cfbf5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.9
+    descriptor_id: 3556edb0-98a5-4b6d-b65a-a5d2e8e9f1e9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.10
+    descriptor_id: 8a002087-9042-4dba-beca-33e738bdb4ef
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.11
+    descriptor_id: fb0ed3b8-415a-4f85-a3d9-9a03e5fc00a8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.12
+    descriptor_id: 0fba500f-c615-4014-9d99-57fe7e2bda5a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.13
+    descriptor_id: 0c809f66-f5e1-43dd-8a80-3033a342028d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.14
+    descriptor_id: d0057334-f50c-4760-bfb3-f11e53d0f443
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.15
+    descriptor_id: 492ac597-d89e-4aa3-9346-9bfb0cc26762
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.16
+    descriptor_id: d90753da-461e-4f3c-b653-3b6d6878cf75
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.17
+    descriptor_id: 68786945-8402-4998-9a48-280fe6e93672
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.18
+    descriptor_id: 6497d444-f1ea-44d3-adc8-d29385d6fc54
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.19
+    descriptor_id: 464e2eb7-3d91-4f20-9f49-1d417b515c63
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.20
+    descriptor_id: 75c38644-c8ac-4f00-9c1f-7c192e224db2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.21
+    descriptor_id: 5a45117c-9f16-4e0d-87ab-aaaa628c8453
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.22
+    descriptor_id: 3a3900ae-86b0-41a3-9a14-6f64e0996def
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.23
+    descriptor_id: 8a69664b-b686-45d8-bf07-c69edf0504c2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.19.24
+    descriptor_id: 13a61dfe-ff41-4fca-9d2f-8382af5c7f10
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.20':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.20.2
+    descriptor_id: d5ceba42-eed9-4abb-96a7-b12834f37161
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.3
+    descriptor_id: e9ba792f-b2dd-4420-a2d1-d7dfee0435b5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.4
+    descriptor_id: bb743107-2c7b-41a7-8194-918edbf4314c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.5
+    descriptor_id: 2a003f15-c7ef-468d-96ee-ad9d093bc77a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.6
+    descriptor_id: eaa8845a-39f9-475d-805f-98114d00c313
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.7
+    descriptor_id: 3cfe31d2-01db-48f3-acc2-12bf408d8dfd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.8
+    descriptor_id: 5780d6bf-01e6-4382-9e54-2c5bc0ce0f98
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.9
+    descriptor_id: ebd021b2-df32-455e-8cdc-9ac808b5edd3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.10
+    descriptor_id: bafddd3c-ac9a-4f24-a6dd-dc750a22c4df
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.11
+    descriptor_id: 83010f7a-152a-4069-b889-5d72d38909b9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.12
+    descriptor_id: 1896e6b0-0ca9-464d-bbe9-ad7ea66a27ab
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.13
+    descriptor_id: babebeb9-5849-462c-b7b4-912b94fcdcb4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.14
+    descriptor_id: 8149d646-ca9e-4fdb-938a-ae31cb3c5fda
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.15
+    descriptor_id: 5034092d-d112-4652-a49c-ea7419d437eb
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.16
+    descriptor_id: 00cd9000-b341-4aa7-86dd-dae46cab8c90
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.17
+    descriptor_id: 87f727b8-b507-4258-8538-a55666ed3274
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.18
+    descriptor_id: 34887bf8-a89d-409e-a351-86f1bf23ae86
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.19
+    descriptor_id: ab113aaf-0d17-444f-bbd1-8df9c4f5b74d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.20
+    descriptor_id: da59dfa9-4238-4f8f-8a50-f8a742f88f40
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.20.21
+    descriptor_id: 26ba6ed7-4185-4f3a-9207-d2491c830001
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.22':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.22.0
+    descriptor_id: 228d2d36-e1f7-4f28-a824-824f47cb9f55
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.1
+    descriptor_id: 55a1c468-33e6-41f3-9d6d-e8b552c44c76
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.2
+    descriptor_id: 266f974f-758d-4edd-89fc-b6cef8b65a9f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.3
+    descriptor_id: 6c7b2ee4-0166-4dc7-99e8-6163b3bf2da9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.4
+    descriptor_id: 324a8697-9e52-45af-bc2b-4c6941f25f99
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.5
+    descriptor_id: 2493efdc-7046-4f24-b9e4-bbf1f0a9781b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.6
+    descriptor_id: 5c772983-390c-4249-9f5a-2f1d2d804757
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.7
+    descriptor_id: eea21120-edb3-4177-a5f6-4c2e4cd0fd4b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.8
+    descriptor_id: 6c42712c-0d61-4f94-b61a-37d0297d6e1c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.9
+    descriptor_id: 5cc6519c-2126-4d67-9564-6060e3f46a89
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.10
+    descriptor_id: 5764687e-5d12-4b0a-a2e6-4c97f84476f2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.11
+    descriptor_id: d4405978-d20f-462d-b9b4-622d62879472
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.12
+    descriptor_id: d12ef771-0f4d-4a5d-9ecb-50ba1fc535c6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.13
+    descriptor_id: fc77dd76-39d8-4a5f-a892-15ed21fa9a84
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.14
+    descriptor_id: d822e479-7362-4f28-96f1-30bb848f14e0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.15
+    descriptor_id: 77ce759b-ffe9-45ba-bbf0-401370dcf64e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.16
+    descriptor_id: 44523ef0-23af-40a5-8d05-9658c2cbed22
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.17
+    descriptor_id: d066a272-c03f-4bdf-8b98-92b31f2f043f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.18
+    descriptor_id: 1c975aac-5b03-41cd-9f03-08c561911da6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.22.19
+    descriptor_id: d68be38e-b411-4d36-a028-28837e1b68b4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.21':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.21.11
+    descriptor_id: 6de52d3d-f61d-4dda-bc4c-5c5b398bfca5
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.12
+    descriptor_id: 3df7d931-593b-4f30-bd47-a4d44b0d95d2
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.13
+    descriptor_id: 6a276f3d-a588-4fec-8479-ac02076d1889
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.14
+    descriptor_id: 5a28da49-4afe-4444-a942-2310324fa19b
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.15
+    descriptor_id: 9a549640-b97d-4185-afbe-99d1df2482bc
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.16
+    descriptor_id: 2495b545-9f10-42c9-b1df-7edaf2cb009c
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.17
+    descriptor_id: f5fcd7ca-e298-4d0d-8159-066206b3a5fc
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.18
+    descriptor_id: 22194ebf-46b4-49ce-9f66-8d40b3a5ad2f
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.19
+    descriptor_id: dac71cbf-7453-4a23-a128-8a5d4978c9cd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.20
+    descriptor_id: 742c84dd-45a7-443b-90f9-15e89fc123bc
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.21
+    descriptor_id: 16a2cfd1-9004-454e-939d-70d08d979776
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.22
+    descriptor_id: c8f50c4c-f7b5-43ef-83e3-94a2beaf15d4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.23
+    descriptor_id: e821f9cb-fb78-433c-bb9e-625c3924a87e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.24
+    descriptor_id: ced106e9-105e-44d9-8514-6315dbe74aba
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.25
+    descriptor_id: ad4382f8-a005-4a69-954b-afe20450640c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.26
+    descriptor_id: 4aa8df6b-fcd2-485f-88b2-69250889c2f5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.27
+    descriptor_id: d7d9fb8c-a2df-4687-91ed-ce9e4ca7108b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.28
+    descriptor_id: 4d951c82-616e-43a5-893e-f8c78197a61d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.29
+    descriptor_id: 1f9b701a-6593-4000-8a58-7f0538dfc10d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.21.30
+    descriptor_id: 01773e46-29ee-43f9-aa26-6920af49d63c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.23':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.23.1
+    descriptor_id: 9eeca6b5-bee2-46c3-b0d2-02c2838fccb3
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.2
+    descriptor_id: b11baa81-a9a9-40ef-b972-6899bb9eccd2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.3
+    descriptor_id: 2fdf5c51-8f12-49f7-87cb-1f70899a96ba
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.4
+    descriptor_id: 7f882f55-e773-4616-86c8-cd61562eb02a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.5
+    descriptor_id: 66eda334-ae9a-4e72-890f-dfb19c7f8468
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.6
+    descriptor_id: fabd9f55-6654-4119-8425-2ebabf4ee58f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.7
+    descriptor_id: 8ea0a311-d25c-479d-85bc-71b6d40044cc
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.8
+    descriptor_id: cc72fb7c-5fd6-4eb3-8dbe-22430c6134d4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.9
+    descriptor_id: d00ffa48-27fc-4470-9f4b-e374e2877957
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.10
+    descriptor_id: db4492ac-7c0e-4d2b-9bbe-8c342e1d4a4c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.11
+    descriptor_id: 17bb533d-2179-4da0-85b0-b7318b7da84f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.12
+    descriptor_id: 05baffe4-bc06-4c3a-a370-6e66011cafcc
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.13
+    descriptor_id: cd906d56-6296-4db5-8db5-64e412852ce8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.14
+    descriptor_id: 445be3ce-ff69-4c8e-bd2e-0f5ed0667e00
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.15
+    descriptor_id: 9433dbdb-8e04-4848-b8f6-76f89e40476c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.16
+    descriptor_id: ec43c36e-4353-4ebb-881e-f4e0d0d8b6db
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.17
+    descriptor_id: db89a59b-13c8-47d3-9386-f217132c49d6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.18
+    descriptor_id: 8f7c8750-bb90-497b-8059-d8897abfb0ca
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.19
+    descriptor_id: 553d2525-34e5-42f9-924c-81bf53392640
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.23.20
+    descriptor_id: adf05901-3aef-48a5-bf35-4d7da2398299
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.24':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.24.5
+    descriptor_id: 0469bacf-6cae-4078-94b7-a9958d125f56
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.6
+    descriptor_id: a6a12782-97b3-48b5-b219-f7dd40a100ff
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.7
+    descriptor_id: 75d4ba3e-6282-4b91-95d6-fdd5e886f97a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.8
+    descriptor_id: 590d5c68-c67e-4de9-9323-b286c8a876b0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.9
+    descriptor_id: 12f87810-e897-41c5-9c24-358ac11a3b79
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.10
+    descriptor_id: e1972d1e-bf9e-4d16-b3e4-25e16af202e0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.11
+    descriptor_id: 88283554-c8fa-4088-8d11-cfdf8d393381
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.12
+    descriptor_id: 4f411a46-0f95-46c1-8b9d-148fc3d440f6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.13
+    descriptor_id: 853c88bc-2d92-46cb-9e2a-a9659d35a179
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.14
+    descriptor_id: 61911a20-829c-437e-9f6c-7ddbd1df50ff
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.15
+    descriptor_id: c9e3a8a8-99b8-415f-9608-b2f3209d040d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.16
+    descriptor_id: 96265ad9-6da3-40bb-a7ea-7319cf1b16d5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.17
+    descriptor_id: 9c40e60e-49a1-4402-8cb9-e6d3582a381b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.18
+    descriptor_id: a61a30e6-a7e5-4ae5-9027-eec5a7d909fa
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.19
+    descriptor_id: 584ddd6c-b809-4ca5-8f32-5288f1b6d4cf
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.20
+    descriptor_id: b5e4a1ff-4864-42ea-ada8-e3ec5d2d44ed
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.21
+    descriptor_id: 53c91f21-b0df-4620-b634-d009b4802982
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.22
+    descriptor_id: cf9a3195-a129-4ec5-b887-ef7c82c70461
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.23
+    descriptor_id: ea4b98a8-ff34-4fea-a0df-3815eb556b0a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.24.24
+    descriptor_id: 53fccf70-06ca-41d4-a3b7-ec94fdc4097a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.25':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.25.1
+    descriptor_id: e42dde2b-4f5c-4f4e-966e-311b988385b6
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.2
+    descriptor_id: 57bd20b0-7047-4455-b4b7-0ce562661078
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.3
+    descriptor_id: 5a695750-0f4c-4760-b73e-1424db5a0e46
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.4
+    descriptor_id: a2c31663-5371-4f1c-80f9-2d3f9428d302
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.5
+    descriptor_id: 38bee5cf-648f-4266-b3db-a4fbed6e1794
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.6
+    descriptor_id: 96b8336c-9183-4c98-b574-258662680e56
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.7
+    descriptor_id: 244adf67-7938-4850-832b-aee1d2fcd566
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.8
+    descriptor_id: 6eb97008-afa5-4350-9d78-a8b7cbf151c8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.9
+    descriptor_id: cafb6b96-fe2e-476c-8c0c-ef1edf3c673c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.10
+    descriptor_id: ea226db2-5dab-4b52-9342-0698a33a455f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.11
+    descriptor_id: 024a7243-57fb-4686-99a9-4f19bc6fbb68
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.12
+    descriptor_id: b90f568b-e634-42a1-b40b-959dc9b782f1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.13
+    descriptor_id: b6dcc383-45cc-43f7-a86b-aba118a3cfd5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.14
+    descriptor_id: 097f0c33-df91-403d-9aea-a30eaec0274f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.15
+    descriptor_id: 95d85542-3289-4662-8deb-df38bfb02ae5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.16
+    descriptor_id: 75c8cbf5-542d-4f3a-962b-63880ab4ec67
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.17
+    descriptor_id: f299e90b-a99a-4b5c-8b4b-de89f17021a6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.18
+    descriptor_id: ceb7c323-302e-401b-a66d-f6e9622ac10d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.19
+    descriptor_id: 156af45a-67f3-40a8-b710-61e4277d5460
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.25.20
+    descriptor_id: 1585e1cf-5c73-4885-a39e-ebe8e605f40e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.26':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.26.3
+    descriptor_id: 904548af-29c0-4875-95ca-547e34006229
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.4
+    descriptor_id: 8b2441bf-db36-4d4c-91d6-a1ead057462e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.5
+    descriptor_id: 5a5ac679-ed45-466e-8aa1-66c5da22c253
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.6
+    descriptor_id: 217d7eba-6198-4d5d-958e-9f4b64325b06
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.7
+    descriptor_id: 4d6bf320-5caa-43bb-b8c1-ae2e6f12d9bd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.8
+    descriptor_id: cfc9d6f4-cace-45fb-881a-3f9d263a0d52
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.9
+    descriptor_id: 383a4b3f-d506-4710-bc63-30fd1b9fae15
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.10
+    descriptor_id: 9e5ec24e-3250-4880-9fc5-911aafd61799
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.11
+    descriptor_id: 45fdf470-54bc-4f09-842e-05bee6eeae1a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.12
+    descriptor_id: 6eff64c6-c79e-43d3-a572-5d571424f5c0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.13
+    descriptor_id: c2ca83df-598d-44c2-9cae-bdc8e532fa48
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.14
+    descriptor_id: 5692b736-4b72-4ebd-bd9f-4fd40f56d60e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.15
+    descriptor_id: d440940f-aed1-421d-a21d-ef7b4b90a482
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.16
+    descriptor_id: 8737c34c-bb30-44f5-8759-cc304410e7e1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.17
+    descriptor_id: 54136172-9281-42ec-b1b9-8bb01e31a7aa
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.18
+    descriptor_id: 15de0cb0-52c5-48fb-8a33-0eec66540f12
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.19
+    descriptor_id: a318e577-dbac-48ef-a1ef-5ac39af2fcef
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.20
+    descriptor_id: 6b9651ab-e096-4da9-9386-73975d4724ab
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.21
+    descriptor_id: 9afd06b8-51cf-4862-92b3-72393059c626
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.26.22
+    descriptor_id: 2010b3e6-a7cf-49ff-a65e-2c5df02eec83
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.27':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.27.1
+    descriptor_id: 75e24cd0-250c-4c12-b4c6-b93bfc118b01
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.2
+    descriptor_id: cac96ad4-682e-46b2-b83c-5d35d9b3ebae
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.3
+    descriptor_id: 785d8cdb-6a74-41fe-82c0-e0ede557f2ee
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.4
+    descriptor_id: 5813dc46-9912-4910-bc3e-172846ffe67e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.5
+    descriptor_id: 598b2764-ac7a-4344-9118-c05e56f0a312
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.6
+    descriptor_id: dec06a4c-aef5-4121-ab61-2f75b0a72cc3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.7
+    descriptor_id: 841c0b79-614a-4648-96cf-e5bd8eedc126
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.8
+    descriptor_id: 007d1677-bef3-4181-9ed1-406f11f400be
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.9
+    descriptor_id: 5bd26125-a537-4d89-9ef2-3aadba860209
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.10
+    descriptor_id: 19763273-d397-4d57-a0ab-08400ed14245
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.11
+    descriptor_id: 276f3d99-fb85-42ed-8390-944d85fe5f0e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.12
+    descriptor_id: 2f544b01-58ea-4b7e-80d4-39a00226135e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.13
+    descriptor_id: 9bf8afec-6d6d-4030-859e-cd76d124cdd6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.14
+    descriptor_id: 871a8d05-1642-47d5-88b7-0d24d87e899c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.15
+    descriptor_id: d366907b-f1d7-43ff-b7c5-ef642b961665
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.16
+    descriptor_id: 6149537c-521e-4c2a-a71b-27abf4861264
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.17
+    descriptor_id: 2929ae25-1572-4190-9732-7e19497e94e2
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.18
+    descriptor_id: d65ac026-0cda-4944-9033-4d0f406a1eec
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.19
+    descriptor_id: e6b3a38e-0b86-479b-9591-ff8ef926a13c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.27.20
+    descriptor_id: 15a1686b-2e2c-4446-9485-bf878b70c8fe
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.29':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.29.0
+    descriptor_id: eb647730-e0c0-459e-a0f5-c2240ecc7bea
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.1
+    descriptor_id: 4e7ffded-8f57-4fab-b1fc-fc86728bb412
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.2
+    descriptor_id: cc4e7c69-579b-45c2-873d-51024c9e62d7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.3
+    descriptor_id: 3d734eba-9da0-4e02-8a75-8fa2a97be4a1
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.4
+    descriptor_id: 261582f4-4125-43c7-8c54-65f150d48e28
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.5
+    descriptor_id: 837d2920-cec7-40cf-b74a-fec28b38d945
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.6
+    descriptor_id: 176a89d7-ed08-4646-8f3e-3b1aafeabc47
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.7
+    descriptor_id: 2d153762-c8b0-4205-a10e-81c0d14e3a20
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.8
+    descriptor_id: def584d0-9143-4869-b5d5-f86e4ddb53e3
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.9
+    descriptor_id: ce81b316-a4d4-4d2e-863f-32657d13cbf6
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.10
+    descriptor_id: d2885bae-979c-486b-b1db-63cc556d7cfd
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.11
+    descriptor_id: c15f9c0e-c4a4-490e-9ced-acab006d5f40
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.12
+    descriptor_id: 5584e632-dddf-4622-b54c-f1dcd24e16fa
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.13
+    descriptor_id: d68fbc33-e1ce-45e1-a481-6de02f5c8fbb
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.14
+    descriptor_id: a4e2594d-fd6f-4afb-ba51-b93b4108a8b9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.15
+    descriptor_id: faa96871-efff-413e-ba9a-590b55d57b72
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.16
+    descriptor_id: 24fd45e2-be7f-4397-a98f-3818458fa044
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.17
+    descriptor_id: d835bddf-6358-46ed-8866-252a5bbf3a10
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.18
+    descriptor_id: e16e5159-94fd-4a68-a8fe-b7efe681e91d
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.29.19
+    descriptor_id: 80a12bea-4909-46e3-894b-b05b8f61e369
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+- '1.28':
+  - rollback_general_additional_params:
+    - name: cleanUpResources
+      type: boolean
+      description: removes the resources on the cluster that are associated with the
+        application
+      required: true
+      default: false
+    - name: applicationTimeOut
+      type: string
+      description: maximum time allocated for the application to rollback
+      required: true
+      default: '3600'
+    - name: skipVerification
+      type: boolean
+      description: skipping the verification of the application deployment
+      required: true
+      default: true
+    - name: skipJobVerification
+      type: boolean
+      description: skipping the verification of pods created as part of Job
+      required: true
+      default: true
+    - name: disableOpenapiValidation
+      type: boolean
+      description: skipping to validate rendered templates against the Kubernetes
+        OpenAPI Schema
+      required: true
+      default: false
+    - name: manoControlledScaling
+      type: boolean
+      description: indicates how the scaling of the deployment is handled
+      required: true
+      default: false
+  - software_version: 1.28.9
+    descriptor_id: 4fc10e13-6869-42da-a8d5-fa2cb847e968
+    status: IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.10
+    descriptor_id: 326ec192-4bf8-4b62-9901-752c259c5094
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.11
+    descriptor_id: 2cbc471c-2810-4a4e-8778-c142ddef1b79
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.12
+    descriptor_id: 389860d7-9a6e-481f-bcae-93755b37b2f0
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.13
+    descriptor_id: d945f4cf-37db-4d29-b09b-bfbf5ae0678a
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.14
+    descriptor_id: 38468e9c-b8af-4269-b50e-263b70d5e682
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.15
+    descriptor_id: c7c58d89-0a01-49ab-a88c-cd6589b982d9
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.16
+    descriptor_id: ba371ca3-469e-4f60-8959-7beca30c41b8
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.17
+    descriptor_id: 3128d436-7f23-49f1-b748-96ebcd079b72
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.18
+    descriptor_id: c2a29755-b3e7-4727-af6d-8d56cf284d3f
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.19
+    descriptor_id: b6f89e90-1906-4ac1-b06e-989473ba7f50
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.20
+    descriptor_id: 03540ec8-8abc-4a55-9b36-0684ed8790f7
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.21
+    descriptor_id: 3f50b23e-feba-4350-81cf-d6341ee44e1c
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.22
+    descriptor_id: 253e9f44-914b-4d6c-a3e5-446ff80cdc86
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.23
+    descriptor_id: 346845ff-693e-48c0-a1a8-fcbe87074eb4
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.24
+    descriptor_id: d184f672-b396-4616-9542-3f48bf5fadd5
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.25
+    descriptor_id: 718891c4-56cd-4037-81bf-1fafec483c3e
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.26
+    descriptor_id: efe9c97d-eb19-4df5-a96d-c095de087067
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.27
+    descriptor_id: 8209266e-9dc4-4014-b79d-9ee5d3a7105b
+    status: NOT_IN_USE
+    rollback_additional_params: {}
+  - software_version: 1.28.28
+    descriptor_id: b8c7399e-39dd-43ac-bb97-00b7f79675f5
+    status: NOT_IN_USE
+    rollback_additional_params: {}

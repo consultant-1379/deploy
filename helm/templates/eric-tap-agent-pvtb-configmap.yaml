@@ -1,0 +1,18 @@
+{{- if .Values.global.vtapagent.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eric-ccsm.tap-agent-pvtb-config.name" . }}
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+data:
+{{- $dict := (lookup "v1" "ConfigMap" .Release.Namespace  (include "eric-ccsm.tap-agent-pvtb-config.name" .)  ).data }}
+{{- if or (.Release.IsInstall) (not $dict) }}
+  tap_pvtb_config.json: |-
+    [
+    ]
+{{- else }}
+  tap_pvtb_config.json: |-
+{{ tpl (get $dict "tap_pvtb_config.json") . | indent 4 }}
+{{- end }}
+{{- end }}

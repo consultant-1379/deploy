@@ -1,0 +1,75 @@
+{
+  "dashboards": [
+    {
+      "_id": "ccsm_overview",
+      "title": "CCSM Overview",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "widget": "ccsm_kpi"
+        },
+        {
+          "xSize": 3,
+          "widget": "ccsm_total_fr_timeline"
+        },
+        {
+          "xSize": 3,
+          "widget": "ccsm_total_tps_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "builtin:alarm_summary_bar_chart"
+        },
+        {
+          "xSize": 10,
+          "widget": "builtin:pod_table_pmrm"
+        }
+
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "ccsm_kpi",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+          { "source": "eric_ccsm_total_fr", "heading": "CCSM total requests FR" },
+          { "source": "eric_ccsm_total_tps", "heading": "CCSM total TPS" }
+      ]
+    },
+
+    {
+      "_id": "ccsm_total_fr_timeline",
+      "widgetType": "timeline",
+      "title": "CCSM total requests FR",
+      "sources": [
+          { "source": "eric_ccsm_total_fr", "heading": "CCSM total requests FR" }
+      ]
+    },
+    {
+      "_id": "ccsm_total_tps_timeline",
+      "widgetType": "timeline",
+      "title": "CCSM total TPS",
+      "sources": [
+          { "source": "eric_ccsm_total_tps", "heading": "CCSM total TPS" }
+      ]
+    }
+
+  ],
+  "sources": [
+    {
+      "_id": "eric_ccsm_total_fr",
+      "sourceType": "prometheus",
+      "query": "(((sum(delta(eric_udm_nudm_ueau_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_nudm_uecm_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_nudm_sdm_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_nudm_ee_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_namf_evts_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_nudm_mt_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_nudm_mtsms_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_udr_notify_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_udm_umts_ueau_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_ausf_nausf_auth_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_eir_n5g_eir_eic_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_eir_s13_eic_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_eir_map_eir_eic_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hss_s6a_nor_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hss_s6a_pur_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hss_s6a_air_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hss_s6a_ulr_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_cx_mar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_cx_uar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_cx_sar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_cx_lir_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_sh_udr_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_sh_pur_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_sh_snr_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssepc_swx_mar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssepc_swx_sar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssims_zh_mar_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssepc_slh_rir_unsuccessful_responses_sent[1m])) or vector(0))+(sum(delta(eric_hssepc_nudm_sdm_unsuccessful_responses_sent[1m])) or vector(0)))/((sum(delta(eric_udm_nudm_ueau_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_nudm_uecm_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_nudm_sdm_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_nudm_ee_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_namf_evts_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_nudm_mt_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_nudm_mtsms_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_udr_notify_requests_recv[1m])) or vector(0))+(sum(delta(eric_udm_umts_ueau_requests_recv[1m])) or vector(0))+(sum(delta(eric_ausf_nausf_auth_requests_recv[1m])) or vector(0))+(sum(delta(eric_eir_n5g_eir_eic_requests_recv[1m])) or vector(0))+(sum(delta(eric_eir_s13_eic_requests_recv[1m])) or vector(0))+(sum(delta(eric_eir_map_eir_eic_requests_recv[1m])) or vector(0))+(sum(delta(eric_hss_s6a_nor_requests_recv[1m])) or vector(0))+(sum(delta(eric_hss_s6a_pur_requests_recv[1m])) or vector(0))+(sum(delta(eric_hss_s6a_air_requests_recv[1m])) or vector(0))+(sum(delta(eric_hss_s6a_ulr_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_cx_mar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_cx_uar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_cx_sar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_cx_lir_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_sh_udr_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_sh_pur_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_sh_snr_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssims_zh_mar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssepc_swx_mar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssepc_swx_sar_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssepc_slh_rir_requests_recv[1m])) or vector(0))+(sum(delta(eric_hssepc_nudm_sdm_requests_recv[1m])) or vector(0))>0)) * 100 or vector (0)",
+      "label": "CCSM FR"
+    },
+    {
+      "_id": "eric_ccsm_total_tps",
+      "sourceType": "prometheus",
+      "query": "(sum:eric_ausf_nausf_auth_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_ueau_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_uecm_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_sdm_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_mt_tps:rate1m or vector(0)) + (sum:eric_udm_nudm_ee_tps:rate1m or vector(0)) + (sum:eric_udm_map_umts_ueau_tps:rate1m or vector(0)) + (sum:eric_udm_map_mtsms_tps:rate1m or vector(0)) + (sum:eric_eir_n5g_eir_eic_tps:rate1m or vector(0)) + (sum:eric_eir_s13_eic_tps:rate1m or vector(0)) + (sum:eric_eir_map_eir_eic_tps:rate1m or vector(0)) + (sum:eric_hssims_cx_tps:rate1m or vector(0)) + (sum:eric_hssims_sh_tps:rate1m or vector(0)) + (sum:eric_hssims_zh_tps:rate1m or vector(0)) + (sum:eric_hssepc_s6a_tps:rate1m or vector(0)) + (sum:eric_hssepc_swx_tps:rate1m or vector(0)) + (sum:eric_hssepc_nhss_uecm_tps:rate1m or vector(0)) + (sum:eric_hssepc_slh_tps:rate1m or vector(0)) + (sum:eric_hssepc_nudm_sdm_tps:rate1m or vector(0))",
+      "label": "CCSM TPS"
+    }
+  ]
+}

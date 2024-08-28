@@ -1,0 +1,28 @@
+---
+modelVersion: "2.0"
+flavor: "Generic"
+service:
+  name: "CCSM"
+  design_countries:
+    - SE
+  sw_compilation_country: SE
+  release_responsible: BDGSLFIA
+  design_responsible: BDGSLFIA
+  abstract_products:
+    # CSH CCSM Product Number
+    number: "CSH 109 715"
+    designation: "CCSM"
+    #list of all elements connected
+    includes:
+      - label: "CCSM"
+        number: CSH109715
+        designation: "Drop XX"
+        includes:
+          #STANDARD
+        - munin: "CXP9037722"
+          version: eric-ccsm-csar-version
+          #comment: "CCSM Box"
+
+        - munin: "CXP9042047"
+          version: eric-ccsm-csar-version
+          #comment: "NSD Box"

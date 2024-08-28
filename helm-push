@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+################################################################################
+
+readonly SERVER=arm.seli.gic.ericsson.se
+readonly REPOSITORY=https://$SERVER/artifactory/proj-ccsm-helm/
+
+################################################################################
+
+declare -a TEMPS
+trap 'rm -rf "${TEMPS[@]:-}"' EXIT
+
+################################################################################
+
+file-download() {
+   local -r netrc=$1 target_file=$2 url=$3
+
+   echo "Downloading $(basename "$url") ..."
+   curl --netrc-file "$netrc" --output "$target_file" "$url"
+}
+
+file-upload() {
+   local -r netrc=$1 source_file=$2 url=$3
+
+   echo "Uploading $(basename "$url") ..."
+   curl --netrc-file "$netrc" --upload-file "$source_file" "$url"
+   echo # missing carry return
+}
+
+helm-chart-value() {
+   local -r path=$1 var=$2
+
+   grep "^$var:" "$path/Chart.yaml" | cut --delimiter=' ' --fields=2
+}
+
+helm-package() {
+   local -r package_path=$1 tmp_pwd=$2
+
+   helm package --destination "$tmp_pwd" "$package_path" # output $tmp_pwd/$(helm-package-basename X)
+}
+
+helm-package-basename() {
+   local -r path=$1
+
+   local name;    read -r name    < <(helm-chart-value "$path" name);    readonly name
+   local version; read -r version < <(helm-chart-value "$path" version); readonly version
+
+   echo "$name-$version.tgz"
+}
+
+helm-package-path-check() {
+   local -r path=$1
+
+   [[ -d $path/charts ]] || { echo "error: $path/charts not found" >&2; exit 1; }
+}
+
+help-parse() {
+   if [[ $# -eq 1 ]] && [[ $1 =~ ^-(h|-help)$ ]]; then
+      local -r script=$(basename "$(readlink -f "${BASH_SOURCE[0]}")")
+
+      echo "usage: $script HELM_UNCOMPRESSED_PACKAGE_PATH"
+      echo "example: $script /tmp/$USER/udm-umbrella/ # charts/ inside should be already built"
+      exit
+   fi
+}
+
+main() {
+   help-parse "$@"
+
+   [[ $# -eq 1 ]] || { echo "error: wrong number of arguments" >&2; exit 1; }
+   local -r package_path=$1
+   helm-package-path-check "$package_path"
+
+   local -r tmp_pwd=$(mktemp -d); TEMPS+=("$tmp_pwd")
+   local basename; read -r basename < <(helm-package-basename "$package_path"); readonly basename
+   local -r helm=$tmp_pwd/$basename; TEMPS+=("$helm")
+   helm-package "$package_path" "$tmp_pwd"
+
+   local -r netrc=$(mktemp); TEMPS+=("$netrc")
+   netrc-write "$netrc"
+
+   file-upload "$netrc" "$helm" "$REPOSITORY/$(basename "$helm")"
+
+   local -r index=$(mktemp); TEMPS+=("$index" index.yaml)
+   repository-index-update "$netrc" "$tmp_pwd" "$index"
+}
+
+netrc-write() {
+   local -r netrc=$1
+   chmod 600 "$netrc"
+
+   local password
+   read -r -s -p "Enter ARM password for user '$USER': " password; echo
+   readonly password
+
+   cat > "$netrc" <<EOF
+machine $SERVER
+   login $USER
+   password $password
+EOF
+}
+
+repository-index-update() {
+   local -r netrc=$1 tmp_pwd=$2 index=$3
+
+   file-download "$netrc" "$index" "$REPOSITORY/index.yaml"
+   helm repo index "$tmp_pwd" --merge "$index" # output $tmp_pwd/index.yaml
+
+   file-upload "$netrc" "$tmp_pwd/index.yaml" "$REPOSITORY/index.yaml"
+}
+
+################################################################################
+
+main "$@"

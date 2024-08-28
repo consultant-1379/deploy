@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<capabilities>
+<capability>urn:ietf:params:netconf:base:1.0</capability>
+</capabilities>
+</hello>
+]]>]]>
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <running/>
+    </target>
+    <config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                . This file provides an XML template for configuring of the service types within HSS-IMS
+                . The service types can be used to define the behaviour of the HSS-IMS to support an IMS service
+                such as Push-To-Talk (PTT), WeShare, MMtel Services, Presence, Conferencing, etc.
+                . An IFC is an Initial Filter Criteria (service-trigger elements). They are used to specify the service
+                point triggers that instruct the S-CSCF when a given Application Server (AS) must be contacted to
+                perform its service logic
+                . For each service type, a collection of IFCs need to be defined.
+                . A specific IFC belongs to only one service type
+                . To avoid collisions with the priority of individual IFCs, the IFC priority is unique in HSS-IMS and
+                must have only odd values in this configuration.
+                . The configured service profiles (service-profile elements) represent different configurations or
+                deployments of a certain service defined as a service type, so one or more configured service profiles
+                can be associated with a service type.
+
+               Note this template script does not include the optimization with share IFC (sIFC) functionality
+            -->
+
+        <hssims xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssims">
+           <service-type>
+              <service-type-id>{SERVICE_TYPE_ID}</service-type-id>
+              <service-capabilities>{SERVICE_TYPE_CAPABILITIES}</service-capabilities>
+              <optional-service-capabilities>{OPTIONAL_SERVICE_CAPABILITIES}</optional-service-capabilities>
+              <service-profile>
+                  <service-profile-id>{SERVICE_PROFILE_ID}</service-profile-id>
+                  <default-application-server>{DEFAULT_APPLICATION_SERVER}</default-application-server>
+                  <default-as-handling>{DEFAULT_AS_HANDLING}</default-as-handling>
+                  <trigger-2-as>
+                      <trigger-id>{TRIGGER_ID}</trigger-id>
+                      <as-id>{TRIGGER_AS_ID}</as-id>
+                      <default-handling>{DEFAULT_HANDLING}</default-handling>
+                  </trigger-2-as>
+              </service-profile>
+              <!-- service triggers for and registration requests and others -->
+              <service-triggers>
+                  <trigger-priority-id>{TRIGGER_PRIORITY_ID}</trigger-priority-id>
+                  <condition-type>{CONDITION_TYPE}</condition-type>
+                  <include-register-request>{INCLUDE_REGISTER_REQ}</include-register-request>
+                  <include-register-response>{INCLUDE_REGISTER_RESP}</include-register-response>
+                  <is-active>{IS_ACTIVE}</is-active>
+                  <trigger-description>{TRIGGER_DESCRIPTION}</trigger-description>
+                  <spt-group>
+                      <spt-group-id>{SPT_GROUP_ID}</spt-group-id>
+                      <request-uri>
+                         <request-uri>{REQUEST_URI}</request-uri>
+                         <negated-requested-uri>{NEGATED_REQUEST_URI}</negated-requested-uri>
+                      </request-uri>
+                      <session-case>{SESSION_CASE}</session-case>
+                      <session-description>
+                          <session-description-id>{SESSION_DESCRIPTION_ID}</session-description-id>
+                          <negated>{SESSION_DESCRIPTION_NEGATED}</negated>
+                          <line>{SESSION_DESCRIPTION_LINE}</line>
+                          <content>{SESSION_DESCRIPTION_CONTENT}</content>
+                     </session-description>
+                     <sip-header>
+                        <sip-header-id>{SIP_HEADER_ID}</sip-header-id>
+                        <sip-header-name>{SIP_HEADER_NAME}</sip-header-name>
+                        <negated-header>{NEGATED_HEADER}</negated-header>
+                        <sip-header-content>{SIP_HEADER_CONTENT}</sip-header-content>
+                     </sip-header>
+                     <sip-method>
+                        <sip-method-id>{SIP_METHOD_ID]</sip-method-id>
+                        <negated-sip-method>NEGATED_SIP_METHOD</negated-sip-method>
+                        <reg-type1>{REG_TYPE1}</reg-type1>
+                        <reg-type2>{REG_TYPE2}</reg-type2>
+                     </sip-method>
+                  </spt-group>
+      </service-triggers>
+   </service-type>
+</hssims>
+</config>
+</edit-config>
+</rpc>
+]]>]]>

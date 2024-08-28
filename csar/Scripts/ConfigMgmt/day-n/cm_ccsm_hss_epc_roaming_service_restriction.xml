@@ -1,0 +1,62 @@
+?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Notice that it is a configuration template in XML format
+  compliant with NF YANG model.  This XML template provides
+  a configuration skeleton that shall be modified before
+  loading into the yang service.  Some parts of the document
+  must be deleted or added depending on the network configuration
+  where the VNF will be deployed.
+-->
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <!--
+        Configuration for Roaming Service Restriction in HSS-EPC.
+      -->
+      <hssepc xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssepc">
+        <eps-plmn>
+            <!-- This configuration is always releated to a given plmn id -->
+            <plmn-id>{HSSEPC_PLMNID}</plmn-id>
+            <!-- Define if the PLMN is HPLMN or VPLMN -->
+            <is-home>{HSSEPC_ISHOME}</is-home>
+            <!-- Define as many Roaming Service areas as areas defined in the PLMNid -->
+            <roaming-service-area>
+            <!-- The RSA identifier identifies a profile defined across different PLMNs that jointly together compose a profile of roaming restriction and service restriction to be assigned to several EPS users -->
+            <roaming-service-area-id>{HSSEPC_RSAID}</roaming-service-area-id>
+            <!-- Configuration for defined area -->
+                    <defined-area>
+            <!-- RAID identifying this area. Notice RAID 0 and RAID 1 are special cases -->
+                       <roaming-area-id>{HSSEPC_RAID}</roaming-area-id>
+            <!-- Optionally area can be restricted -->
+                       <restricted-access-type>{HSSEPC_RAT_DA}</restricted-access-type>
+            <!-- Optionally services can be restricted. If access is restricted service restriction does not make sense -->
+                       <roaming-service-profile-id>{HSSEPC_RSPID_DA}</roaming-service-profile-id>
+            <!-- When RAID is not 0 nor 1, specific MMEs need to be defined belonging to this defined area -->
+                       <network-domain>{HSSEPC_NETWORK_DOMAIN}</network-domain>
+                    </defined-area>
+            <!-- Configuration for rest of the areas in this PLMN for this RSAID -->
+                    <non-defined-area>
+                       <roaming-service-profile-id>{HSSEPC_RSPID_NDA}</roaming-service-profile-id>
+                       <restricted-access-type>{HSSEPC_RAT_NDA}</restricted-access-type>
+                    </non-defined-area>
+            </roaming-service-area>
+            <!-- Define as many Roaming service profiles restricting services as needed in the PLMN -->
+            <!-- Restricting default APN for a user makes access restricted to the area -->
+            <roaming-service-profile>
+                <roaming-service-profile-id>{HSSEPC_RSPID}</roaming-service-profile-id>
+                <restricted-srvcc>{HSSEPC_SRVCC_REST}</restricted-srvcc>
+                <restricted-apn-id>{HSSEPC_APN_ID}</restricted-apn-id>
+            </roaming-service-profile>
+        </eps-plmn>
+      </hssepc>
+    </config>
+  </edit-config>
+  </rpc>
+  <close-session/>

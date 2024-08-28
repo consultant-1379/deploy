@@ -1,0 +1,49 @@
+{{- if index .Values "global" "nrfagent" "enabled" }}
+
+{{- if .Values.istio.ingress.nrfAgentInternalGateway.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: "eric-ccsm-nrfagent-gateway"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  selector:
+    app.kubernetes.io/name: eric-ingressgw-nrfagent-internal-traffic
+  servers:
+  {{- range $key, $val := .Values.istio.ingress.nrfAgentInternalGateway.ports }}
+  - port:
+      number: {{ $val.port }}
+      name: {{ $val.name }}
+      protocol: {{ $val.protocol }}
+    hosts:
+    {{- range $val.hosts }}
+    - {{ . | quote }}
+    {{- end }}
+    {{- if ne $val.mode "DISABLE" }}
+    tls:
+    {{- if eq $val.mode "TLS" }}
+      mode: SIMPLE
+    {{- else }}
+      mode: MUTUAL
+    {{- end }}
+    {{- if $val.settings }}
+      credentialName: {{ $val.settings.secretName | default "eric-ccsm-nrfagent-server-certs" }}
+    {{- if $val.settings.minProtocolVersion }}
+      minProtocolVersion: {{ $val.settings.minProtocolVersion }}
+    {{- end }}
+    {{- if $val.settings.maxProtocolVersion }}
+      maxProtocolVersion: {{ $val.settings.maxProtocolVersion }}
+    {{- end }}
+    {{- if $val.settings.cipherSuites  }}
+      cipherSuites:
+      {{- range $val.settings.cipherSuites }}
+      - {{ . | quote }}
+      {{- end }}
+    {{- end }}
+    {{- end }}
+    {{- end }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}

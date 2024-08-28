@@ -1,0 +1,90 @@
+{{- if index .Values "global" "nrfagent" "enabled" }}
+
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: eric-nrf-discovery-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  host: eric-nrf-discovery-agent
+  exportTo:
+  - "."
+  trafficPolicy:
+    tls:
+{{- if eq .Values.global.internalMtls.enabled "on"}}
+      mode: ISTIO_MUTUAL
+{{- else }}
+      mode: DISABLE
+{{- end }}
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: eric-nrf-register-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  host: eric-nrf-register-agent
+  exportTo:
+  - "."
+  trafficPolicy:
+    tls:
+{{- if eq .Values.global.internalMtls.enabled "on"}}
+      mode: ISTIO_MUTUAL
+{{- else }}
+      mode: DISABLE
+{{- end }}
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: eric-nrf-accesstoken-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  host: eric-nrf-accesstoken-agent
+  exportTo:
+  - "."
+  trafficPolicy:
+    tls:
+{{- if eq .Values.global.internalMtls.enabled "on"}}
+      mode: ISTIO_MUTUAL
+{{- else }}
+      mode: DISABLE
+{{- end }}
+---
+{{- if .Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: eric-svc-routing-agent
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  host: eric-svc-routing-agent
+  exportTo:
+  - "."
+  trafficPolicy:
+    tls:
+{{- if eq .Values.global.internalMtls.enabled "on"}}
+      mode: ISTIO_MUTUAL
+{{- else }}
+      mode: DISABLE
+{{- end }}
+{{- end }}

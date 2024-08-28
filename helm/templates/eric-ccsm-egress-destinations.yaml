@@ -1,0 +1,252 @@
+{{- if (.Values.global.istio.egress.enabled) }}
+{{- if index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "enabled" }}
+{{- if $.Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: ServiceEntry
+metadata:
+  name: "eric-ccsm-sbi-traffic-mtls"
+spec:
+  hosts:
+  - {{ ( index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host" ) | quote }}
+  exportTo:
+  - "."
+  {{- if index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "addresses" }}
+  addresses:
+  {{- range (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "addresses") }}
+  - {{ . | quote }}
+  {{- end }}
+  {{- end }}
+  location: MESH_EXTERNAL
+  ports:
+  {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+  - number: {{ $val.port }}
+    name: {{ $val.name }}
+    protocol: {{ $val.protocol }}
+  {{- end }}
+  {{- if index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "resolution" }}
+  resolution: {{ index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "resolution" }}
+  {{- else }}
+  resolution: NONE
+  {{- end }}
+  {{- if index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "endpoints" }}
+  endpoints:
+  {{- range (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "endpoints") }}
+  - {{ toYaml . }}
+  {{- end }}
+  {{- end }}
+---
+
+{{- $workloadkey := index .Values "eric-ccsm-nrfagent" "global" "istio" "egress" "workloadSelectorLabel" "key" }}
+{{- $workloadvalue := index .Values "eric-ccsm-nrfagent" "global" "istio" "egress" "workloadSelectorLabel" "value" }}
+
+{{- if $.Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: DestinationRule
+metadata:
+  name: "eric-ccsm-sbi-traffic-mtls"
+spec:
+  host: {{ (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+  exportTo:
+  - "."
+  workloadSelector:
+    matchLabels:
+      {{ $workloadkey }}: {{ $workloadvalue | quote }}
+  subsets:
+  - name: udm
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+    {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+    {{- if or (eq $val.mode "TLS") (eq $val.mode "mTLS") }}
+      - port:
+          number: {{ $val.port }}
+        tls:
+          {{- if eq $val.mode "TLS" }}
+          mode: SIMPLE
+          {{- else }}
+          mode: MUTUAL
+          credentialName: eric-ccsm-udm-sbi-client-certs
+          {{- end }}
+    {{- end }}
+    {{- end }}
+  - name: ausf
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+    {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+    {{- if or (eq $val.mode "TLS") (eq $val.mode "mTLS") }}
+      - port:
+          number: {{ $val.port }}
+        tls:
+          {{- if eq $val.mode "TLS" }}
+          mode: SIMPLE
+          {{- else }}
+          mode: MUTUAL
+          credentialName: eric-ccsm-ausf-sbi-client-certs
+          {{- end }}
+    {{- end }}
+    {{- end }}
+  - name: eir
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+    {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+    {{- if or (eq $val.mode "TLS") (eq $val.mode "mTLS") }}
+      - port:
+          number: {{ $val.port }}
+        tls:
+          {{- if eq $val.mode "TLS" }}
+          mode: SIMPLE
+          {{- else }}
+          mode: MUTUAL
+          credentialName: eric-ccsm-eir-sbi-client-certs
+          {{- end }}
+    {{- end }}
+    {{- end }}
+  - name: hss
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+    {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+    {{- if or (eq $val.mode "TLS") (eq $val.mode "mTLS") }}
+      - port:
+          number: {{ $val.port }}
+        tls:
+          {{- if eq $val.mode "TLS" }}
+          mode: SIMPLE
+          {{- else }}
+          mode: MUTUAL
+          credentialName: eric-ccsm-hss-sbi-client-certs
+          {{- end }}
+    {{- end }}
+    {{- end }}
+---
+{{- if $.Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+{{- else }}
+apiVersion: networking.istio.io/v1beta1
+{{- end }}
+kind: VirtualService
+metadata:
+  name: "eric-ccsm-sbi-traffic-mtls"
+spec:
+  hosts:
+  - {{ (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+  exportTo:
+  - "."
+  http:
+  {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+  {{- if or (eq $val.mode "TLS") (eq $val.mode "mTLS") }}
+  - match:
+    - headers:
+        User-Agent:
+          exact: UDM
+      sourceLabels:
+        {{ $workloadkey }}: {{ $workloadvalue | quote }}
+      uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ (index $.Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+        port:
+          number: {{ $val.port }}
+        subset: udm
+  - match:
+    - headers:
+        User-Agent:
+          exact: AUSF
+      sourceLabels:
+        {{ $workloadkey }}: {{ $workloadvalue | quote }}
+      uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ (index $.Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+        port:
+          number: {{ $val.port }}
+        subset: ausf
+  - match:
+    - headers:
+        User-Agent:
+          exact: 5G_EIR
+      sourceLabels:
+        {{ $workloadkey }}: {{ $workloadvalue | quote }}
+      uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ (index $.Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+        port:
+          number: {{ $val.port }}
+        subset: eir
+  - match:
+    - headers:
+        User-Agent:
+          exact: HSS
+      sourceLabels:
+        {{ $workloadkey }}: {{ $workloadvalue | quote }}
+      uri:
+        prefix: /
+    route:
+    - destination:
+        host: {{ (index $.Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+        port:
+          number: {{ $val.port }}
+        subset: hss
+  {{- end }}
+  {{- end }}
+---
+  {{- if (gt (int $.Values.global.dscpMarking.egressDscpSBI ) 0) }}
+    {{- if $.Capabilities.APIVersions.Has "networking.istio.io/v1" }}
+apiVersion: networking.istio.io/v1
+    {{- else }}
+apiVersion: networking.istio.io/v1alpha3
+    {{- end }}
+kind: EnvoyFilter
+metadata:
+  name: "eric-ccsm-sbi-traffic-mtls-dscp"
+spec:
+  configPatches:
+    {{- range $key, $val := (index .Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "ports") }}
+  - applyTo: CLUSTER
+    match:
+      cluster:
+        portNumber: {{ $val.port }}
+        service: {{ (index $.Values "global" "istio" "egress" "endpoints" "eric-ccsm-sbi-traffic-mtls" "host") | quote }}
+    patch:
+      operation: MERGE
+      value:
+        upstream_bind_config:
+          source_address:
+            address: "0.0.0.0"
+            port_value: 0
+          socket_options:
+          - level: 0        #  0 for IPPROTO_IP
+            name: 1         #  1 for IP_TOS, IPV4
+            int_value: {{ mul $.Values.global.dscpMarking.egressDscpSBI 4 }}
+            state: STATE_PREBIND
+          extra_source_addresses:
+          - address:
+              address: '::'
+              port_value: 0
+            socket_options:
+              socket_options:
+              - int_value: {{ mul $.Values.global.dscpMarking.egressDscpSBI 4 }}
+                level: 41
+                name: 67
+                state: STATE_PREBIND
+    {{- end }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}

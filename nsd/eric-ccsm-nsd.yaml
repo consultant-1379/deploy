@@ -1,0 +1,67 @@
+tosca_definitions_version: tosca_simple_yaml_1_2
+
+metadata:
+
+  template_name: NSD_CCSM
+  template_author: CCSM
+  template_version: '1.0.0'
+
+description: |-
+  NS Descriptor for ericsson single CCSM (PDU UDM & Policy) VNF.
+
+imports:
+
+  - Definitions/etsi_nfv_sol001_nsd_2_5_1_types.yaml
+  - Definitions/etsi_nfv_sol001_vnfd_2_5_1_types.yaml
+  - Definitions/eric-ccsm-vnfd-type.yaml
+
+node_types:
+  ## Release tools input parameters:
+  #  - descriptor_id
+  #  - version
+  Ericsson.EOCM.NSD_CCSM:
+    derived_from: tosca.nodes.nfv.NS
+    properties:
+      descriptor_id:
+        type: string
+        constraints: [ valid_values: [ NSDID ] ]
+        default: NSDID
+      designer:
+        type: string
+        constraints: [ valid_values: [ CCSM ] ]
+        default: CCSM
+      version:
+        type: string
+        constraints: [ valid_values: [ NSD_PRODUCT_NUMBER_SOFTWARE_VERSION ] ]
+        default: NSD_PRODUCT_NUMBER_SOFTWARE_VERSION
+      name:
+        type: string
+        constraints: [ valid_values: [ CCSM_NSD ] ]
+        default: CCSM_NSD
+      # do not modify 'invariant_id'
+      invariant_id:
+        type: string
+        constraints: [ valid_values: [ 377b9030-2826-11ec-8a3e-9f43ed73cd57 ] ]
+        default: 377b9030-2826-11ec-8a3e-9f43ed73cd57
+      flavour_id:
+        type: string
+        constraints: [ valid_values: [ default ] ]
+        default: default
+
+topology_template:
+  substitution_mappings:
+    node_type: Ericsson.EOCM.NSD_CCSM
+
+  node_templates:
+
+    self:
+      type: Ericsson.EOCM.NSD_CCSM
+
+    eric-ccsm:
+      type: Ericsson.CCSM.0_1_0.0_0_1
+      properties:
+        flavour_id: default
+        vnf_profile:
+          instantiation_level: default_instantiation_level
+          min_number_of_instances: 1
+          max_number_of_instances: 1

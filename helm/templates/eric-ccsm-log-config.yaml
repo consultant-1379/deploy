@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eric-ccsm.log-config.name" . }}
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+data:
+{{- if .Release.IsInstall }}
+  logControl.json : |-
+    [
+    ]
+{{- else }}
+{{- $dict := (lookup "v1" "ConfigMap" .Release.Namespace  (include "eric-ccsm.log-config.name" .)  ).data }}
+  logControl.json : |-
+{{ tpl (get $dict "logControl.json") . | indent 4 }}
+{{- end }}

@@ -1,0 +1,64 @@
+---
+modelVersion: "2.0"
+flavor: "Generic"
+service:
+  # name of the service:
+  name: "eric-ccsm"
+  # Trade Compliance
+  # !!!!!!!!!!!!!!!!!!!!!!!WARNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  # Please check the trade compliance value applicable to your
+  # product(s) before re-using this value!
+  # Design Country (set on the source products)
+  design_countries:
+    - SE
+  # Compilation Country (Set on the derivative products)
+  sw_compilation_country: SE
+  release_responsible: BDGSLFIA
+  design_responsible: BDGSLFIA
+  # Details of the APR product structure:
+  top_product:
+    number: CSH 109 715
+    description: "CCSM"
+    designation: "Drop XX"  #Include drop number
+  src_products:
+     # Source Code Product
+    - label: "Source"
+      # Designation
+      designation: "Drop XX"  #Include drop number
+      description: "CCSM CSAR Package Source"
+      number: CAV 101 0213
+      version: eric-ccsm-csar-version   #automate from CSAR
+  derivative_products:
+    - label: "CCSM CSAR Package"
+      number: CXP 903 7722
+      version: eric-ccsm-csar-version   #automate from CSAR
+      designation: "CCSM CSAR Package Drop XX"
+      description: "CCSM CSAR Package"
+      derivedFrom:
+        munin: CAV 101 0213
+        version: eric-ccsm-csar-version
+    - label: "CCSM NSD CSAR Package"
+      number: CXP 904 2047
+      version: eric-ccsm-csar-version   #automate from CSAR
+      designation: "CCSM NSD CSAR Package Drop XX"
+      description: "CCSM NSD CSAR Package"
+      derivedFrom:
+        munin: CAV 101 0213
+        version: eric-ccsm-csar-version
+    - label: "Pre-Post Upgrade in CCSM"
+      number: CXP 904 2590
+      version: prepostversion   #automate from ARM version
+      designation: "Pre-Post Upgrade in CCSM"
+      description: "Pre-Post Upgrade in CCSM"
+      derivedFrom:
+        munin: CAV 101 0213
+        version: eric-ccsm-csar-version
+    - label: "CCSM Data Collection"
+      number: CXP 904 3448
+      version: datacollectorversion   #automate from ARM version
+      designation: "CCSM Data Collection"
+      description: "CCSM Data Collection"
+      derivedFrom:
+        munin: CAV 101 0213
+        version: eric-ccsm-csar-version
+

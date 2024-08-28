@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>]]>]]>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+        <hsm-data>
+          <store-hsm-subscription-data-enable-requested>false</store-hsm-subscription-data-enable-requested>
+        </hsm-data>
+      </udm>
+    </config>
+  </edit-config>
+</rpc>
+<close-session/>

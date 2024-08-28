@@ -1,0 +1,802 @@
+{{- if .Values.global.vtapagent.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eric-ccsm.tap-agent.name" . }}
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+data:
+{{- $dict := (lookup "v1" "ConfigMap" .Release.Namespace  (include "eric-ccsm.tap-agent.name" .)  ).data }}
+{{- if or (.Release.IsInstall) (not $dict) }}
+  tap_config.json: |-
+    [
+        {
+          "ServiceName": "eric-eir-eireic",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 8088 or port 443"
+        },
+        {
+          "ServiceName": "eric-eir-socshipper",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-eir-diametereireic",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-eir-mapeireic",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-eir-httpnotifier",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-eir-edauploader",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-eir-gsmadbudrdataproxy",
+          "Domain": "ccsm-eir",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-ausf-engine",
+          "Domain": "ccsm-ausf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 8081 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-ueauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6aprovnotification",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-iratsndereg",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-mttadsinfo",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-mtuesrvcccap",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-mtstnsrget",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-mtstnsrput",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-mtlocation",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-pcscfrestoration",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6aauthentication",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6anotify",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6apurge",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6aupdatelocation",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6ainsertsubscriber",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6adeletesubscriber",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-s6acancellocation",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxsarreg",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxsardereg",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxsarpgw",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxmar",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxrtr",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-swxprovnotification",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-sdmunsub",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-sdmsub",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-sdmnotify",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssepc-slhlcsroutinginfo",
+          "Domain": "ccsm-hssepc",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxmar",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxprovnotifrtr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxupdatepwd",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxprovnotifppr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxrtr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002"
+        },
+        {
+          "ServiceName": "eric-hssims-cxppr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxsarreg",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxsardereg",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxsarunreg",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxsarauth",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxsarnoassign",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxlir",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-cxuar",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shpnr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shprovnotification",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shpur",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shsnr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrcharginginformation",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrcsrn",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrimsi",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrimspublicidentity",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrimsuserstate",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrlocationinfo",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrmsisdns",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrrepodata",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrscscfname",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrstnsr",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudrtadsinformation",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-shudruesrvcccapability",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-hssims-zhmar",
+          "Domain": "ccsm-hssims",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-blackhole",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001"
+        },
+        {
+          "ServiceName": "eric-udm-amfeenotifications",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-amfeesubscriptions",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-imsauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-gbaauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eapauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-epsauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eapprimeauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-umtsauth",
+          "Domain": "ccsm-arpf",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-iratamfdereg",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-iratsndereg",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-iwk5g2g",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtlocation",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtueinfo",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtsmsdeliverystatus",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtsmsreadystatus",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtsmsroutinginfo",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-mtsmswaitingdata",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-pcscfrestnotif",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmamdata",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmimplicitunsub",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmmultipledataset",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmnotif",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmnssai",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmsmdata",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmsmfselect",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmsmsdata",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmsmsmngdata",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmsubscriptions",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmuectxtsmf",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-sdmuectxtsmsf",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmamfderegnotifier",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmamfget",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 8088 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmamfregupdate",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmreg",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmsmfderegistration",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmsmfregistration",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmsmsfdereg",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmsmsfregget",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-uecmsmsfregistration",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eesubscribe",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eeunsubscribe",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eesubsidchangenotif",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9001 or port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eeamfingressnotif",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 9002"
+        },
+        {
+          "ServiceName": "eric-udm-eeegressnotif-reach-for-sms",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eeegressnotif-roaming-status",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eeegressnotif-supi-pei-indiv",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        },
+        {
+          "ServiceName": "eric-udm-eeegressnotif-supi-pei-anyue",
+          "Domain": "ccsm-udm",
+          "TAP_ENABLED": false,
+          "TAP_INT": "eth0",
+          "TAP_FILTER": "port 443"
+        }
+    ]
+{{- else }}
+  tap_config.json: |-
+{{ tpl (get $dict "tap_config.json") . | indent 4 }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,210 @@
+{
+  "dashboards": [
+    {
+      "_id": "hss_ims",
+      "title": "HSS IMS",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "ySize": 2,
+          "widget": "hss_ims_kpi"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssims_tps_total_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssims_tps_per_service_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "eric_hssims_fr_per_service_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssims_fr_per_command_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "eric_hssims_sh_PNR_timeline"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "hss_ims_kpi",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+          { "source": "eric_hssims_total_tps", "heading": "IMS as provider TPS" },
+          { "source": "eric_hssims_cx_tps", "heading": "IMS TPS per Service" },
+          { "source": "eric_hssims_sh_tps" },
+          { "source": "eric_hssims_zh_tps" },
+          { "source": "eric_hssims_cx_fr", "heading": "IMS FR per Service" },
+          { "source": "eric_hssims_sh_fr" },
+          { "source": "eric_hssims_zh_fr" },
+          { "source": "eric_hssims_cx_user_loc","heading": "IMS FR per Command" },
+          { "source": "eric_hssims_cx_auth_data" },
+          { "source": "eric_hssims_cx_CSCF_reg" },
+          { "source": "eric_hssims_cx_uar" },
+          { "source": "eric_hssims_sh_pur" },
+          { "source": "eric_hssims_sh_SNR" },
+          { "source": "eric_hssims_sh_read_access" },
+          { "source": "eric_hssims_zh_auth_data" },
+          { "source": "eric_hssims_sh_PNR", "heading": "IMS as AS consumer FR" }
+      ]
+    },
+     {
+      "_id": "eric_hssims_tps_total_timeline",
+      "widgetType": "timeline",
+      "title": "IMS as provider TPS",
+      "sources": [
+          { "source": "eric_hssims_total_tps", "heading": "IMS TPS" }
+      ]
+    },
+    {
+      "_id": "eric_hssims_tps_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "IMS TPS per Service",
+      "sources": [
+          { "source": "eric_hssims_cx_tps" },
+          { "source": "eric_hssims_sh_tps" },
+          { "source": "eric_hssims_zh_tps" }
+      ]
+    },
+    {
+      "_id": "eric_hssims_sh_PNR_timeline",
+      "widgetType": "timeline",
+      "title": "IMS as AS consumer FR",
+      "sources": [
+        { "source": "eric_hssims_sh_PNR", "heading": "IMS SH PNR FR" }
+      ]
+    },
+    {
+      "_id": "eric_hssims_fr_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "IMS FR per Service",
+      "sources": [
+          { "source": "eric_hssims_cx_fr" },
+          { "source": "eric_hssims_sh_fr" },
+          { "source": "eric_hssims_zh_fr" }
+      ]
+    },
+    {
+      "_id": "eric_hssims_fr_per_command_timeline",
+      "widgetType": "timeline",
+      "title": "IMS FR per Command",
+      "sources": [
+          { "source": "eric_hssims_cx_user_loc" },
+          { "source": "eric_hssims_cx_auth_data" },
+          { "source": "eric_hssims_cx_CSCF_reg" },
+          { "source": "eric_hssims_cx_uar" },
+          { "source": "eric_hssims_sh_pur" },
+          { "source": "eric_hssims_sh_SNR" },
+          { "source": "eric_hssims_sh_read_access" },
+          { "source": "eric_hssims_zh_auth_data" }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "_id": "eric_hssims_total_tps",
+      "sourceType": "prometheus",
+      "query": "(sum:eric_hssims_cx_tps:rate1m or vector(0)) + (sum:eric_hssims_sh_tps:rate1m or vector(0)) + (sum:eric_hssims_zh_tps:rate1m or vector(0))",
+      "label": "IMS TPS"
+    },
+    {
+      "_id": "eric_hssims_cx_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_cx_tps:rate1m",
+      "label": "IMS CX TPS"
+    },
+    {
+      "_id": "eric_hssims_sh_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_sh_tps:rate1m",
+      "label": "IMS SH TPS"
+    },
+    {
+      "_id": "eric_hssims_zh_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_zh_tps:rate1m",
+      "label": "IMS ZH TPS"
+    },
+    {
+      "_id": "eric_hssims_cx_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_cx_failure_ratio:rate1m",
+      "label": "IMS CX FR"
+    },
+    {
+      "_id": "eric_hssims_sh_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_sh_failure_ratio:rate1m",
+      "label": "IMS SH FR"
+    },
+    {
+      "_id": "eric_hssims_zh_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssims_zh_failure_ratio:rate1m",
+      "label": "IMS ZH FR"
+    },
+    {
+      "_id": "eric_hssims_cx_CSCF_reg",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_cx_sar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_cx_sar_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS CX SAR FR"
+    },
+    {
+      "_id": "eric_hssims_cx_user_loc",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_cx_lir_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_cx_lir_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS CX LIR FR"
+    },
+    {
+      "_id": "eric_hssims_cx_auth_data",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_cx_mar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_cx_mar_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS CX MAR FR"
+    },
+    {
+      "_id": "eric_hssims_sh_read_access",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_sh_udr_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_sh_udr_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS SH UDR FR"
+    },
+    {
+      "_id": "eric_hssims_cx_uar",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_cx_uar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_cx_uar_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS CX UAR FR"
+    },
+    {
+      "_id": "eric_hssims_sh_pur",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_sh_pur_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_sh_pur_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS SH PUR FR"
+    },
+    {
+      "_id": "eric_hssims_sh_SNR",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_sh_snr_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_sh_snr_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS SH SNR FR"
+    },
+    {
+      "_id": "eric_hssims_sh_PNR",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_sh_pnr_unsuccessful_responses_recv[1m]))/sum(delta(eric_hssims_sh_pnr_requests_sent[1m]))>0) * 100 or vector(0)",
+      "label": "IMS SH PNR FR"
+    },
+    {
+      "_id": "eric_hssims_zh_auth_data",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssims_zh_mar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssims_zh_mar_requests_recv[1m]))>0) * 100 or vector(0)",
+      "label": "IMS ZH MAR FR"
+    }
+    ]
+}

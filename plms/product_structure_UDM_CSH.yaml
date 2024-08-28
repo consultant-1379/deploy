@@ -1,0 +1,17 @@
+---
+modelVersion: "2.0"
+flavor: "Generic"
+service:
+  # name of the service:
+  name: "eric-ccsm-udm"
+  design_countries:
+    - SE
+  # Compilation Country (Set on the derivative products)
+  sw_compilation_country: SE
+  release_responsible: BCSSGQMA
+  design_responsible: BCSSGQMA
+  # Details of the APR product structure:
+  top_product:
+    number: CSH 109 716
+    description: "UDM NF"
+    designation: "Drop XX"  #Include drop number

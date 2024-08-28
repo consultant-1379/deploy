@@ -1,0 +1,145 @@
+---
+modelVersion: "2.0"
+flavor: "Generic"
+service:
+  name: "eric-ccsm Helm"
+  design_countries:
+    - SE
+  sw_compilation_country: SE
+  release_responsible: BDGSLFIA
+  design_responsible: BDGSLFIA
+  src_products:
+    - label: "Source"
+      number: "CAV1010322"
+      alias: ["CCSM Source"]
+  derivative_products:
+    - label: "CCSM helm"
+      number: "CXD1010476"
+      alias: ["eric-ccsm"]
+      derivedFrom:
+        munin: "CAV1010322"
+      includes:
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-small-system"
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-cleartext"
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-std-system"
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-ucc-system"
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-ipv4"
+
+        - munin: "CXD101465"
+          version: "1.7.0-0"
+          comment: "eric-ccsm-values-ipv6"
+
+        - munin: "CXD1010054"
+          version: "1.104.3+1"
+          comment: "eric-adp-5g-udm"
+
+        - munin: "CXD1010029"
+          version: "1.18.1"
+          comment: "eric-nrfagent"
+
+        - munin: "CXD1010464"
+          version: "1.71.0"
+          comment: "eric-ccsm-ausf"
+
+        - munin: "CXD1010463"
+          version: "1.110.0"
+          comment: "eric-ccsm-udm"
+
+        - munin: "CXD1010546"
+          version: "1.115.0"
+          comment: "eric-ccsm-eir"
+
+        - munin: "CXD1010578"
+          version: "1.119.0"
+          comment: "eric-ccsm-hssepc"
+
+        - munin: "CXD101261"
+          version: "1.133.0"
+          comment: "eric-ccsm-hssims"
+
+        - munin: "CXD1010426"
+          version: "1.198.0"
+          comment: "eric-ccsm-keymanager"
+
+        - munin: "CXD1010424"
+          version: "1.181.0"
+          comment: "eric-ccsm-cmagent"
+
+        - munin: "CXD101287"
+          version: "1.68.0"
+          comment: "eric-ccsm-sracmagent"
+
+        - munin: "CXD1010471"
+          version: "1.199.0"
+          comment: "eric-ccsm-autonrf"
+
+        - munin: "CXD1010534"
+          version: "1.181.0"
+          comment: "eric-ccsm-lmagent"
+
+        - munin: "CXD1010465"
+          version: "1.123.0"
+          comment: "eric-ccsm-topicwatcher"
+
+        - munin: "CXD1010538"
+          version: "1.202.0"
+          comment: "eric-ccsm-nrfgw"
+
+        - munin: "CXD1010536"
+          version: "1.199.0"
+          comment: "eric-ccsm-nfcontroller"
+
+        - munin: "CXD1010667"
+          version: "1.130.0"
+          comment: "eric-ccsm-smsengine"
+
+        - munin: "CXD1010617"
+          version: "1.206.0"
+          comment: "eric-ccsm-mapproxy"
+
+        - munin: "CXD1010771"
+          version: "1.216.0"
+          comment: "eric-ccsm-datainjector"
+
+        - munin: "CXD1010302"
+          version: "1.46.0"
+          comment: "eric-slt-dsl"
+
+        - munin: "CXD1010303"
+          version: "1.48.0"
+          comment: "eric-stm-diameter"
+
+        - munin: "CXD101209"
+          version: "1.82.0"
+          comment: "eric-ccsm-diacmagent"
+
+        - munin: "CXD101221"
+          version: "1.100.0"
+          comment: "eric-ccsm-cmvalidator"
+
+        - munin: "CXD101219"
+          version: "1.96.0"
+          comment: "eric-ccsm-cmreconciler"
+
+        - munin: "CXD101425"
+          version: "1.72.0"
+          comment: "eric-ccsm-issu"
+
+        - munin: "CXD101551"
+          version: "1.12.0"
+          comment: "eric-ccsm-senpco"

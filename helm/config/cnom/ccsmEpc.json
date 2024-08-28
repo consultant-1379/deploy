@@ -1,0 +1,214 @@
+{
+  "dashboards": [
+    {
+      "_id": "hss_epc",
+      "title": "HSS EPC",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "ySize": 2,
+          "widget": "hss_kpi"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssepc_tps_total_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssepc_tps_per_service_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssepc_fr_per_service_timeline"
+        },
+        {
+          "xSize": 4,
+          "widget": "eric_hssepc_fr_per_command_timeline"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "hss_kpi",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+        { "source": "eric_hssepc_total_tps", "heading": "EPC as provider TPS" },
+        { "source": "eric_hssepc_s6a_tps", "heading": "EPC TPS per Service" },
+        { "source": "eric_hssepc_swx_tps" },
+        { "source": "eric_hssepc_nhss_uecm_tps" },
+        { "source": "eric_hssepc_slh_tps" },
+        { "source": "eric_hssepc_s6a_fr", "heading": "EPC FR per Service" },
+        { "source": "eric_hssepc_swx_fr" },
+        { "source": "eric_hssepc_nhss_uecm_fr" },
+        { "source": "eric_hssepc_slh_fr" },
+        { "source": "eric_hssepc_s6aauth", "heading": "EPC FR per Command" },
+        { "source": "eric_hssepc_s6aupdloc" },
+        { "source": "eric_hssepc_s6anotreq" },
+        { "source": "eric_hssepc_s6apur" },
+        { "source": "eric_hssepc_swxmar" },
+        { "source": "eric_hssepc_swxsar" },
+        { "source": "eric_hssepc_slhrir" },
+        { "source": "eric_hssepc_nudm_sdm_tps" }
+        ]
+    },
+    {
+      "_id": "eric_hssepc_tps_total_timeline",
+      "widgetType": "timeline",
+      "title": "EPC as provider TPS",
+      "sources": [
+          { "source": "eric_hssepc_total_tps", "heading": "EPC TPS" }
+      ]
+    },
+    {
+      "_id": "eric_hssepc_tps_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "EPC TPS per Service",
+      "sources": [
+          { "source": "eric_hssepc_s6a_tps" },
+          { "source": "eric_hssepc_swx_tps" },
+          { "source": "eric_hssepc_nhss_uecm_tps"},
+          { "source": "eric_hssepc_slh_tps"},
+          { "source": "eric_hssepc_nudm_sdm_tps"}
+      ]
+    },
+    {
+      "_id": "eric_hssepc_fr_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "EPC FR per Service",
+      "sources": [
+          { "source": "eric_hssepc_s6a_fr" },
+          { "source": "eric_hssepc_swx_fr" },
+          { "source": "eric_hssepc_nhss_uecm_fr"},
+          { "source": "eric_hssepc_slh_fr"},
+          { "source": "eric_hssepc_nudm_sdm_fr"}
+      ]
+    },
+    {
+      "_id": "eric_hssepc_fr_per_command_timeline",
+      "widgetType": "timeline",
+      "title": "EPC FR per Command",
+      "sources": [
+        { "source": "eric_hssepc_s6aauth" },
+        { "source": "eric_hssepc_s6aupdloc" },
+        { "source": "eric_hssepc_s6anotreq" },
+        { "source": "eric_hssepc_s6apur" },
+        { "source": "eric_hssepc_swxmar" },
+        { "source": "eric_hssepc_swxsar" },
+        { "source": "eric_hssepc_slhrir" }
+      ]
+    }
+  ],
+  "sources": [
+   {
+      "_id": "eric_hssepc_s6aauth",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hss_s6a_air_unsuccessful_responses_sent[1m]))/sum(delta(eric_hss_s6a_air_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC S6a AIR FR"
+    },
+    {
+      "_id": "eric_hssepc_s6aupdloc",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hss_s6a_ulr_unsuccessful_responses_sent[1m]))/sum(delta(eric_hss_s6a_ulr_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC S6a ULR FR"
+    },
+    {
+      "_id": "eric_hssepc_s6anotreq",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hss_s6a_nor_unsuccessful_responses_sent[1m]))/sum(delta(eric_hss_s6a_nor_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC S6a NOR FR"
+    },
+    {
+      "_id": "eric_hssepc_s6apur",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hss_s6a_pur_unsuccessful_responses_sent[1m]))/sum(delta(eric_hss_s6a_pur_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC S6a PUR FR"
+    },
+    {
+      "_id": "eric_hssepc_swxmar",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssepc_swx_mar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssepc_swx_mar_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC SWx MAR FR"
+    },
+    {
+      "_id": "eric_hssepc_swxsar",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssepc_swx_sar_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssepc_swx_sar_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC SWx SAR FR"
+    },
+    {
+      "_id": "eric_hssepc_slhrir",
+      "sourceType": "prometheus",
+      "query": "(sum(delta(eric_hssepc_slh_rir_unsuccessful_responses_sent[1m]))/sum(delta(eric_hssepc_slh_rir_requests_recv[1m])>0)) * 100 or vector(0)",
+      "label": "EPC SLh RIR FR"
+    },
+    {
+      "_id": "eric_hssepc_total_tps",
+      "sourceType": "prometheus",
+      "query": "(sum:eric_hssepc_s6a_tps:rate1m or vector(0)) + (sum:eric_hssepc_swx_tps:rate1m or vector(0)) + (sum:eric_hssepc_nhss_uecm_tps:rate1m or vector(0)) + (sum:eric_hssepc_slh_tps:rate1m or vector(0)) + (sum:eric_hssepc_nudm_sdm_tps:rate1m or vector(0))",
+      "label": "EPC TPS"
+    },
+    {
+      "_id": "eric_hssepc_s6a_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_s6a_tps:rate1m",
+      "label": "EPC S6a TPS"
+    },
+        {
+      "_id": "eric_hssepc_swx_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_swx_tps:rate1m",
+      "label": "EPC SWx TPS"
+    },
+    {
+      "_id": "eric_hssepc_nhss_uecm_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_nhss_uecm_tps:rate1m",
+      "label": "EPC nHSS UECM TPS"
+    },
+    {
+      "_id": "eric_hssepc_slh_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_slh_tps:rate1m",
+      "label": "EPC SLh TPS"
+    },
+    {
+      "_id": "eric_hssepc_nudm_sdm_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_nudm_sdm_tps:rate1m",
+      "label": "EPC nUDM SDM TPS"
+    },
+    {
+      "_id": "eric_hssepc_s6a_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_s6a_failure_ratio:rate1m",
+      "label": "EPC S6a FR"
+    },
+        {
+      "_id": "eric_hssepc_swx_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_swx_failure_ratio:rate1m",
+      "label": "EPC SWx FR"
+    },
+    {
+      "_id": "eric_hssepc_nhss_uecm_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_nhss_uecm_failure_ratio:rate1m",
+      "label": "EPC nHSS UECM FR"
+    },
+    {
+      "_id": "eric_hssepc_slh_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_slh_failure_ratio:rate1m",
+      "label": "EPC SLh FR"
+    },
+    {
+      "_id": "eric_hssepc_nudm_sdm_fr",
+      "sourceType": "prometheus",
+      "query": "sum:eric_hssepc_nudm_sdm_failure_ratio:rate1m",
+      "label": "EPC nUDM SDM FR"
+    }
+    ]
+}

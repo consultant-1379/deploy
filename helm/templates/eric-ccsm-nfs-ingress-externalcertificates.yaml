@@ -1,0 +1,202 @@
+{{/*
+************  Ingress External Certificates per NFs ****************
+*/}}
+
+{{- if eq ( include "eric-ccsm.checkMtls" . ) "true" }}
+{{- $extcert_v1 := .Capabilities.APIVersions.Has "certm.sec.ericsson.com/v1/ExternalCertificate" }}
+{{- $extcert_v1beta1 := .Capabilities.APIVersions.Has "certm.sec.ericsson.com/v1beta1/ExternalCertificate"}}
+{{- if or $extcert_v1 $extcert_v1beta1 }}
+
+{{/*
+************  UDM Ingress External Certificates ****************
+*/}}
+{{- if ( eq ( index .Values "eric-ccsm-udm" "enabled" ) true) }}
+
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-udm-sbi-server-certs"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-udm-sbi-server-certs"
+  generated-secret-type: tls
+  asymmetric-key-certificate-name: "eric-ccsm-udm-sbi-server-asymetric-key/eric-ccsm-udm-sbi-server-certs"
+---
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-udm-sbi-server-certs-cacert"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-udm-sbi-server-certs-cacert"
+  generated-secret-type: opaque
+  trusted-certificates-file-name: cacert
+  trusted-certificate-list-name: "eric-ccsm-udm-sbi-server-certs-cacert"
+---
+{{- end }}
+
+{{/*
+************  AUSF Ingress External Certificates ****************
+*/}}
+{{- if ( eq ( index .Values "eric-ccsm-ausf" "enabled" ) true) }}
+
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-ausf-sbi-server-certs"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-ausf-sbi-server-certs"
+  generated-secret-type: tls
+  asymmetric-key-certificate-name: "eric-ccsm-ausf-sbi-server-asymetric-key/eric-ccsm-ausf-sbi-server-certs"
+---
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-ausf-sbi-server-certs-cacert"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-ausf-sbi-server-certs-cacert"
+  generated-secret-type: opaque
+  trusted-certificates-file-name: cacert
+  trusted-certificate-list-name: "eric-ccsm-ausf-sbi-server-certs-cacert"
+---
+{{- end }}
+
+{{/*
+************  EIR Ingress External Certificates ****************
+*/}}
+{{- if ( eq ( index .Values "eric-ccsm-eir" "enabled" ) true) }}
+
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-eir-sbi-server-certs"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-eir-sbi-server-certs"
+  generated-secret-type: tls
+  asymmetric-key-certificate-name: "eric-ccsm-eir-sbi-server-asymetric-key/eric-ccsm-eir-sbi-server-certs"
+---
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-eir-sbi-server-certs-cacert"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-eir-sbi-server-certs-cacert"
+  generated-secret-type: opaque
+  trusted-certificates-file-name: cacert
+  trusted-certificate-list-name: "eric-ccsm-eir-sbi-server-certs-cacert"
+---
+{{- end }}
+
+{{/*
+************  HSS IMS and EPC SOAP Ingress External Certificates ****************
+*/}}
+{{- if ( or (eq ( index .Values "eric-ccsm-hssims" "enabled" ) true) (eq ( index .Values "eric-ccsm-hssepc" "enabled" ) true)  ) }}
+
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-hss-soap-server-certs"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-hss-soap-server-certs"
+  generated-secret-type: tls
+  asymmetric-key-certificate-name: "eric-ccsm-hss-soap-server-asymetric-key/eric-ccsm-hss-soap-server-certs"
+---
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-hss-soap-server-certs-cacert"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-hss-soap-server-certs-cacert"
+  generated-secret-type: opaque
+  trusted-certificates-file-name: cacert
+  trusted-certificate-list-name: "eric-ccsm-hss-soap-server-certs-cacert"
+---
+{{- end }}
+
+{{/*
+************  HSS IMS and EPC Ingress External Certificates ****************
+*/}}
+{{- if ( or (eq ( index .Values "eric-ccsm-hssims" "enabled" ) true) (eq ( index .Values "eric-ccsm-hssepc" "enabled" ) true)  ) }}
+
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-hss-sbi-server-certs"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-hss-sbi-server-certs"
+  generated-secret-type: tls
+  asymmetric-key-certificate-name: "eric-ccsm-hss-sbi-server-asymetric-key/eric-ccsm-hss-sbi-server-certs"
+---
+{{- if $extcert_v1 }}
+apiVersion: certm.sec.ericsson.com/v1
+{{- else }}
+apiVersion: certm.sec.ericsson.com/v1beta1
+{{- end }}
+kind: ExternalCertificate
+metadata:
+  name: "eric-ccsm-hss-sbi-server-certs-cacert"
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  generated-secret-name: "eric-ccsm-hss-sbi-server-certs-cacert"
+  generated-secret-type: opaque
+  trusted-certificates-file-name: cacert
+  trusted-certificate-list-name: "eric-ccsm-hss-sbi-server-certs-cacert"
+---
+{{- end }}
+
+
+{{- end }}
+{{- end }}

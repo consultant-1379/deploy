@@ -1,0 +1,150 @@
+{
+  "dashboards": [
+    {
+      "_id": "eir",
+      "title": "EIR",
+      "apps": ["statusOverview"],
+      "tiles": [
+        {
+          "xSize": 2,
+          "widget": "eir_kpi1"
+        },
+        {
+          "xSize": 2,
+          "widget": "eir_tps_total_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "eir_tps_per_service_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "eir_fr_per_service_timeline"
+        },
+        {
+          "xSize": 2,
+          "widget": "eir_fr_consumer_timeline"
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "_id": "eir_kpi1",
+      "widgetType": "kpi",
+      "title": "KPIs",
+      "sources": [
+          { "source": "eric_eir_tps", "heading": "EIR as provider TPS" },
+          { "source": "eric_eir_n5g_eir_eic_tps", "heading": "EIR TPS per Service" },
+          { "source": "eric_eir_s13_eir_eic_tps" },
+          { "source": "eric_eir_map_eir_eic_tps" },
+          { "source": "eric_eir_n5g_eir_eic", "heading": "EIR FR per Service" },
+          { "source": "eric_eir_s13_eir_eic" },
+          { "source": "eric_eir_map_eir_eic" },
+          { "source": "eric_eir_ncudr_gud_dr", "heading": "EIR as consumer FR" },
+          { "source": "eric_eir_httpnotifier" },
+          { "source": "eric_eir_eda" }
+      ]
+    },
+        {
+      "_id": "eir_tps_total_timeline",
+      "widgetType": "timeline",
+      "title": "EIR as provider TPS",
+      "sources": [
+          { "source": "eric_eir_tps" }
+      ]
+    },
+    {
+      "_id": "eir_tps_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "EIR TPS per Service",
+      "sources": [
+          { "source": "eric_eir_n5g_eir_eic_tps" },
+          { "source": "eric_eir_s13_eir_eic_tps" },
+          { "source": "eric_eir_map_eir_eic_tps" }
+      ]
+    },
+    {
+      "_id": "eir_fr_per_service_timeline",
+      "widgetType": "timeline",
+      "title": "EIR FR per Service",
+      "sources": [
+          { "source": "eric_eir_n5g_eir_eic" },
+          { "source": "eric_eir_s13_eir_eic" },
+          { "source": "eric_eir_map_eir_eic" }
+      ]
+    },
+    {
+      "_id": "eir_fr_consumer_timeline",
+      "widgetType": "timeline",
+      "title": "EIR as consumer FR",
+      "sources": [
+          { "source": "eric_eir_ncudr_gud_dr" },
+          { "source": "eric_eir_httpnotifier" },
+          { "source": "eric_eir_eda" }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "_id": "eric_eir_n5g_eir_eic",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_n5g_eir_eic_failure_ratio:rate1m",
+      "label": "5G EIR EIC FR"
+    },
+    {
+      "_id": "eric_eir_s13_eir_eic",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_s13_eic_failure_ratio:rate1m",
+      "label": "4G EIR EIC FR"
+    },
+    {
+      "_id": "eric_eir_map_eir_eic",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_map_eir_eic_failure_ratio:rate1m",
+      "label": "2G/3G EIR EIC FR"
+    },
+    {
+      "_id": "eric_eir_ncudr_gud_dr",
+      "sourceType": "prometheus",
+      "query": "sum(delta(eric_eir_ncudr_gud_dr_unsuccessful_responses_recv[1m])) / sum(delta(eric_eir_ncudr_gud_dr_requests_sent[1m])> 0 ) * 100 or vector(0)",
+      "label": "EIR UDR FR"
+    },
+    {
+      "_id": "eric_eir_tps",
+      "sourceType": "prometheus",
+      "query": "(sum:eric_eir_n5g_eir_eic_tps:rate1m or vector(0)) + (sum:eric_eir_s13_eic_tps:rate1m or vector(0)) + (sum:eric_eir_map_eir_eic_tps:rate1m or vector(0))",
+      "label": "EIR TPS"
+    },
+    {
+      "_id": "eric_eir_n5g_eir_eic_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_n5g_eir_eic_tps:rate1m",
+      "label": "5G EIR TPS"
+    },
+    {
+      "_id": "eric_eir_s13_eir_eic_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_s13_eic_tps:rate1m",
+      "label": "4G EIR TPS"
+    },
+    {
+      "_id": "eric_eir_map_eir_eic_tps",
+      "sourceType": "prometheus",
+      "query": "sum:eric_eir_map_eir_eic_tps:rate1m",
+      "label": "2G/3G EIR TPS"
+    },
+    {
+      "_id": "eric_eir_httpnotifier",
+      "sourceType": "prometheus",
+      "query": "sum(delta(eric_eir_httpnotifier_unsuccessful_responses_recv[1m])) / sum(delta(eric_eir_httpnotifier_notifications_sent[1m])> 0 ) * 100 or vector(0)",
+      "label": "EIR HTTP Notifier FR"
+    },
+    {
+      "_id": "eric_eir_eda",
+      "sourceType": "prometheus",
+      "query": "sum(delta(eric_eir_eda_unsuccessful_responses_recv[1m])) / sum(delta(eric_eir_eda_requests_sent[1m])> 0 ) * 100 or vector(0)",
+      "label": "EIR CAI3G FR"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+##
+# Structure of this file.
+#
+# IP Stack version:
+# - ipv6
+##
+exports:
+  # Values under this section are exported when condition: global.profiles.ipv6.enabled=true
+  ipv6:
+    global:
+      ipStackMode: "'ipv6'"
+    eric-ccsm-nrfagent:
+      global:
+        ipStackMode: "'ipv6'"
+    eric-ccsm-eir:
+      eric-eir-s13diameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+    eric-ccsm-hssepc:
+      eric-hssepc-s6adiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+      eric-hssepc-swxdiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+      eric-hssepc-slhdiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+    eric-ccsm-hssims:
+      eric-hssims-shdiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+      eric-hssims-cxdiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+      eric-hssims-zhdiameter:
+        initialConfig:
+          dsl:
+            enableIPv6: true
+    eric-slt-dsl:
+      initialConfig:
+        dsl:
+          enableIPv6: true
+    eric-stm-diameter:
+      initialConfig:
+        dsl:
+          enableIPv6: true
+    eric-ccsm-adp:
+      eric-cm-yang-provider:
+        ldap:
+          ipv6Enabled: true
+      eric-data-search-engine:
+        service:
+          network:
+            protocol:
+              IPv6: true

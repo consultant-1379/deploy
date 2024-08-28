@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+       urn:ietf:params:netconf:base:1.0
+   </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                VoLTE feature (TADS, User Location) needs the following configuration in HSS-IMS:
+                   . voiceInterworkingWith2g3g feature enabled
+                   . HSS-IMS sends Post_anyTimeInterrogation_outgoing request towards HLR/ccsm-mapproxy
+            -->
+            <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+                <!-- Enable voiceInterworkingWith2g3g feature -->
+                <features>
+                    <voiceInterworkingWith2g3g>
+                        <oam-activated>true</oam-activated>
+                        <oam-exposed>true</oam-exposed>
+                    </voiceInterworkingWith2g3g>
+                </features>
+            </ccsm-common>
+        </config>
+    </edit-config>
+</rpc><close-session />

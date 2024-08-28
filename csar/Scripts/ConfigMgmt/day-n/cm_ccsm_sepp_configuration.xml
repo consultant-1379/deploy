@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <!--
+        Configuration for the SEPP as remote Network Function.
+          Prerequisite: sepp-support feature enabled.
+      -->
+      <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+        <!--
+          Contains configuration parameters for remote-nf-profile
+        -->
+        <remote-nf-profile>
+          <!-- List of remote-nf-profile. Repeat per SEPP instance in the network-->
+          <remote-nf-profile>
+            <!-- Unique ID for the remote endpoint -->
+            <instance-id>{REMOTE_SEPP_INSTANCEID}</instance-id>
+            <type>sepp</type>
+            <!-- FQDN of the SEPP -->
+            <fqdn>{REMOTE_SEPP_FQDN}</fqdn>
+            <!-- IPv4 addresses of the SEPP -->
+            <ipv4-address>{REMOTE_NF_PROFILE_SEPP_IPV4_ADDRESS}</ipv4-address>
+            <!-- IPv6 addresses of the SEPP -->
+            <ipv6-address>{REMOTE_NF_PROFILE_SEPP_IPV6_ADDRESS}</ipv6-address>
+             <!-- priority of the SEPP. -->
+            <priority>{REMOTE_SEPP_PRIORITY}</priority>
+            <!-- locality should match consumer defined locality in own NF-Profile -->
+            <locality>{REMOTE_SEPP_LOCALITY}</locality>
+            <!-- allowed-nf-type: NFs allowed to consume the service, for SEPP it should be "udm" -->
+            <allowed-nf-type>{REMOTE_SEPP_ALLOWED_NF_TYPE}</allowed-nf-type>
+            <sepp-info>
+                <!-- List of SEPP port-->
+              <sepp-port>
+                <!--scheme: Protocol schema (e.g. "http", "https") -->
+                <scheme>{REMOTE_SEPP_SCHEME}</scheme>
+                <!-- Port number of the SEPP instance -->
+                <port>{REMOTE_SEPP_PORT_NUMBER}</port>
+              </sepp-port>
+            </sepp-info>
+          </remote-nf-profile>
+        </remote-nf-profile>
+      </ccsm-common>
+    </config>
+  </edit-config>
+  </rpc>
+  <close-session/>

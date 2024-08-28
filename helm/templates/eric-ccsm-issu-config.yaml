@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eric-ccsm.issu.config-name" . }}
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+    "helm.sh/hook": "pre-install,pre-upgrade,pre-rollback"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook-weight": "1"
+data:
+  config.json : |-
+    {{ template "eric-ccsm.issu.config-data" . }}

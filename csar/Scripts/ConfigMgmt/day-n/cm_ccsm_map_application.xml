@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Notice that it is a configuration template in XML format
+  compliant with NF YANG model.  This XML template provides
+  a configuration skeleton that shall be modified before
+  loading into the yang service.  Some parts of the document
+  must be deleted or added depending on the network configuration
+  where the VNF will be deployed.
+-->
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <!--
+        Configuration for the CCSM COMMON.
+      -->
+      <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+        <!--
+          Contains configuration parameters for map-application.
+        -->
+        <map-application>
+          <!--
+          Identify the own E.164 Global Title in the MAP network.
+          -->
+          <gt>
+            <!--
+            List of own CCSM addresses per deployment
+            -->
+            <own-addresses>
+              <!--
+              Stack name
+              -->
+              <name>eric-ccsm-mapproxy-1</name>
+              <!--
+                National address. Type is string. Pattern is'[0-9]{2,15}'.
+                It is OPTIONAL.
+              -->
+              <national-address>{NATIONAL_ADDRESS_1}</national-address>
+              <!--
+                International address. Type is string. Pattern is'[0-9]{3,15}'.
+                It is OPTIONAL.
+              -->
+              <international-address>{INTERNATIONAL_ADDRESS_1}</international-address>
+            </own-addresses>
+
+            <own-addresses>
+              <!--
+              Stack name
+              -->
+              <name>eric-ccsm-mapproxy-2</name>
+              <!--
+                National address. Type is string. Pattern is'[0-9]{2,15}'.
+                It is OPTIONAL.
+              -->
+              <national-address>{NATIONAL_ADDRESS_2}</national-address>
+              <!--
+                International address. Type is string. Pattern is'[0-9]{3,15}'.
+                It is OPTIONAL.
+              -->
+              <international-address>{INTERNATIONAL_ADDRESS_2}</international-address>
+            </own-addresses>
+
+            <!--
+              Delete if less than 3 stacks are used
+            -->
+            <own-addresses>
+              <!--
+              Stack name
+              -->
+              <name>eric-ccsm-mapproxy-3</name>
+              <!--
+                National address. Type is string. Pattern is'[0-9]{2,15}'.
+                It is OPTIONAL.
+              -->
+              <national-address>{NATIONAL_ADDRESS_3}</national-address>
+              <!--
+                International address. Type is string. Pattern is'[0-9]{3,15}'.
+                It is OPTIONAL.
+              -->
+              <international-address>{INTERNATIONAL_ADDRESS_3}</international-address>
+            </own-addresses>
+
+            <!--
+              Delete if less than 4 stacks are used
+            -->
+            <own-addresses>
+              <!--
+              Stack name
+              -->
+              <name>eric-ccsm-mapproxy-4</name>
+              <!--
+                National address. Type is string. Pattern is'[0-9]{2,15}'.
+                It is OPTIONAL.
+              -->
+              <national-address>{NATIONAL_ADDRESS_4}</national-address>
+              <!--
+                International address. Type is string. Pattern is'[0-9]{3,15}'.
+                It is OPTIONAL.
+              -->
+              <international-address>{INTERNATIONAL_ADDRESS_4}</international-address>
+            </own-addresses>
+
+            <!--
+              HLR international address. Type is string. Pattern is'[0-9]{3,15}'.
+              It is OPTIONAL.
+            -->
+            <hlr-international-address>{HLR_INTERNATIONAL_ADDRESS}</hlr-international-address>
+
+          </gt>
+          <map-deployment>
+            <!--
+              MAP user waiting time in seconds for HTTP client responses.
+              It is OPTIONAL, default value is 12.
+            -->
+            <http-client-timer>12</http-client-timer>
+         </map-deployment>
+
+          <!--
+          Timers for outgoing operations
+          -->
+         <operations-timers>
+            <!--
+              Timer in seconds. Valid for messages:
+              - AlertSC (no result) MAP version V1
+              - AlertSC MAP version V2
+              It is OPTIONAL, default value is 3.
+            -->
+           <alert-sc-timer>3</alert-sc-timer>
+            <!--
+              Timer in seconds for message NoteMSPresent (Ericsson proprietary) MAP version V1
+              It is OPTIONAL, default value is 1.
+            -->
+           <eri-note-ms-present-timer>1</eri-note-ms-present-timer>
+         </operations-timers>
+        </map-application>
+      </ccsm-common>
+      <!--
+         Recommended values for sctp by chars
+      -->
+      <sctp xmlns="urn:rdns:com:ericsson:oammodel:ericsson-sctp-adp">
+        <sctp-profile>
+          <id>0</id>
+          <initial-arwnd>40000</initial-arwnd>
+        </sctp-profile>
+      </sctp>
+    </config>
+  </edit-config>
+  </rpc>
+  <close-session/>

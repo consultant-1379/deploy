@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+        urn:ietf:params:netconf:base:1.0
+   </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                . This file provides an XML template for configuring data access control in HSS-IMS.
+                . The configured attributes are a list of permission defined for each AS configured in HSS-IMS.
+                . Values can be: read, write, subsnotif and subsnotifignore.
+                . The values subsnotif and subsnotifignore are mutually exclusive, i.e. both values cannot be assigned to an AS for a specific data-reference at a given point in time.
+                . If no access control is configured for a data reference, default value applies (read)
+                . An empty value means no permission is granted.
+                . subsnotifignore value indicates whether Sh-SNR subscription operation will be ignored (set) or will trigger the DIAMETER_ERROR_OPERATION_NOT_ALLOWED error
+            Examples:
+                read write subsnotif
+                none
+                read write
+            Allowed service indication list applies to transparent data
+            -->
+            <hssims xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssims">
+            <ims-as>
+               <as>
+                  <!-- Identity of the application server -->
+                  <as-id>
+                  {AS_ID}
+                  </as-id>
+                  <as-name>
+                  {AS_NAME}
+                  </as-name>
+                  <as-realm>
+                  {AS_REALM}
+                  </as-realm>
+                  <!-- Profile associated to the AS. It references to auth-profile -->
+                  <as-auth-profile-id>
+                  {AS_AUTH_PROFILE_ID}
+                  </as-auth-profile-id>
+               </as>
+             <!-- Container for the IMS Authorization profile-->
+                <as-auth-profile>
+                   <auth-profile-id>
+                   {AS_AUTH_PROFILE_ID}
+                   </auth-profile-id>
+                   <auth-profile-description>
+                   {AUTH_PROFILE_DESCRIPTION}
+                   </auth-profile-description>
+                   <repository-data-access>
+                   {REPOSITORY_DATA_ACCESS_PERMISSION}
+                   </repository-data-access>
+                   <s-cscf-name-access>
+                   {S_SCSF_NAME_ACCESS_PERMISSION}
+                   </s-cscf-name-access>
+                   <msisdn-access>
+                   {MSISDN_ACCESS_PERMISSION}
+                   </msisdn-access>>
+                   <ims-public-identity-access>
+                   {IMS_PUBLIC_IDENTITY_ACCESS_PERMISSION}
+                   </ims-public-identity-access>
+                   <ims-user-state-access>
+                   {IMS_USER_STATE_ACCESS_PERMISSION}
+                   </ims-user-state-access>
+                   <ims-public-identity-access>
+                   {IMS_PUBLIC_IDENTY_ACCESS_PERMISSION}
+                   </ims-public-identity-access>
+                   <imsi-access>
+                   {IMSI_ACCESS_PERMISSION}
+                   </imsi-access>
+                   <charging-information-access>
+                   {CHARGING_INFORMATION_PERMISSION}
+                   </charging-information-access>
+                   <tads-information-access>
+                   {TADS_INFORMATION_ACCESS_PERMISSION}
+                   </tads-information-access>
+                   <stnsr-access>
+                   {STNSR_ACCESS_PERMISSION}
+                   </stnsr-access>
+                   <ue-srvcc-capability-access>
+                   {UE_SRVCC_CAPABILITY_ACCESS_PERMISSION}
+                   </ue-srvcc-capability-access>
+                   <locationinfo-access>
+                   {LOCATIONINFO_ACCESS_PERMISSION}
+                   </locationinfo-access>
+                   <csrn-access>
+                   {CSRN_ACCESS_PERMISSION}
+                   </csrn-access>
+                   <!--Allowed service indication list applies to transparent data.
+                       Empty list is not allowed
+                       Duplicate values are not allowed -->
+                   <allowed-service-indication>
+                   {SERVICE_ID}
+                   </allowed-service-indication>
+                   <zh-data-access>
+                   {ZH_DATA_ACCESS_PERMISSION}
+                   </zh-data-access>
+                </as-auth-profile>
+             <service-indication>
+                <service-id>
+                <!-- Identity of the service indication-->
+                {SERVICE_ID}
+                </service-id>
+                <!-- Logical name of the Service Indication -->
+                <service-name>
+                {SERVICE_NAME}
+                </service-name>
+                <!-- The maximum transparent data size in bytes allowed for this service indication -->
+                <max-data-size-td>
+                {MAX-DATA-SIZE-TD}
+                </max-data-size-td>
+             </service-indication>
+           </ims-as>
+          </hssims>
+        </config>
+    </edit-config>
+</rpc><close-session />

@@ -1,0 +1,6 @@
+{{ if include "eric-ccsm.checkResources" $ | required "Enable only one dimensioning profile: 'small-system' or 'std-system' " }}
+{{ if include "eric-ccsm.checkSecurity" $ | required "Enable only one security and networking profile: 'cleartext' or 'mtls' " }}
+{{ if include "eric-ccsm.checkIpVersion" $ | required "Enable only one IP version profile: 'ipv4' or 'ipv6' " }}
+{{ end }}
+{{ end }}
+{{ end }}

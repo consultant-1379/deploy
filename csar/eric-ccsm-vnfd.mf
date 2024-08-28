@@ -1,0 +1,5 @@
+metadata:
+vnf_product_name: CCSM
+vnf_provider_id: Ericsson
+vnf_package_version: 0.0.1
+vnf_release_date_time: 2020-01-01T10:00:00+03:00

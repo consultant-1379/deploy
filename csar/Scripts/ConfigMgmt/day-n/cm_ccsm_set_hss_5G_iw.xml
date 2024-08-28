@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+       urn:ietf:params:netconf:base:1.0
+   </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+             The following features need interworking with UDM to retrieve information in the 5G domain
+                . VoNR TADS feature
+                . User Location Retrieval
+                . P-CSCF restoration
+
+             Parameters needed:
+                   . voiceOverNr feature enabled
+                   . HSS-IMS needs Nudm_MT service provided by UDM NF
+                   . HSS-IMS needs Nudm_UECM service provided by UDM NF for P-CSCF restoration
+                     Configure the elements remote-nf-profile and remote-nf-service accordingly
+            -->
+            <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+                <!-- Enable voiceOverNr feature -->
+                <features>
+                    <voiceOverNr>
+                        <oam-activated>true</oam-activated>
+                        <oam-exposed>true</oam-exposed>
+                    </voiceOverNr>
+                </features>
+            </ccsm-common>
+
+            <hss-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hss-common">
+                <!-- Contains configuration parameters for remote-nf-profile. -->
+                <remote-nf-profile>
+                    <!-- List of remote-nf-profile. -->
+                    <remote-nf-profile>
+                        <!-- Unique ID for the remote endpoint. -->
+                        <instance-id>{REMOTE_NF_PROFILE_UDM_INSTANCE_ID}</instance-id>
+
+                        <!-- Type of the remote Network Function. -->
+                        <type>udm</type>
+
+                        <!-- FQDN of the remote Network Function. -->
+                        <fqdn>{REMOTE_NF_PROFILE_UDM_FQDN}</fqdn>
+                        <ipv4-address>{REMOTE_NF_PROFILE_UDM_IPV4_ADDRESS}</ipv4-address>
+                        <ipv6-address>{REMOTE_NF_PROFILE_UDM_IPV6_ADDRESS}</ipv6-address>
+                        <allowed-nf-type>hss</allowed-nf-type>
+
+                        <remote-nf-service>
+                            <!-- Unique ID of the remote NF Service Instance within the NF Instance. -->
+                            <instance-id>{REMOTE_NF_SERVICE_UDM_MT_INSTANCE_ID}</instance-id>
+                            <!-- Name of the remote NF Service Instance. -->
+                            <name>nudm-mt</name>
+                            <fqdn>{REMOTE_NF_SERVICE_UDM_MT_FQDN}</fqdn>
+                            <ip-endpoint>
+                                <id>{REMOTE_NF_SERVICE_UDM_MT_IP_ENDPOINT_ID}</id>
+                                <transport>tcp</transport>
+                                <port>{REMOTE_NF_SERVICE_UDM_MT_IP_ENDPOINT_PORT}</port>
+                            </ip-endpoint>
+
+                            <version>
+                                <api-version-in-uri>v1</api-version-in-uri>
+                            </version>
+                            <!--scheme: Protocol schema (e.g. "http", "https"). -->
+                            <scheme>{REMOTE_NF_SERVICE_UDM_MT_schema}</scheme>
+                        </remote-nf-service>
+                        <remote-nf-service>
+                            <!-- Unique ID of the remote NF Service Instance within the NF Instance. -->
+                            <instance-id>{REMOTE_NF_SERVICE_UDM_UECM_INSTANCE_ID}</instance-id>
+                            <!-- Name of the remote NF Service Instance. -->
+                            <name>nudm-uecm</name>
+                            <fqdn>{REMOTE_NF_SERVICE_UDM_UECM_FQDN}</fqdn>
+                            <ip-endpoint>
+                                <id>{REMOTE_NF_SERVICE_UDM_UECM_IP_ENDPOINT_ID}</id>
+                                <transport>tcp</transport>
+                                <port>{REMOTE_NF_SERVICE_UDM_UECM_IP_ENDPOINT_PORT}</port>
+                            </ip-endpoint>
+
+                            <version>
+                                <api-version-in-uri>v1</api-version-in-uri>
+                            </version>
+                            <!--scheme: Protocol schema (e.g. "http", "https"). -->
+                            <scheme>{REMOTE_NF_SERVICE_UDM_UECM_schema}</scheme>
+                        </remote-nf-service>
+                    </remote-nf-profile>
+                </remote-nf-profile>
+             </hss-common>
+        </config>
+    </edit-config>
+</rpc><close-session />

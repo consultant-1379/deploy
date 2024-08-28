@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+       urn:ietf:params:netconf:base:1.0
+   </capability>
+    </capabilities>
+</hello>]]>]]>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                Activation of HTTP custom header 3gpp-Sbi-NF-Peer-Info for external consumers of SW Probe feature to identify the network
+                function consumer/producer on a per packet basis, on SBI interfaces.
+                It could be activated optionally in as many NFs as needed and in NRF agent to include in NRF traffic.
+            -->
+
+            <!--
+                Remove this part if no NRF is used or SW Probe not needed in the interface with NRF.
+            -->
+            <nrf-agent xmlns="urn:rdns:com:ericsson:oammodel:ericsson-nrf-agent">
+                <http-header>
+                  <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </nrf-agent>
+            <!--
+                Remove this part if UDM NF is not enabled or SW Probe not needed for UDM.
+            -->
+            <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+                <http-header>
+                    <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </udm>
+            <!--
+                Remove this part if AUSF NF is not enabled or SW Probe not needed for AUSF.
+            -->
+            <ausf xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ausf">
+                <http-header>
+                    <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </ausf>
+            <!--
+                Remove this part if EIR NF is not enabled or SW Probe not needed for EIR.
+            -->
+            <eir xmlns="urn:rdns:com:ericsson:oammodel:ericsson-eir">
+                <http-header>
+                    <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </eir>
+            <!--
+                Remove this part if HSS-IMS NF is not enabled or SW Probe not needed for HSS-IMS.
+            -->
+            <hssims xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssims">
+                <http-header>
+                    <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </hssims>
+            <!--
+                Remove this part if HSS-EPC NF is not enabled or SW Probe not needed for HSS-EPC.
+            -->
+            <hssepc xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssepc">
+                <http-header>
+                    <nf-peer-info-enabled>true</nf-peer-info-enabled>
+                </http-header>
+            </hssepc>
+        </config>
+    </edit-config>
+</rpc>
+<close-session />

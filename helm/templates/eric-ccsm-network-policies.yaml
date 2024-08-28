@@ -1,0 +1,289 @@
+{{- if .Values.networkPolicy.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ingressgw-udm-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ingressgw-udm-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ingressgw-ausf-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ingressgw-ausf-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ingressgw-eir-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ingressgw-eir-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name:  eric-ingressgw-hss-epc-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name:  eric-ingressgw-hss-epc-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name:  eric-ingressgw-epc-soap-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name:  eric-ingressgw-epc-soap-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name:  eric-ingressgw-ims-soap-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name:  eric-ingressgw-ims-soap-traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name:  eric-stm-diameter-traffic-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name:  eric-stm-diameter
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ccsm-mapproxy-1-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ccsm-mapproxy-1
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ccsm-mapproxy-2-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ccsm-mapproxy-2
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ccsm-mapproxy-3-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ccsm-mapproxy-3
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ccsm-mapproxy-4-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ccsm-mapproxy-4
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-tm-ingress-controller-cr-envoy-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-tm-ingress-controller-cr
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-cm-yang-provider-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-cm-yang-provider
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-pm-bulk-reporter-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-pm-bulk-reporter
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-fh-snmp-alarm-provider-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-fh-snmp-alarm-provider
+  policyTypes:
+    - Ingress
+  ingress:
+  - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-eric-mesh-controller
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app: istiod
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: eric-ccsm-datainjector-allow
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: eric-ccsm-datainjector
+  policyTypes:
+    - Ingress
+  ingress:
+    - {}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-from-other-namespaces
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+  - from:
+    - podSelector: {}
+---
+{{- if (eq .Values.global.secondaryNetwork.enabled true) }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-eric-tm-senp-nvip-operator
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchLabels:
+      app: eric-tm-senp-nvip-operator
+  policyTypes:
+  - Ingress
+---
+
+{{- end -}}
+{{- end -}}

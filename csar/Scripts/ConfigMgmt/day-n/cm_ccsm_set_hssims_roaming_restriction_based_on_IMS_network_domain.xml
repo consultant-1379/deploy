@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+        urn:ietf:params:netconf:base:1.0
+   </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                This file provides an XML template for configuring a list of networks.
+                It indicates whether the network is home or visited with roaming agreement with the operator.
+                Networks not present in this list do not have such agreement
+            -->
+          <hssims xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hss-common">
+             <network-domain>
+                  <network-domain-id>
+                        {NETWORK_DOMAIN_ID}
+                  </network-domain-id>
+                  <is-home>
+                        {IS_HOME}
+                  </is-home>
+             </network-domain>
+          </hssims>
+        </config>
+    </edit-config>
+</rpc><close-session />

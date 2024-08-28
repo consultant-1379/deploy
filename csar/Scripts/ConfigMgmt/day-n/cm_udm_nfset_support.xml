@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+</hello>]]>]]>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <edit-config>
+    <target><running/></target>
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+      <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+        <nf-profile>
+            <!-- List of set identifiers of the Network Function.
+            At most one NF Set ID shall be indicated per PLMN of the NF -->
+          <nf-set-id>set12.smfset.5gc.mnc012.mcc345</nf-set-id>
+        </nf-profile>
+      </udm>
+    </config>
+  </edit-config>
+</rpc>
+<close-session/>

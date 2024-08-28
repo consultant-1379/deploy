@@ -1,0 +1,55 @@
+##
+# Delta to be added on CCSM descriptor file to support manual rollback
+# Every rollback path needs an operation interface_type and a topology_template
+# rollback policy
+# Input parameters:
+# - UUID: This CSAR package UUID, it is also input param in the main thread
+# - SOFTWARE_VERSION: This CSAR package SW Version, it is also input param in the main thread
+# - ROLLBACK_DESCRIPTOR_ID: uuid to rollback after upgrade (get from loop list)
+# - ROLLBACK_SW_VERSION: Version to rollback after upgrade (get from loop list)
+# - ROLLBACK_ADDITIONAL_PARAMS_NAME (get from loop list)
+# - ROLLBACK_ADDITIONAL_PARAMS_TYPE (get from loop list)
+# - ROLLBACK_ADDITIONAL_PARAMS_REQUIRED (get from loop list)
+# - ROLLBACK_ADDITIONAL_PARAMS_DEFAULT (get from loop list)
+##
+data_types:
+  # ROLLBACK OPERATION ADDITIONAL PARAMETERS
+  ericsson.datatypes.nfv.VnfManualRollback_to_ccsm_ROLLBACK_SW_VERSION_SUBST:
+    derived_from: tosca.datatypes.nfv.VnfOperationAdditionalParameters
+    properties:
+      # ADDITIONAL PARAMETER
+      ROLLBACK_ADDITIONAL_PARAMS_NAME:
+        type: ROLLBACK_ADDITIONAL_PARAMS_TYPE
+        description: manual rollback aditional parameter
+        required: true
+        default: ROLLBACK_ADDITIONAL_PARAMS_DEFAULT
+      # END ADDITIONAL PARAMETER
+  # END ROLLBACK OPERATION ADDITIONAL PARAMETERS
+
+interface_types:
+  ericsson.interfaces.nfv.EricssonChangeCurrentVnfPackage:
+    derived_from: tosca.interfaces.nfv.ChangeCurrentVnfPackage
+    operations:
+      # ROLLBACK OPERATIONS INTERFACE_TYPES
+      rollback_to_ccsm_ROLLBACK_SW_VERSION_SUBST:
+        description: Operation for change from CCSM version SOFTWARE_VERSION to ROLLBACK_SW_VERSION
+        inputs:
+          additional_parameters:
+            type: ericsson.datatypes.nfv.VnfManualRollback_to_ccsm_ROLLBACK_SW_VERSION_SUBST
+            required: false
+      # END ROLLBACK OPERATIONS INTERFACE_TYPES
+
+topology_template:
+  policies:
+    # ROLLBACK POLICY TOPOLOGY_TEMPLATE
+    - rollback_to_ccsm_ROLLBACK_SW_VERSION_SUBST:
+        type: tosca.policies.nfv.VnfPackageChange
+        properties:
+          selector:
+            source_descriptor_id: UUID
+            destination_descriptor_id: ROLLBACK_DESCRIPTOR_ID
+            source_flavour_id: default
+          modification_qualifier: down
+          additional_modification_description: ..
+          destination_flavour_id: default
+    # END ROLLBACK POLICY TOPOLOGY_TEMPLATE

@@ -1,0 +1,70 @@
+# Overwrite the ADP Generic Services Helm values here
+eric-ccsm-adp:
+  eric-pm-server:
+    server:
+      persistentVolumeClaim:
+        size: 80Gi
+        storageClassName: {{pvc_storageClassName}}
+
+  eric-cm-yang-provider:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-fh-snmp-alarm-provider:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-pm-bulk-reporter:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-tm-ingress-controller-cr:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+eric-stm-diameter:
+  service:
+    annotations:
+      cloudProviderLBDiameterOverSCTP: {}
+      cloudProviderLBDiameterOverTCP: {}
+eric-ccsm-mapproxy:
+  # Overwrite the Mapproxy Helm values here
+  eric-ccsm-mapproxy-1:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-ccsm-mapproxy-2:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-ccsm-mapproxy-3:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"
+
+  eric-ccsm-mapproxy-4:
+    service:
+      annotations:
+        cloudProviderLB: {}
+          ##list of cloud provider annotations. Example AWS annotation
+          #service.beta.kubernetes.io/aws-load-balancer-type: "external"

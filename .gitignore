@@ -1,0 +1,5 @@
+/helm/charts/
+/helm/requirements.lock
+/eric-ccsm
+/eric-ccsm-*.tgz
+/test

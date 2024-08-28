@@ -1,0 +1,20 @@
+##
+# Structure of this file.
+#
+# SECURITY PARAMETERS: mesh gateways parameters to fit certain port numbers and traffic modes
+# - cleartext (ex. http/http2 traffic)
+#
+##
+exports:
+  ## SECURITY PARAMETERS
+  # Values under this section are exported when condition: global.profiles.cleartext.enabled=true
+  cleartext:
+    global:
+      istio:
+        egress:
+          enabled: false
+    eric-ccsm-nrfagent:
+      global:
+        istio:
+          egress:
+            enabled: false

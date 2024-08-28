@@ -1,0 +1,411 @@
+##
+# Structure of this file.
+#
+# CAPACITY PARAMETERS: resource allocation parameters to fit cluster size.
+# - small-system  (Small Size Systems -Enterprise & Telco)
+#
+##
+exports:
+  ## CAPACITY PARAMETERS
+  # Values under this section are exported when condition: global.profiles.small-system.enabled=true
+  small-system:
+    eric-ccsm-nrfagent:
+      eric-nrf-discovery-agent:
+        hpa:
+          enabled: true
+          targetCPUUtilizationPercentage: 60
+        replicaCount: 2
+        minReplicas: 2
+        maxReplicas: 3
+        resources:
+          cpu: 350m
+          memory: 1Gi
+          maxCpu: 1000m
+          maxMemory: 1.5Gi
+        proxy:
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 150m
+      eric-nrf-notify-agent:
+        hpa:
+          enabled: true
+          targetCPUUtilizationPercentage: 70
+        replicaCount: 2
+        minReplicas: 2
+        maxReplicas: 3
+        resources:
+          cpu: 300m
+          memory: 512Mi
+          maxCpu: 500m
+          maxMemory: 512Mi
+      eric-nrf-register-agent:
+        hpa:
+          enabled: true
+          targetCPUUtilizationPercentage: 70
+        replicaCount: 2
+        minReplicas: 2
+        maxReplicas: 3
+        resources:
+          cpu: 150m
+          memory: 512Mi
+          maxCpu: 300m
+          maxMemory: 512Mi
+      eric-svc-routing-agent:
+        hpa:
+          enabled: true
+          targetCPUUtilizationPercentage: 70
+        replicaCount: 2
+        minReplicas: 2
+        maxReplicas: 5
+        resources:
+          cpu: 350m
+          memory: 512Mi
+          maxCpu: 500m
+          maxMemory: 512Mi
+        proxy:
+          resources:
+            requests:
+              cpu: 150m
+              memory: 256Mi
+    eric-slt-dsl:
+      resources:
+        dsl:
+          requests:
+            cpu: 100m
+            memory: 400Mi
+          limits:
+            cpu: 1000m
+            memory: 400Mi
+    eric-stm-diameter:
+      resources:
+        diameter:
+          requests:
+            cpu: 560m
+            memory: 200Mi
+          limits:
+            cpu: 560m
+            memory: 200Mi
+        dsl:
+          requests:
+            cpu: 390m
+            memory: 200Mi
+          limits:
+            cpu: 468m
+            memory: 200Mi
+        sctp:
+          requests:
+            cpu: 230m
+            memory: 2.5Gi
+          limits:
+            cpu: 276m
+            memory: 2.5Gi
+        sctpconfiglistener:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 1000m
+        senp-nvip-tapa:
+          requests:
+            cpu: 80m
+          limits:
+            cpu: 150m
+            memory: 100Mi
+    eric-ccsm-adp:
+      eric-cm-mediator:
+        resources:
+          eric-cm-mediator:
+            requests:
+              cpu: 100m
+          eric-cm-mediator-notifier:
+            requests:
+              cpu: 100m
+      eric-cm-yang-provider:
+        resources:
+          cliExtensionCmds:
+            requests:
+              cpu: 10m
+          externalNotifSender:
+            requests:
+              cpu: 10m
+          notificationController:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+          objectStorageAdapter:
+            requests:
+              cpu: 10m
+          pmMetrics:
+            requests:
+              cpu: 10m
+          schemaSynchronizer:
+            requests:
+              cpu: 10m
+          sshd:
+            requests:
+              cpu: 10m
+          yangDbAdapter:
+            requests:
+              cpu: 10m
+            limits:
+              memory: 2Gi
+          yangEngine:
+            requests:
+              cpu: 100m
+            limits:
+              memory: 18Gi
+          yangLibExt:
+            requests:
+              cpu: 50m
+      eric-cnom-server:
+        resources:
+          server:
+            requests:
+              cpu: 100m
+      eric-ctrl-bro:
+        resources:
+          backupAndRestore:
+            requests:
+              cpu: 200m
+      eric-data-coordinator-zk:
+        resources:
+          datacoordinatorzk:
+            requests:
+              cpu: 100m
+      eric-data-distributed-coordinator-ed:
+        resources:
+          dced:
+            requests:
+              cpu: 150m
+              memory: 512Mi
+            limits:
+              memory: 10Gi
+          brAgent:
+            requests:
+              cpu: 50m
+      eric-data-document-database-pg:
+        resources:
+          bra:
+            requests:
+              cpu: 20m
+          brm:
+            requests:
+              cpu: 50m
+          metrics:
+            requests:
+              cpu: 50m
+          postgres:
+            requests:
+              cpu: 100m
+      eric-data-document-database-pg-ah:
+        resources:
+          metrics:
+            requests:
+              cpu: 50m
+          postgres:
+            requests:
+              cpu: 100m
+      eric-data-document-database-pg-lm:
+        resources:
+          metrics:
+            requests:
+              cpu: 50m
+          postgres:
+            requests:
+              cpu: 100m
+      eric-data-message-bus-kf:
+        resources:
+          jmxexporter:
+            requests:
+              cpu: 150m
+          messagebuskf:
+            limits:
+              cpu: 3
+              memory: 4Gi
+            requests:
+              cpu: 1200m
+              memory: 4Gi
+      eric-data-object-storage-mn:
+        resources:
+          server:
+            requests:
+              cpu: 100m
+          mgt:
+            requests:
+              cpu: 50m
+      eric-data-search-engine:
+        resources:
+          data:
+            requests:
+              cpu: 500m
+              memory: 4Gi
+            limits:
+              cpu: 1000m
+              memory: 4Gi
+          ingest:
+            requests:
+              cpu: 150m
+          master:
+            requests:
+              cpu: 70m
+          tlsproxy:
+            requests:
+              cpu: 50m
+        jvmHeap:
+          data: 2048m
+      eric-fh-alarm-handler:
+        resources:
+          alarmhandler:
+            requests:
+              cpu: 100m
+          alarmhandlerrest:
+            requests:
+              cpu: 20m
+      eric-fh-snmp-alarm-provider:
+        resources:
+          alarmprovider:
+            requests:
+              cpu: 50m
+              memory: 1024Mi
+          vip:
+            requests:
+              memory: 100Mi
+            limits:
+              memory: 150Mi
+              cpu: 140m
+      eric-lm-combined-server:
+        resources:
+          eric-lm-license-consumer-handler:
+            requests:
+              cpu: 20m
+          eric-lm-license-server-client:
+            requests:
+              cpu: 20m
+      eric-lm-unique-object-reporter:
+        resources:
+          uor:
+            requests:
+              cpu: 50m
+      eric-log-shipper:
+        resources:
+          logshipper:
+            requests:
+              cpu: 150m
+      eric-log-transformer:
+        resources:
+          logtransformer:
+            requests:
+              cpu: 1000m
+              memory: 8.5Gi
+            limits:
+              cpu: 2000m
+              memory: 8.5Gi
+          metrics:
+            requests:
+              cpu: 25m
+              memory: 256Mi
+          tlsproxy:
+            requests:
+              cpu: 50m
+      eric-pm-bulk-reporter:
+        resources:
+          alarmreporter:
+            requests:
+              cpu: 10m
+          bulkreporter:
+            requests:
+              cpu: 20m
+          pmsftp:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+      eric-pm-resource-monitor:
+        resources:
+          pmrm:
+            requests:
+              memory: 512Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi
+      eric-pm-server:
+        resources:
+          eric-pm-server:
+            requests:
+              cpu: 1000m
+              memory: 4Gi
+            limits:
+              cpu: 3000m
+          eric-pm-configmap-reload:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+          eric-pm-exporter:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              memory: 48Mi
+          eric-pm-reverseproxy:
+            requests:
+              cpu: 20m
+              memory: 64Mi
+      eric-sec-admin-user-management:
+        resources:
+          aum:
+            requests:
+              cpu: 20m
+      eric-sec-certm:
+        resources:
+          certm:
+            requests:
+              cpu: 30m
+      eric-sec-ldap-server:
+        resources:
+          ldap:
+            requests:
+              cpu: 50m
+          ldapagent:
+            requests:
+              cpu: 50m
+          ldapproxy:
+            requests:
+              cpu: 20m
+          metricsExporter:
+            requests:
+              cpu: 50m
+      eric-sec-sip-tls:
+        resources:
+          sip-tls:
+            requests:
+              cpu: 50m
+            limits:
+              memory: 900Mi
+          sip-tls-supervisor:
+            requests:
+              cpu: 50m
+            limits:
+              memory: 900Mi
+      eric-tm-ingress-controller-cr:
+        resources:
+          contour:
+            requests:
+              cpu: 30m
+              memory: 250Mi
+            limits:
+              cpu: 150m
+              memory: 500Mi
+          envoy:
+            requests:
+              cpu: 100m
+              memory: 900Mi
+            limits:
+              cpu: 1000m
+              memory: 900Mi
+      eric-si-application-sys-info-handler:
+        resources:
+          eric-si-application-sys-info-handler:
+            requests:
+              cpu: 20m
+              memory: 140Mi
+            limits:
+              memory: 140Mi

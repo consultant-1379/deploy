@@ -1,0 +1,91 @@
+tosca_definitions_version: tosca_simple_yaml_1_2
+description: custom resource definition for rollback
+
+data_types:
+  tosca.datatypes.nfv.VnfPackageChangeSelector:
+    derived_from: tosca.datatypes.Root
+    description: data type describes the source and destination VNFDs as well as source deployment flavour for a change current VNF Package.
+    properties:
+      source_descriptor_id:
+        type: string
+        description: Identifier of the source VNFD and the source VNF package.
+        required: true
+      destination_descriptor_id:
+        type: string
+        description: Identifier of the destination VNFD and the destination VNF package.
+        required: true
+      source_flavour_id:
+        type: string
+        description: Identifier of the deployment flavour in the source VNF package for which this data type applies.
+        required: true
+  tosca.datatypes.nfv.VnfPackageChangeComponentMapping:
+    derived_from: tosca.datatypes.Root
+    description: A mapping between the identifier of a components or property in the source VNFD and the identifier of the corresponding component or property in the destination VNFD.
+    properties:
+      component_type:
+        type: string
+        description: The type of component or property. Possible values differentiate whether changes concern to some VNF component (e.g. VDU, internal VLD, etc.) or property (e.g. a Scaling Aspect, etc.).
+        constraints:
+          - valid_values: [ vdu, cp, virtual_link, virtual_storage, deployment_flavour, instantiation_level, scaling_aspect ]
+        required: true
+      source_id:
+        type: string
+        description: Identifier of the component or property in the source VNFD.
+        required: true
+      destination_id:
+        type: string
+        description: Identifier of the component or property in the destination VNFD.
+        required: true
+      description:
+        type: string
+        description: Human readable description of the component changes.
+        required: false
+  tosca.datatypes.nfv.VnfChangeCurrentPackageOperationConfiguration:
+    derived_from: tosca.datatypes.Root
+    description: represents information that affect the invocation of the change current VNF Package operation.
+    # This data type definition is reserved for future use in the present document.
+    # properties:
+      # derived types are expected to introduce new properties, with their type derived from tosca.datatypes.nfv.VnfChangeCurrentPackageOperationConfiguration, with the same name as the operation designated to the ChangeCurrentVnfPackage request
+
+interface_types:
+  tosca.interfaces.nfv.ChangeCurrentVnfPackage:
+    derived_from: tosca.interfaces.Root
+    description: This interface is an empty base interface type for deriving VNF specific interface types that include VNF Change Current VNF Package specific operation.
+    operations:
+      # operation_name: name of a VNF-specific operation serving the Change current VNF Package request.
+        # description: Invoked by tosca.policies.nfv.VnfPackageChange
+        # inputs:
+          # additional_parameters:
+          #   type: tosca.datatypes.nfv.VnfOperationAdditionalParameters
+          #   required: false
+      # derived types are expected to introduce additional_parameters with its
+      # type derived from tosca.datatypes.nfv.VnfOperationAdditionalParameters
+
+policy_types:
+  tosca.policies.nfv.VnfPackageChange:
+    derived_from: tosca.policies.Root
+    description: policy type specifying the processes and rules to be used for performing the resource related tasks, to change VNF instance to a different VNF Package (destination package)
+    properties:
+      selector:
+        type: tosca.datatypes.nfv.VnfPackageChangeSelector
+        description: Information to identify the source and destination VNFD for the change, and the related deployment flavours.
+        required: true
+      modification_qualifier:
+        type: string
+        description: Specifies the type of modification resulting from transitioning from srcVnfdId to dstVnfdId. The possible values are UP indicating that the destination VNF version is newer than the source version, DOWN indicating that the destination VNF version is older than the source version.
+        constraints: [ valid_values: [ up, down ] ]
+        required: true
+      additional_modification_description:
+        type: string
+        description: Additional information to qualify further the change between the two versions.
+        required: false
+      component_mappings:
+        type: list
+        entry_schema:
+          type: tosca.datatypes.nfv.VnfPackageChangeComponentMapping
+        description: Mapping information related to identifiers of components in source VNFD and destination VNFD that concern to the change process.
+        required: false
+      destination_flavour_id:
+        type: string
+        description: Identifies the deployment flavour in the destination VNF package for which this change applies. The flavour ID is defined in the destination VNF package.
+        required: true

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+HSS-IMS day-1 parameters
+Notice that it is a configuration template in XML format compliant with
+NF YANG model.
+-->
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+            urn:ietf:params:netconf:base:1.0
+        </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!-- Configuration for the HSS-IMS Network Function. -->
+            <hssims xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hssims">
+                <!-- Container for IMS Application Server Configuration -->
+                <ims-as>
+                    <as>
+                        <!-- Application Server Identity matching with the Origin-Host AVP received in Sh Request -->
+                        <as-id>{HSSIMS-AS-ID}</as-id>
+                        <!-- Application Server's SIP URI -->
+                       <as-name>{HSSIMS-AS-NAME}</as-name>
+                        <!-- Application Server Diameter Realm -->
+                       <as-realm>{HSSIMS-AS-REALM}</as-realm>
+                       <!-- Auth Profile Associated To The AS -->
+                       <as-auth-profile-id>{HSSIMS-AS-AUTH-PROFILE-ID}</as-auth-profile-id>
+                    </as>
+                    <as-auth-profile>
+                        <!-- Auth Profile Identifier, Which Can Be Configured In AS To Make that AS Associated To This Auth Pofile -->
+                        <auth-profile-id>{HSSIMS-AUTH-PROFILE-ID}</auth-profile-id>
+                        <!-- List of allowed Service Indications. Duplicated values are not allowed -->
+                        <allowed-service-indication>{HSSIMS-ALLOWED-SERVICE-INDICATION}</allowed-service-indication>
+                    </as-auth-profile>
+                    <service-indication>
+                        <!-- Identity of the Service Indication -->
+                        <service-id>{HSSIMS-SERVICE-ID}</service-id>
+                        <!-- Logical name of the Service Indication -->
+                        <service-name>{HSSIMS-SERVICE-NAME}</service-name>
+                    </service-indication>
+                </ims-as>
+                <!-- CCSM IMS Sh Diameter Configuration -->
+                <sh-diameter>
+                    <server>
+                        <!-- Origin realm of the Diameter Node. Sh interface -->
+                        <realm>{HSSIMS-SH-REALM}</realm>
+                        <!-- Origin host of the Diameter Node. Sh interface -->
+                        <host>{HSSIMS-SH-HOST}</host>
+                    </server>
+                </sh-diameter>
+                <!-- CCSM IMS Cx Diameter Configuration -->
+                <cx-diameter>
+                    <server>
+                        <!-- Origin realm of the Diameter Node. Cx interface -->
+                        <realm>{HSSIMS-CX-REALM}</realm>
+                        <!-- Origin host of the Diameter Node. Cx interface -->
+                        <host>{HSSIMS-CX-HOST}</host>
+                    </server>
+                </cx-diameter>
+                <zh-diameter>
+                    <server>
+                        <!-- Origin realm of the Diameter Node. Zh interface -->
+                        <realm>{HSSIMS-ZH-REALM}</realm>
+                        <!-- Origin host of the Diameter Node. Zh interface -->
+                        <host>{HSSIMS-ZH-HOST}</host>
+                    </server>
+                </zh-diameter>
+                <charging-profile>
+                    <!-- Identifies the Primary Charging Collection Function -->
+                    <charging-profile-id>{HSSIMS-CHARGING-PROFILE-ID}</charging-profile-id>
+                    <primary-ccf>{HSSIMS-PRIMARY-CCF}</primary-ccf>
+                </charging-profile>
+                <network-domain>
+                    <!-- Name of the Network Domain -->
+                    <network-domain-id>{HSSIMS-NETWORK-DOMAIN-ID}</network-domain-id>
+                    <!-- Whether the Network Domain is a Visited or Home Domain -->
+                    <is-home>{HSSIMS-IS-HOME}</is-home>
+                </network-domain>
+            </hssims>
+        </config>
+    </edit-config>
+</rpc><close-session />

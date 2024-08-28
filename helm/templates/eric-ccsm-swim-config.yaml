@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eric-ccsm.swim-config.name" . }}
+{{- include "eric-ccsm.helm-labels" . | indent 2 }}
+    ericsson.com/swim: "enabled"
+{{- include "eric-ccsm.helm-annotations" . | indent 2 }}
+{{- include "eric-ccsm.swim.helm-annotations" . | indent 2 }}
+data:
+  description: >-
+    Software Inventory Management (SwIM) ConfigMap
+    containing the CCSM product annotations.

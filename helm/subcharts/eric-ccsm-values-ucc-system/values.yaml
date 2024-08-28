@@ -1,0 +1,1039 @@
+##
+# Structure of this file.
+#
+# CAPACITY PARAMETERS: resource allocation parameters to fit cluster size.
+# - ucc-system  (UCC Systems - Ultra Compact Core)
+#
+# IMPORTANT: To facilitate handling, the parameters are arranged in the same
+#            order as those defined in the excel CCSM_UCC_resource_profile.xlsx
+##
+exports:
+  ## CAPACITY PARAMETERS
+  # Values under this section are exported when condition: global.profiles.ucc-system.enabled=true
+  ucc-system:
+    global:
+      tapagent:
+        pvtb:
+          enabled: false
+    eric-ccsm-nrfagent:
+      eric-nrf-accesstoken-agent:
+        hpa:
+          enabled: false
+        replicaCount: 0
+      eric-nrf-discovery-agent:
+        hpa:
+          enabled: false
+        replicaCount: 1
+        resources:
+          cpu: 100m
+          memory: 1Gi
+          maxCpu: 1000m
+          maxMemory: 1.5Gi
+        elector:
+          resources:
+            requests:
+              cpu: 50m
+        proxy:
+          resources:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+      eric-nrf-notify-agent:
+        hpa:
+          enabled: false
+        replicaCount: 1
+        resources:
+          cpu: 70m
+          maxCpu: 500m
+        proxy:
+          resources:
+            requests:
+              cpu: 30m
+      eric-nrf-register-agent:
+        hpa:
+          enabled: false
+        replicaCount: 1
+        resources:
+          cpu: 100m
+        elector:
+          resources:
+            requests:
+              cpu: 50m
+        proxy:
+          resources:
+            requests:
+              cpu: 50m
+      eric-svc-routing-agent:
+        hpa:
+          enabled: false
+        replicaCount: 0
+    eric-ccsm-adp:
+      eric-cm-mediator:
+        replicaCount: 1
+        resources:
+          eric-cm-key-init:
+            requests:
+              cpu: 50m
+          eric-cm-mediator:
+            requests:
+              cpu: 70m
+              memory: 384Mi
+            limits:
+              cpu: 1300m
+              memory: 512Mi
+          eric-cm-mediator-notifier:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 200m
+      eric-probe-virtual-tap-broker:
+        replicaCount: 0
+      eric-cm-yang-provider:
+        resources:
+          cliExtensionCmds:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 500m
+          notificationController:
+            requests:
+              cpu: 10m
+            limits:
+              cpu: 100m
+          objectStorageAdapter:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 500m
+          pmMetrics:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 440m
+          schemaSynchronizer:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 820m
+          sshd:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 150m
+          yangDbAdapter:
+            requests:
+              cpu: 10m
+            limits:
+              cpu: 200m
+          yangEngine:
+            requests:
+              cpu: 50m
+              memory: 350Mi
+            limits:
+              cpu: 500m
+              memory: 2Gi
+      eric-cnom-server:
+        replicaCount: 0
+      eric-ctrl-bro:
+        resources:
+          backupAndRestore:
+            requests:
+              cpu: 200m
+              memory: 600Mi
+            limits:
+              cpu: 700m
+              memory: 600Mi
+      eric-data-coordinator-zk:
+        replicaCount: 1
+        resources:
+          datacoordinatorzk:
+            requests:
+              cpu: 30m
+              memory: 700Mi
+            limits:
+              cpu: 400m
+              memory: 700Mi
+      eric-data-distributed-coordinator-ed:
+        pods:
+          dced:
+            replicaCount: 1
+        resources:
+          dced:
+            requests:
+              cpu: 60m
+              memory: 250Mi
+            limits:
+              cpu: 300m
+              memory: 250Mi
+          init:
+            requests:
+              cpu: 60m
+              memory: 250Mi
+            limits:
+              cpu: 300m
+              memory: 250Mi
+          brAgent:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 200m
+      eric-data-document-database-pg:
+        highAvailability:
+          replicaCount: 1
+        probes:
+          postgres:
+            startupProbe:
+              periodSeconds: 30
+        resources:
+          bra:
+            requests:
+              cpu: 20m
+              memory: 256Mi
+            limits:
+              cpu: 120m
+              memory: 300Mi
+          brm:
+            requests:
+              cpu: 30m
+              memory: 50Mi
+            limits:
+              cpu: 120m
+              memory: 85Mi
+          metrics:
+            requests:
+              cpu: 30m
+              memory: 60Mi
+            limits:
+              cpu: 100m
+              memory: 85Mi
+          postgres:
+            requests:
+              cpu: 90m
+              memory: 256Mi
+            limits:
+              cpu: 120m
+              memory: 300Mi
+      eric-data-document-database-pg-ah:
+        highAvailability:
+          replicaCount: 1
+        probes:
+          postgres:
+            startupProbe:
+              periodSeconds: 30
+        resources:
+          metrics:
+            requests:
+              cpu: 30m
+              memory: 60Mi
+            limits:
+              cpu: 44m
+              memory: 85Mi
+          postgres:
+            requests:
+              cpu: 90m
+              memory: 256Mi
+              ephemeral-storage: "1Gi"
+            limits:
+              cpu: 120m
+              memory: 300Mi
+              ephemeral-storage: "6Gi"
+      eric-data-document-database-pg-lm:
+        highAvailability:
+          replicaCount: 1
+        probes:
+          postgres:
+            startupProbe:
+              periodSeconds: 30
+        resources:
+          metrics:
+            requests:
+              cpu: 30m
+              memory: 60Mi
+            limits:
+              cpu: 44m
+              memory: 85Mi
+          postgres:
+            requests:
+              cpu: 90m
+              memory: 256Mi
+              ephemeral-storage: "1Gi"
+            limits:
+              cpu: 120m
+              memory: 300Mi
+              ephemeral-storage: "6Gi"
+      eric-data-message-bus-kf:
+        replicaCount: 1
+        configurationOverrides:
+          "default.replication.factor": 1
+          "min.insync.replicas": 1
+          "offsets.topic.replication.factor": 1
+          "transaction.state.log.min.isr": 1
+          "transaction.state.log.replication.factor": 1
+        resources:
+          jmxexporter:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 500m
+          messagebuskf:
+            requests:
+              cpu: 300m
+              memory: 4Gi
+            limits:
+              cpu: 1800m
+              memory: 4Gi
+      eric-data-object-storage-mn:
+        replicaCount: 1
+        mode: standalone
+        resources:
+          server:
+            requests:
+              cpu: 50m
+              memory: 350Mi
+            limits:
+              cpu: 200m
+              memory: 800Mi
+          mgt:
+            requests:
+              cpu: 25m
+              memory: 60Mi
+            limits:
+              cpu: 100m
+              memory: 125Mi
+      eric-data-search-engine:
+        replicaCount:
+          ingest: 1
+          master: 1
+          data: 1
+        affinity:
+          podAntiAffinity: "soft"
+        resources:
+          data:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
+          ingest:
+            requests:
+              cpu: 70m
+            limits:
+              cpu: 500m
+          master:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 500m
+          metrics:
+            requests:
+              cpu: 5m
+            limits:
+              cpu: 100m
+          tlsproxy:
+            requests:
+              cpu: 10m
+            limits:
+              cpu: 100m
+      eric-fh-alarm-handler:
+        replicaCount: 1
+        affinity:
+          podAntiAffinity: "soft"
+        alarmhandler:
+          asi:
+            topic:
+              replicationFactor: 1
+              configCLIParams: "retention.ms=172800000,min.insync.replicas=1"
+          ali:
+            topic:
+              replicationFactor: 1
+              configCLIParams: "retention.ms=172800000,min.insync.replicas=1"
+        resources:
+          alarmhandler:
+            requests:
+              cpu: 60m
+              memory: 250Mi
+            limits:
+              cpu: 300m
+              memory: 250Mi
+          topiccreator:
+            requests:
+              cpu: 60m
+              memory: 250Mi
+            limits:
+              cpu: 300m
+              memory: 250Mi
+      eric-fh-snmp-alarm-provider:
+        resources:
+          alarmprovider:
+            requests:
+              cpu: 36m
+              memory: 1024Mi
+            limits:
+              cpu: 200m
+              memory: 1024Mi
+      eric-lm-combined-server:
+        replicaCount:
+          licenseConsumerHandler: 1
+        resources:
+          eric-lm-license-consumer-handler:
+            requests:
+              cpu: 20m
+            limits:
+              cpu: 200m
+          eric-lm-license-server-client:
+            requests:
+              cpu: 20m
+              memory: 1024Mi
+            limits:
+              cpu: 1000m
+              memory: 2048Mi
+          eric-lm-database-migration:
+            requests:
+              cpu: 20m
+            limits:
+              cpu: 1000m
+      eric-lm-unique-object-reporter:
+        replicaCount: 0
+        autoScaling:
+          enabled: false
+        resources:
+          uor:
+            requests:
+              cpu: 0m
+      eric-log-shipper:
+        resources:
+          logshipper:
+            requests:
+              cpu: 150m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 2048Mi
+      eric-log-transformer:
+        replicaCount: 1
+        resources:
+          logtransformer:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
+          metrics:
+            requests:
+              cpu: 5m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+          tlsproxy:
+            requests:
+              cpu: 25m
+            limits:
+              cpu: 100m
+      eric-odca-diagnostic-data-collector:
+        resources:
+          diagnostic-data-collector:
+            requests:
+              cpu: 100m
+              memory: 300Mi
+            limits:
+              cpu: 500m
+              memory: 1024Mi
+          diagnostic-data-collector-manual:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 500m
+      eric-pm-bulk-reporter:
+        resources:
+          alarmreporter:
+            requests:
+              cpu: 10m
+            limits:
+              cpu: 500m
+          bulkreporter:
+            requests:
+              cpu: 20m
+            limits:
+              cpu: 200m
+          initcontainer:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 500m
+          pmsftp:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 200Mi
+      eric-pm-resource-monitor:
+        resources:
+          pmrm:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+      eric-pm-server:
+        resources:
+          eric-pm-server:
+            requests:
+              cpu: 250m
+              memory: 1Gi
+            limits:
+              cpu: 2000m
+              memory: 2Gi
+          eric-pm-configmap-reload:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+          eric-pm-exporter:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 48Mi
+          eric-pm-reverseproxy:
+            requests:
+              cpu: 20m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+      eric-sec-admin-user-management:
+        resources:
+          aum:
+            requests:
+              cpu: 12m
+            limits:
+              cpu: 100m
+      eric-sec-certm:
+        resources:
+          certm:
+            requests:
+              cpu: 30m
+              memory: 600Mi
+            limits:
+              cpu: 250m
+              memory: 800Mi
+      eric-sec-key-management:
+        replicaCount:
+          kms: 1
+        resources:
+          bootstrapJob:
+            requests:
+              cpu: 36m
+          ca:
+            requests:
+              cpu: 25m
+              memory: 200Mi
+          shelter:
+            requests:
+              cpu: 25m
+            limits:
+              cpu: 300m
+          unsealer:
+            requests:
+              cpu: 25m
+              memory: 200Mi
+          vault:
+            requests:
+              cpu: 36m
+              memory: 250Mi
+            limits:
+              cpu: 300m
+              memory: 250Mi
+      eric-sec-ldap-server:
+        replicaCount: 1
+        resources:
+          ldap:
+            requests:
+              cpu: 50m
+              memory: 384Mi
+            limits:
+              cpu: 1000m
+              memory: 1536Mi
+          ldapagent:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+            limits:
+              cpu: 300m
+              memory: 512Mi
+          ldapinit:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+          ldapproxy:
+            requests:
+              cpu: 30m
+            limits:
+              cpu: 1000m
+          metricsExporter:
+            requests:
+              cpu: 20m
+            limits:
+              cpu: 100m
+      eric-sec-sip-tls:
+        replicaCount: 1
+        affinity:
+          podAntiAffinity: "soft"
+        resources:
+          sip-tls:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 500m
+          sip-tls-supervisor:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 300m
+      eric-si-application-sys-info-handler:
+        resources:
+          eric-si-application-sys-info-handler:
+            requests:
+              cpu: 20m
+              memory: 140Mi
+            limits:
+              memory: 140Mi
+      eric-tm-ingress-controller-cr:
+        replicaCount:
+          contour: 0
+          envoy: 0
+    eric-ccsm-ausf:
+      eric-ausf-engine:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 130m
+            limits:
+              cpu: 195m
+      eric-ausf-cmjobloader:
+        resources:
+          main:
+            requests:
+              cpu: 50m
+    eric-ccsm-autonrf:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+    eric-ccsm-cmagent:
+      resources:
+        cmagent:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 150m
+    eric-ccsm-cmvalidator:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+    eric-ccsm-datainjector:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+    eric-ccsm-hssepc:
+      eric-hss-rdoperand:
+        resources:
+          node:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 300m
+      eric-hssepc-cmagent:
+        resources:
+          cmagent:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 50m
+      eric-hssepc-cmvalidator:
+        resources:
+          main:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 100m
+      eric-hssepc-hsscmagent:
+        resources:
+          cmagent:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 50m
+      eric-hssepc-iratsndereg:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 90m
+            limits:
+              cpu: 135m
+      eric-hssepc-s6aauthentication:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 140m
+            limits:
+              cpu: 210m
+      eric-hssepc-s6acancellocation:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-hssepc-s6adeletesubscriber:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-hssepc-s6adiameter:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 195m
+            limits:
+              cpu: 234m
+          dsl:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 224m
+      eric-hssepc-s6ainsertsubscriber:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-hssepc-s6anotify:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 80m
+            limits:
+              cpu: 120m
+      eric-hssepc-s6aprovnotification:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-hssepc-s6apurge:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-hssepc-s6aupdatelocation:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 135m
+            limits:
+              cpu: 203m
+      eric-hssepc-soap:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+    eric-ccsm-keymanager:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+        keymanagerinit:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 100m
+    eric-ccsm-lmagent:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+    eric-ccsm-nrfgw:
+      resources:
+        main:
+          requests:
+            cpu: 50m
+    eric-ccsm-udm:
+      eric-udm-blackhole:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 75m
+      eric-udm-cmagent:
+        resources:
+          cmagent:
+            requests:
+              cpu: 50m
+            limits:
+              cpu: 50m
+      eric-udm-epsauth:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 135m
+            limits:
+              cpu: 203m
+      eric-udm-iratamfdereg:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-iratsndereg:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 70m
+            limits:
+              cpu: 105m
+      eric-udm-sdmamdata:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-sdmimplicitunsub:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 70m
+            limits:
+              cpu: 105m
+      eric-udm-sdmmultipledataset:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-sdmnotif:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-udm-sdmnssai:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 70m
+            limits:
+              cpu: 105m
+      eric-udm-sdmsmdata:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 90m
+            limits:
+              cpu: 135m
+      eric-udm-sdmsmfselect:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-sdmsubscriptions:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 125m
+            limits:
+              cpu: 188m
+      eric-udm-sdmuectxtsmf:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-ueauth:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 135m
+            limits:
+              cpu: 203m
+      eric-udm-uecmamfderegnotifier:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 80m
+            limits:
+              cpu: 120m
+      eric-udm-uecmamfget:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 60m
+            limits:
+              cpu: 90m
+      eric-udm-uecmamfregupdate:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 75m
+            limits:
+              cpu: 113m
+      eric-udm-uecmreg:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 160m
+            limits:
+              cpu: 240m
+      eric-udm-uecmsmfderegistration:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 150m
+      eric-udm-uecmsmfregistration:
+        autoscaling:
+          enabled: false
+        resources:
+          main:
+            requests:
+              cpu: 110m
+            limits:
+              cpu: 165m
+    eric-slt-dsl:
+      replicaCount: 1
+      affinity:
+        podAntiAffinity: "soft"
+      resources:
+        dsl:
+          requests:
+            cpu: 100m
+            memory: 400Mi
+          limits:
+            cpu: 1000m
+            memory: 400Mi
+    eric-stm-diameter:
+      resources:
+        diameter:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 400m
+            memory: 200Mi
+        dsl:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 400m
+            memory: 200Mi
+        sctp:
+          requests:
+            cpu: 50m
+            memory: 2.5Gi
+          limits:
+            cpu: 200m
+            memory: 2.5Gi
+        sctpconfiglistener:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 1000m
+        sctpconfigprovider:
+          requests:
+            cpu: 50m
+        sctpconfigproviderinit:
+          requests:
+            cpu: 50m
+        sctpinit:
+          requests:
+            cpu: 50m

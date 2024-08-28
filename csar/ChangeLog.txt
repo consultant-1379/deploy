@@ -1,0 +1,116 @@
+# CCSM Changelog
+
+## [1.5.3-1] - 2021-05-05
+
+### Added
+- eric-ccsm 1.5.3-1
+  - eric-adp-5g-udm (eric-ccsm-adp) 1.5.2-1
+    - eric-data-document-database-pg (eric-data-document-database-pg-iam) 5.5.0+50
+  - eric-ccsm-eir (eric-ccsm-eir) 1.5.3-0
+    - eric-eir-httpnotifier 1.1.8
+    - eric-eir-socshipper 1.0.8
+
+### Changed
+- eric-ccsm 1.5.3-1
+  - eric-adp-5g-udm (eric-ccsm-adp) 1.5.2-1
+    - eric-cm-mediator 7.0.0+35
+    - eric-cm-yang-provider 10.6.0+46
+    - eric-cnom-document-database-mg 1.4.18+1
+    - eric-cnom-server 1.62.2+6
+    - eric-ctrl-bro 4.2.0+38
+    - eric-data-distributed-coordinator-ed 2.5.0-14
+    - eric-data-object-storage-mn 1.12.0+17
+    - eric-data-search-engine-curator 2.4.0+15
+    - eric-fh-alarm-handler 6.4.0+5
+    - eric-fh-snmp-alarm-provider 4.3.0+8
+    - eric-lm-combined-server 2.3.0+48
+    - eric-lm-unique-object-reporter 2.6.0+4
+    - eric-log-transformer 5.6.0+27
+    - eric-sec-admin-user-management 2.7.0+39
+    - eric-sec-certm 2.8.0+72
+    - eric-tm-ingress-controller-cr 5.4.0+18
+  - eric-ccsm-ausf (eric-ccsm-ausf) 1.5.3-0
+    - eric-ausf-capacity 1.13.3
+    - eric-ausf-cmjobloader 1.13.3
+    - eric-ausf-engine 1.13.10
+  - eric-ccsm-eir (eric-ccsm-eir) 1.5.3-0
+    - eric-eir-capacity 1.8.5
+    - eric-eir-cmagent 1.11.8
+    - eric-eir-eireic 1.11.9
+  - eric-ccsm-hssepc (eric-ccsm-hssepc) 1.5.3-0
+    - eric-hss-cmagent (eric-hss-cmagent) 1.9.6
+    - eric-hss-redisdb 1.10.7
+    - eric-hssepc-capacity 1.8.5
+    - eric-hssepc-cmagent 1.10.13
+    - eric-hssepc-cmvalidator 1.10.9
+    - eric-hssepc-deferrednotification 1.10.9
+    - eric-hssepc-s6adiameter (eric-hssepc-s6adiameter) 1.10.13
+    - eric-hssepc-s6aauthentication 1.10.15
+    - eric-hssepc-s6acancellocation 1.10.10
+    - eric-hssepc-s6adeletesubscriber 1.10.12
+    - eric-hssepc-s6ainsertsubscriber 1.10.12
+    - eric-hssepc-s6anotify 1.10.12
+    - eric-hssepc-s6apurge 1.10.10
+    - eric-hssepc-s6aupdatelocation 1.10.11
+    - eric-hssepc-soap 1.10.8
+    - eric-hssepc-subscriptionupdate 1.10.9
+    - eric-slt-dsl (eric-slt-dsl) 1.9.0-71
+    - eric-stm-diameter (eric-stm-diameter) 1.10.0-55
+  - eric-ccsm-udm (eric-ccsm-udm) 1.5.3-0
+    - eric-udm-amfeenotifications 1.5.10
+    - eric-udm-amfeesubscriptions 1.6.6
+    - eric-udm-amfsearch 1.12.3
+    - eric-udm-authconf 1.13.7
+    - eric-udm-autoprovisioning 1.13.8
+    - eric-udm-blackhole 1.13.4
+    - eric-udm-capacity 1.12.6
+    - eric-udm-cmagent 1.13.9
+    - eric-udm-hss4gnotifier 1.13.7
+    - eric-udm-hssauth (eric-udm-epsauth) 1.12.6
+    - eric-udm-hssauth (eric-udm-eapauth) 1.12.6
+    - eric-udm-hssauth (eric-udm-gbaauth) 1.12.6
+    - eric-udm-hssauth (eric-udm-eapprimeauth) 1.12.6
+    - eric-udm-hssauth (eric-udm-imsauth) 1.12.6
+    - eric-udm-iratamflocation 1.13.9
+    - eric-udm-iwk5g2g 1.13.7
+    - eric-udm-mtsmsdeliverystatus 1.6.9
+    - eric-udm-mtsmsroutinginfo 1.7.6
+    - eric-udm-mtsmswaitingdata 1.6.12
+    - eric-udm-pcscfrestoration 1.13.6
+    - eric-udm-sdmamdata 1.14.7
+    - eric-udm-sdmmultipledataset 1.13.10
+    - eric-udm-sdmnotif 1.13.11
+    - eric-udm-sdmnssai 1.13.6
+    - eric-udm-sdmsmdata 1.13.5
+    - eric-udm-sdmsmfselect 1.13.5
+    - eric-udm-sdmsmsdata 1.6.6
+    - eric-udm-sdmsmsmngdata 1.6.6
+    - eric-udm-sdmsubscriptions 1.13.9
+    - eric-udm-sdmuectxtsmf 1.13.5
+    - eric-udm-sdmuectxtsmsf 1.7.7
+    - eric-udm-sidf 1.13.6
+    - eric-udm-ueauth 1.12.12
+    - eric-udm-uecmamfderegnotifier 1.13.3
+    - eric-udm-uecmamfget 1.13.5
+    - eric-udm-uecmamfregupdate 1.12.6
+    - eric-udm-uecmreg 1.13.8
+    - eric-udm-uecmsmfderegistration 1.13.6
+    - eric-udm-uecmsmfregistration 1.13.6
+    - eric-udm-uecmsmsfdereg 1.6.3
+    - eric-udm-uecmsmsfregget 1.6.3
+    - eric-udm-uecmsmsfregistration 1.6.3
+    - eric-udm-ueshcm 1.14.10
+  - eric-nrfagent (eric-ccsm-nrfagent) 1.5.2-1
+    - eric-nrf-accesstoken-agent 1.5.2-1
+    - eric-nrf-discovery-agent 1.5.2-1
+    - eric-nrf-notify-agent 1.5.2-1
+    - eric-nrf-register-agent 1.5.2-1
+    - eric-nrfagent-common 1.5.2-1
+    - eric-svc-routing-agent 1.5.2-1
+
+### Removed
+- eric-ccsm 1.5.3-1
+  - eric-ccsm-udm (eric-ccsm-udm) 1.5.3-0
+    - eric-udm-authevents 1.12.3
+
+

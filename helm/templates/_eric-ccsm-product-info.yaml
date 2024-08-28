@@ -1,0 +1,19 @@
+{{/*
+R-State of the product: To automate it when packaging
+the helm chart rstate can be generated and
+below value replaced with correct R-State.
+*/}}
+{{- define "eric-ccsm.helm-annotations" }}
+annotations:
+  ericsson.com/product-name: "CCSM"
+  ericsson.com/product-number: "CXP 903 7722"
+  ericsson.com/product-revision: "1.5.4-0"
+  ericsson.com/semantic-version: "1.5.4"
+  ericsson.com/commercial-name: "CCSM 1.5"
+{{- end}}
+
+{{- define "eric-ccsm.swim.helm-annotations" }}
+  ericsson.com/production-date: {{ now | date "2020-02-02T07:45:00+00:00" }}
+  ericsson.com/description: "Ericsson Cloud Core Subscription Manager"
+  ericsson.com/type: "Delivery"
+{{- end}}

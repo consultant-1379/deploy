@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+           urn:ietf:params:netconf:base:1.0
+        </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                Event Exposure Location Report needs the following configuration in UDM:
+                   . Event Exposure Location Report feature enabled
+                   . Add nudm-ee to the nf-profile element
+            -->
+            <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+                <features>
+                   <ee-location-report>
+                     <oam-activated>true</oam-activated>
+                     <oam-exposed>true</oam-exposed>
+                   </ee-location-report>
+                </features>
+                <!-- Contains configuration of nudm-ee service parameter in nf-profile element. -->
+                <nf-profile>
+                  <service>
+                    <instance-id>nudm-ee</instance-id>
+                    <name>nudm-ee</name>
+                    <scheme>https</scheme>
+                    <requested-status>registered</requested-status>
+                    <fqdn>{UDM_FQDN}</fqdn>
+                    <ip-endpoint>
+                      <id>1</id>
+                      <ipv4-address>{UDM_IPv4}</ipv4-address>
+                      <transport>tcp</transport>
+                      <port>{UDM_PORT}</port>
+                    </ip-endpoint>
+                    <allowed-nf-type>nef</allowed-nf-type>
+                  </service>
+                </nf-profile>
+            </udm>
+        </config>
+    </edit-config>
+</rpc><close-session/>

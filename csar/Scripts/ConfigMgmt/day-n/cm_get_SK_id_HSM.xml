@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <capabilities>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+  </capabilities>
+  </hello>]]>]]>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+  <action xmlns="urn:ietf:params:xml:ns:yang:1">
+    <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-udm">
+      <hsm-data>
+        <get-sk-id>
+        </get-sk-id>
+      </hsm-data>
+    </udm>
+  </action>
+  </rpc>
+  <close-session/>

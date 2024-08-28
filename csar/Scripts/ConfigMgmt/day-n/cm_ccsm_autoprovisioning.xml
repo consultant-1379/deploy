@@ -1,0 +1,99 @@
+<!--
+  Notice that it is a configuration template in XML format
+  compliant with NF YANG model.  This XML template provides
+  a configuration skeleton that shall be modified before
+  loading into the yang service.  Some parts of the document
+  must be deleted or added depending on the network configuration
+  where the VNF will be deployed.
+-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <capabilities>
+        <capability>
+       urn:ietf:params:netconf:base:1.0
+        </capability>
+    </capabilities>
+</hello>]]>]]><?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="0">
+    <edit-config>
+        <target>
+            <running />
+        </target>
+        <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <!--
+                CCSM Autoprovisioning feature needs the following configuration in UDM:
+                   . auto-provisioning feature enabled
+                   . Configure the elements remote-nf-profile to access EDA
+                   . Define autoprovisioning notification conditions
+            -->
+            <ccsm-common xmlns="urn:rdns:com:ericsson:oammodel:ericsson-ccsm-common">
+                <!-- Enable auto-provisioning feature -->
+                <features>
+                    <auto-provisioning>
+                        <oam-activated>true</oam-activated>
+                        <oam-exposed>true</oam-exposed>
+                    </auto-provisioning>
+                </features>
+            </ccsm-common>
+
+            <udm xmlns="urn:rdns:com:ericsson:oammodel:ericsson-hss-common">
+                <!-- Operator Specific setting for autoprovisioning feature-->
+                <operator-specific>
+                   <!-- Determines if authentication request is rejected when there is no 5G subscription data:
+                    - true: check that the user is provisioned for registration
+                    in the UDR before starting with the authentication procedure.
+                    - false: normal UE authentication procedure is followed.-->
+                   <auth-reject-no-subs-data>{AUTH_REJECT_NO_SUBS_DATA}</auth-reject-no-subs-data>
+                   <!-- PLMN checking for auto provisioning. Possible values: home-plmn(0), visited-plmn(1)-->
+                   <auto-prov-triggers-plmns>{AUTO_PROV_TRIGGERS_PLMNS}</auto-prov-triggers-plmns>
+                   <!-- Determines if auto provisioning applies to the
+                   different services (ueau, sdm and uecm), at least one
+                   should be set if auto provisioning feature is enabled-->
+                   <auto-prov-triggers-services>{AUTO_PROV_TRIGGERS_SERVICES}</auto-prov-triggers-services>
+                </operator-specific>
+                <!-- Contains configuration parameters for remote-nf-profile. -->
+                <remote-nf-profile>
+                    <!-- List of remote-nf-profile. -->
+                    <remote-nf-profile>
+                        <!-- Unique ID for the remote endpoint. -->
+                        <instance-id>{REMOTE_NF_PROFILE_5GEDA_INSTANCE_ID}</instance-id>
+
+                        <!-- Type of the remote Network Function. -->
+                        <type>5g-eda</type>
+
+                        <!-- FQDN of the remote Network Function. -->
+                        <fqdn>{REMOTE_NF_PROFILE_5GEDA_FQDN}</fqdn>
+                        <ipv4-address>{REMOTE_NF_PROFILE_5GEDA_IPV4_ADDRESS}</ipv4-address>
+                        <ipv6-address>{REMOTE_NF_PROFILE_5GEDA_IPV6_ADDRESS}</ipv6-address>
+                        <allowed-nf-type>udm</allowed-nf-type>
+
+                        <remote-nf-service>
+                            <!-- Unique ID of the remote NF Service Instance within the NF Instance. -->
+                            <instance-id>{REMOTE_NF_SERVICE_5GEDA_OAUTH_INSTANCE_ID}</instance-id>
+                            <!-- Name of the remote NF Service Instance. -->
+                            <name>oauth-ropc</name>
+                            <!-- -->
+                            <oauth-ropc-data>
+                                <!-- The unique ID of the trusted OAuth client. -->
+                                <client-id>{REMOTE_NF_SERVICE_5GEDA_OAUTH_ROPC_DATA_CLIENT_ID}</client-id>
+                                <!-- The client secret that together with the client_id identifies the OAuth client-->
+                                <client-secret>{REMOTE_NF_SERVICE_5GEDA_OAUTH_ROPC_DATA_CLIENT_SECRET}</client-secret>
+                                <!-- The password of a Service Account that is used for Oauth2 authentication.-->
+                                <password>{REMOTE_NF_SERVICE_5GEDA_OAUTH_ROPC_DATA_PASSWORD}</password>
+                                <!-- The user_name of a Service Account that is used for OAuth2 authentication.-->
+                                <user-name>{REMOTE_NF_SERVICE_5GEDA_OAUTH_ROPC_DATA_USERNAME}</user-name>
+                            </oauth-ropc-data>
+                            <fqdn>{REMOTE_NF_SERVICE_5GEDA_OAUTH_FQDN}</fqdn>
+                            <ip-endpoint>
+                                <id>{REMOTE_NF_SERVICE_5GEDA_OAUTH_IP_ENDPOINT_ID}</id>
+                                <transport>tcp</transport>
+                                <port>{REMOTE_NF_SERVICE_5GEDA_OAUTH_IP_ENDPOINT_PORT}</port>
+                            </ip-endpoint>
+                        </remote-nf-service>
+                    </remote-nf-profile>
+                </remote-nf-profile>
+            </udm>
+        </config>
+    </edit-config>
+</rpc>
+<close-session />
